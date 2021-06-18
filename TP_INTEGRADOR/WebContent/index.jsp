@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-asdasdasd
+
+	<h1>Index</h1>
+
 </body>
 </html>
