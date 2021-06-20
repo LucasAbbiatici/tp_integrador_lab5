@@ -45,7 +45,7 @@
       </div>
       <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
         <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-          <h1><a href="http://blogs.stackfindover.com/" rel="dofollow">UTN BANK</a></h1>
+          <h1 style="-webkit-text-stroke: 1px #1E1E1E"><a rel="dofollow">UTN BANK</a></h1>
         </div>
         <div class="formbg-outer">
           <div class="formbg">
@@ -59,9 +59,6 @@
                 <div class="field padding-bottom--24">
                   <div class="grid--50-50">
                     <label for="password">Clave digital</label>
-                    <div class="reset-pass">
-                      <a href="#">Olvidaste tu contraseña?</a>
-                    </div>
                   </div>
                   <input type="password" name="password">
                 </div>
@@ -74,11 +71,8 @@
             </div>
           </div>
           <div class="footer-link padding-top--24">
-            <span>Sí es tu primera vez o necesitás el usuario </span>
-            <span><a href="">  Crear cuenta</a></span>
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
               <span>©UTN BANK</span>
-             
             </div>
           </div>
         </div>
