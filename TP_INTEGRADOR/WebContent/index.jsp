@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Stackfindover: Sign in</title>
+  <title>UTN BANK</title>
   <link rel="stylesheet" type="text/css" href="assets/css/index.css">
 </head>
 
@@ -45,46 +45,40 @@
       </div>
       <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
         <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-          <h1><a href="http://blogs.stackfindover.com/" rel="dofollow">Stackfindover</a></h1>
+          <h1><a href="http://blogs.stackfindover.com/" rel="dofollow">UTN BANK</a></h1>
         </div>
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-              <span class="padding-bottom--15">Sign in to your account</span>
+              <span class="padding-bottom--15">Iniciar Sesion</span>
               <form id="stripe-login">
                 <div class="field padding-bottom--24">
-                  <label for="email">Email</label>
+                  <label for="email">Usuario</label>
                   <input type="email" name="email">
                 </div>
                 <div class="field padding-bottom--24">
                   <div class="grid--50-50">
-                    <label for="password">Password</label>
+                    <label for="password">Clave digital</label>
                     <div class="reset-pass">
-                      <a href="#">Forgot your password?</a>
+                      <a href="#">Olvidaste tu contraseña?</a>
                     </div>
                   </div>
                   <input type="password" name="password">
                 </div>
-                <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
-                  <label for="checkbox">
-                    <input type="checkbox" name="checkbox"> Stay signed in for a week
-                  </label>
-                </div>
+               
                 <div class="field padding-bottom--24">
-                  <input type="submit" name="submit" value="Continue">
+                  <input type="submit" name="submit" value="Ingresar">
                 </div>
-                <div class="field">
-                  <a class="ssolink" href="#">Use single sign-on (Google) instead</a>
-                </div>
+               
               </form>
             </div>
           </div>
           <div class="footer-link padding-top--24">
-            <span>Don't have an account? <a href="">Sign up</a></span>
+            <span>Sí es tu primera vez o necesitás el usuario </span>
+            <span><a href="">  Crear cuenta</a></span>
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
-              <span><a href="#">© Stackfindover</a></span>
-              <span><a href="#">Contact</a></span>
-              <span><a href="#">Privacy & terms</a></span>
+              <span>©UTN BANK</span>
+             
             </div>
           </div>
         </div>
