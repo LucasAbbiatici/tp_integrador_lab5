@@ -1,14 +1,5 @@
 @charset "ISO-8859-1";
 
-.cuerpo{
-	display: flex;
-  	display: -webkit-flex;
-  	display: -ms-flexbox;
-  	flex-flow: row nowrap;
-  	height: 100vh;
-  	width: 100vw;
-  	justify-content: space-between;
-}
 
 .containerTabla{
 	display: flex;
@@ -19,10 +10,12 @@
 	margin-right: 10px; 
 	width: inherit;
 	align-items: center;
+	background: #FFF;
+	border-radius: 10px;
 }
 
 #tabla {
-	background: linear-gradient(140deg,#5499D4,#5469d5);
+	background: #5469d5;
 	color: white;
 	border-style: hidden;
 	border-radius: 10px;

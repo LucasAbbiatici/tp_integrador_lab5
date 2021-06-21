@@ -1,0 +1,105 @@
+@charset "ISO-8859-1";
+
+.cuerpo{
+	display: flex;
+  	display: -webkit-flex;
+  	display: -ms-flexbox;
+  	flex-flow: row nowrap;
+  	height: 100vh;
+  	width: 100vw;
+  	justify-content: space-between;
+}
+
+.btnMovimientos{
+	height: 50px;
+  	width: 110px;
+  	margin-right: 10px;
+  	margin-left: 10px;
+  	display: block;
+  	padding: 0px 20px 0px 10px;
+  	border-style: solid;
+  	background: linear-gradient(120deg,#74D3F9,#002661);
+  	background-size: 200%;
+  	color: #fff;
+  	outline: none;
+  	cursor: pointer;
+  	transition: .5s;
+  	border-radius: 12px;
+  	font-weight: bold;
+}
+
+.btnMovimientos:hover {
+    background-position: right;
+}
+
+.btnBorrar{
+	height: 50px;
+  	width: 70px;
+  	margin-right: 10px;
+  	margin-left: 10px;
+  	display: block;
+  	padding: 0px 20px 0px 13px;
+  	border-style: solid;
+  	background: #4285f4;
+  	background-size: 200%;
+  	color: #fff;
+  	outline: none;
+  	cursor: pointer;
+  	transition: .5s;
+  	border-radius: 12px;
+  	font-weight: bold;
+}
+
+.btnBorrar:hover {
+    background-position: right;
+    background: #ff0000;
+}
+
+.btnModificar{
+	height: 50px;
+  	width: 90px;
+  	margin-right: 10px;
+  	margin-left: 10px;
+  	display: block;
+  	padding: 0px 20px 0px 10px;
+  	border-style: solid;
+  	background: #4285f4;
+  	background-size: 200%;
+  	color: #fff;
+  	outline: none;
+  	cursor: pointer;
+  	transition: .6s;
+  	border-radius: 12px;
+  	font-weight: bold;
+}
+
+.btnModificar:hover {
+    background-position: right;
+	background: #74D3F9;
+}
+
+.btnAgregarCliente{
+	height: 50px;
+  	width: 600px;
+  	margin-right: 10px;
+  	margin-left: 10px;
+  	display: block;
+  	padding: 0px 20px 0px 10px;
+  	border: 2px solid #1f2937;
+  	background: #5469d4;
+  	background-size: 200%;
+  	color: #fff;
+  	outline: none;
+  	cursor: pointer;
+  	transition: .6s;
+  	border-radius: 12px;
+  	font-weight: bold;
+}
+
+.btnAgregarCliente:hover {
+    background-position: right;
+	background: #4285f4;
+}
+
+
+
