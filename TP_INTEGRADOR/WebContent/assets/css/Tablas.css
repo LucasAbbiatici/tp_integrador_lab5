@@ -5,13 +5,13 @@
 	display: flex;
 	display: -webkit-flex; 
 	display: -ms-flexbox;
-	margin-left: 8px; 
-	margin-top: 50px; 
-	margin-right: 10px; 
-	width: inherit;
+	/*width: inherit;*/
 	align-items: center;
 	background: #FFF;
 	border-radius: 10px;
+	padding: 2rem 3rem;
+	height: fit-content !important;
+	margin:2rem auto ;
 }
 
 #tabla {

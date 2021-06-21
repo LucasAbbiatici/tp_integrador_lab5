@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Movimientos Cliente</title>
 <link rel="stylesheet" type="text/css" href="assets/css/Tablas.css">
-<link rel="stylesheet" type="text/css" href="assets/css/mainClientes.css">
+<link rel="stylesheet" type="text/css" href="assets/css/general.css">
 <jsp:include page="PageMaster/MDBTabla.jsp"/>
 </head>
 <body>
