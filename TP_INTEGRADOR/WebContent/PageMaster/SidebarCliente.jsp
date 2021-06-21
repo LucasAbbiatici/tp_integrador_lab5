@@ -9,7 +9,7 @@
 </head>
 <body class="flex items-center h-screen w-screen bg-gray-300">	
 	<!-- Component Start -->
-	<div class="flex flex-col items-center w-40 h-full overflow-hidden text-gray-50 bg-blue-900">
+	<div class="flex flex-col items-center w-56 h-full overflow-hidden text-gray-50 bg-blue-900">
 		<div class="flex items-center w-full px-3 mt-3">
 			
 			<!-- Logo UTN BANK -->
