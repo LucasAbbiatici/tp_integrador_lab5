@@ -29,7 +29,7 @@
 	
 	
 	<!--  FORMULARIO  -->
-	<div class="container-contact100">
+	<div class="container-contact100 overflow-auto">
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
