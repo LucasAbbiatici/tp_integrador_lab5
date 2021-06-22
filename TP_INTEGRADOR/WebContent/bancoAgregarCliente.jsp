@@ -23,7 +23,7 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="assets/css/tailwind.min.css">
 </head>
-<body class="flex items-center h-screen w-screen bg-gray-300">	
+<body class="flex  h-screen  bg-gray-300">	
 	
 	<jsp:include page="PageMaster/SidebarBanco.jsp"/>
 	
@@ -36,12 +36,7 @@
 					Agregar Cliente
 				</span>
 
-					<div class="p-t-15">
-						
-						
-						<br>
-						
-
+					
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">DNI</span>
 							<input class="input100" type="text" name="dni" placeholder="Ingresar DNI">
@@ -57,7 +52,7 @@
 							<input class="input100" type="text" name="apellido" placeholder="Ingresar Apellido">
 							<span class="focus-input100"></span>
 						</div>
-					</div>
+					
 				
 				
 				<div class="wrap-input100 input100-select">
