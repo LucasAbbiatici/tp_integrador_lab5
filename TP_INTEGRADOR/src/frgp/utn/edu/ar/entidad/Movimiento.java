@@ -30,6 +30,9 @@ public class Movimiento implements Serializable {
 	@ManyToOne(cascade={CascadeType.ALL})
 	@JoinColumn(name="tipo")
 	private TipoMovimiento tipoDeMovimiento;
+	@ManyToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="cuenta_mov")
+	private Cuenta cuenta;
 	
 	public Movimiento() {}
 
@@ -77,6 +80,14 @@ public class Movimiento implements Serializable {
 	public String toString() {
 		return "Movimiento [NroMovimiento=" + NroMovimiento + ", fecha=" + fecha + ", detalle=" + detalle + ", importe="
 				+ importe + ", tipoDeMovimiento=" + tipoDeMovimiento + "]";
+	}
+
+	public Cuenta getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
 	}
 	
 }
