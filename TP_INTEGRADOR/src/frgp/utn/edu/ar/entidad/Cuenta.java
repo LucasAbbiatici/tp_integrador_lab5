@@ -2,6 +2,7 @@ package frgp.utn.edu.ar.entidad;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Random;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,8 +22,8 @@ public class Cuenta implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int NroCuenta;
-	@Column(name="cbu")
-	private int CBU;
+	@Column(name="cbu",unique=true)
+	private String CBU;
 	@ManyToOne(cascade={CascadeType.ALL})
 	@JoinColumn(name="cliente")
 	private Cliente cliente;
@@ -36,7 +37,13 @@ public class Cuenta implements Serializable{
 	@Column(name="saldo")
 	private float saldo;
 	
-	public Cuenta() {}
+	public Cuenta() {
+		
+		//verificar que cbu no exista
+		this.CBU = NumericString();
+		this.saldo = 10000;
+		
+	}
 
 	public int getNroCuenta() {
 		return NroCuenta;
@@ -46,11 +53,11 @@ public class Cuenta implements Serializable{
 		NroCuenta = nroCuenta;
 	}
 
-	public int getCBU() {
+	public String getCBU() {
 		return CBU;
 	}
 
-	public void setCBU(int cBU) {
+	public void setCBU(String cBU) {
 		CBU = cBU;
 	}
 
@@ -93,11 +100,27 @@ public class Cuenta implements Serializable{
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
+	
 
 	@Override
 	public String toString() {
 		return "Cuenta [NroCuenta=" + NroCuenta + ", CBU=" + CBU + ", cliente=" + cliente + ", fechaCreacion="
 				+ fechaCreacion + ", tipoDeCuenta=" + tipoDeCuenta + ", nombre=" + nombre + ", saldo=" + saldo + "]";
+	}
+	
+	
+	
+	public static String NumericString() {
+	    String AB = "0123456789";
+	    Random rnd = new Random();
+	    String banco = "34782533";
+        final int len = 14;
+	    StringBuilder sb = new StringBuilder(len);
+	    sb.append(banco);
+	    for (int i = 0; i < len; i++) {
+	        sb.append(AB.charAt(rnd.nextInt(AB.length())));
+	    }
+	    return sb.toString();
 	}
 	
 }
