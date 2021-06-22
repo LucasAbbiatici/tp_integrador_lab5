@@ -1,8 +1,18 @@
 package frgp.utn.edu.ar.entidad;
 
-public class TipoCuenta {
+import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class TipoCuenta implements Serializable {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@Column(name="descripcion")
 	private String descripcion;
 	
 	public TipoCuenta() {}

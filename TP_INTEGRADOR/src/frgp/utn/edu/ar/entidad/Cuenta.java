@@ -1,15 +1,39 @@
 package frgp.utn.edu.ar.entidad;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Cuenta {
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="cuentas")
+public class Cuenta implements Serializable{
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int NroCuenta;
+	@Column(name="cbu")
 	private int CBU;
+	@ManyToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="cliente")
 	private Cliente cliente;
+	@Column(name="fechacreacion")
 	private Date fechaCreacion;
+	@OneToMany(cascade={CascadeType.ALL})
+	@JoinColumn(name="tipo")
 	private TipoCuenta tipoDeCuenta;
+	@Column(name="nombre")
 	private String nombre;
+	@Column(name="saldo")
 	private float saldo;
 	
 	public Cuenta() {}

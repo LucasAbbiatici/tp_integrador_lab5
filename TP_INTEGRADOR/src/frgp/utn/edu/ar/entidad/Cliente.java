@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Clients")
+@Table(name="clientes")
 public class Cliente implements Serializable{
 	
 	@Id
@@ -23,24 +23,24 @@ public class Cliente implements Serializable{
 	private int id;
 	@Column(name="DNI",unique=true)
 	private int dni;
-	@Column(name="first_name")
+	@Column(name="nombre")
 	private String nombre;
-	@Column(name="last_name")
+	@Column(name="apellido")
 	private String apellido;
-	@Column(name="sex")
+	@Column(name="sexo")
 	private String sexo;
-	@Column(name="nationality")
+	@Column(name="nacionaliad")
 	private String nacionalidad;
-	@Column(name="birth_date")
+	@Column(name="fechanacimineto")
 	private Date fechaNacimiento;
-	@Column(name="address")
+	@Column(name="direccion")
 	private String direccion;
 	@Column(name="localidad")
 	private String localidad;
 	@Column(name="provincia")
 	private String provincia;
 	@OneToOne(cascade={CascadeType.ALL})
-	@JoinColumn(name="user_client")
+	@JoinColumn(name="usuario")
 	private Usuario user;
 	
 	public Cliente() {}
