@@ -33,7 +33,8 @@ public class Main {
 		
 		session.save(usuario);
 		
-		Date date = new Date(1999, 11, 3);
+		String str = "1999-02-24";
+		Date date = Date.valueOf(str);
 		
 		Cliente cliente = new Cliente();
 		cliente.setDni(44999555);

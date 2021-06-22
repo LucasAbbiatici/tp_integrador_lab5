@@ -33,7 +33,7 @@ public class Cliente implements Serializable{
 	private String nacionalidad;
 	@Column(name="birth_date")
 	private Date fechaNacimiento;
-	@Column(name="nationality")
+	@Column(name="address")
 	private String direccion;
 	@Column(name="localidad")
 	private String localidad;
