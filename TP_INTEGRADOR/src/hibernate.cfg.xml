@@ -9,6 +9,15 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/BDbanco?createDatabaseIfNotExist=true</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
+        <property name="show_sql">true</property>
+        
+        <mapping class="frgp.utn.edu.ar.entidad.Cliente"/>
+        <mapping class="frgp.utn.edu.ar.entidad.Cuenta"/>
+        <mapping class="frgp.utn.edu.ar.entidad.Movimiento"/>
+        <mapping class="frgp.utn.edu.ar.entidad.TipoCuenta"/>
+        <mapping class="frgp.utn.edu.ar.entidad.TipoMovimiento"/>
+        <mapping class="frgp.utn.edu.ar.entidad.Usuario"/>
+        
     </session-factory>
 </hibernate-configuration>

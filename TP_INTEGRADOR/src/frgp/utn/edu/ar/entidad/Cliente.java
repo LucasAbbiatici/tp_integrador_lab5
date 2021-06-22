@@ -1,18 +1,46 @@
 package frgp.utn.edu.ar.entidad;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Cliente {
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="Clients")
+public class Cliente implements Serializable{
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
+	@Column(name="DNI",unique=true)
 	private int dni;
+	@Column(name="first_name")
 	private String nombre;
+	@Column(name="last_name")
 	private String apellido;
+	@Column(name="sex")
 	private String sexo;
+	@Column(name="nationality")
 	private String nacionalidad;
+	@Column(name="birth_date")
 	private Date fechaNacimiento;
+	@Column(name="nationality")
 	private String direccion;
+	@Column(name="localidad")
+	private String localidad;
+	@Column(name="provincia")
 	private String provincia;
+	@OneToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="user_client")
 	private Usuario user;
 	
 	public Cliente() {}
@@ -97,6 +125,15 @@ public class Cliente {
 		this.user = user;
 	}
 
+	
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+	
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", sexo=" + sexo
