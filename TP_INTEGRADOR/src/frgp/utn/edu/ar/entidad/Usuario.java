@@ -1,6 +1,7 @@
 package frgp.utn.edu.ar.entidad;
 
 import java.io.Serializable;
+import java.util.Random;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +13,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="usuarios")
 public class Usuario implements Serializable{
-	
-	private static int count = 0;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -29,12 +28,10 @@ public class Usuario implements Serializable{
 	
 	public Usuario(Cliente cli) 
 	{
-		count++;
-		this.user = cli.getNombre() + count;
-		this.pass = cli.getDni();
+		this.user = cli.getDni();
+		this.pass = alphaNumericString(10);
 		this.admin = false;
 	}
-
 
 	public Boolean getAdmin() {
 		return admin;
@@ -68,12 +65,20 @@ public class Usuario implements Serializable{
 		this.pass = pass;
 	}
 	
-	
-	
-
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", user=" + user + ", pass=" + pass + "]";
+	}
+	
+	public static String alphaNumericString(int len) {
+	    String AB = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	    Random rnd = new Random();
+
+	    StringBuilder sb = new StringBuilder(len);
+	    for (int i = 0; i < len; i++) {
+	        sb.append(AB.charAt(rnd.nextInt(AB.length())));
+	    }
+	    return sb.toString();
 	}
 	
 }

@@ -5,12 +5,17 @@ import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="movimientos")
 public class Movimiento implements Serializable {
 	
 	@Id
@@ -22,7 +27,7 @@ public class Movimiento implements Serializable {
 	private String detalle;
 	@Column(name="importe")
 	private float importe;
-	@OneToMany(cascade={CascadeType.ALL})
+	@ManyToOne(cascade={CascadeType.ALL})
 	@JoinColumn(name="tipo")
 	private TipoMovimiento tipoDeMovimiento;
 	

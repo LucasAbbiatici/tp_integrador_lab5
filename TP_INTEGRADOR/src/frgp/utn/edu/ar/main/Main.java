@@ -9,6 +9,8 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import frgp.utn.edu.ar.entidad.Cliente;
+import frgp.utn.edu.ar.entidad.TipoCuenta;
+import frgp.utn.edu.ar.entidad.TipoMovimiento;
 import frgp.utn.edu.ar.entidad.Usuario;
 
 public class Main {
@@ -70,19 +72,19 @@ public class Main {
 		
 		//Cliente 2
 		Cliente cliente2 = new Cliente();
-		cliente.setDni("38674701");
-		cliente.setNombre("Brian");
-		cliente.setApellido("Bravo");
-		cliente.setSexo("Masculino");
-		cliente.setNacionalidad("Argentina");
-		cliente.setFechaNacimiento(date2);
-		cliente.setDireccion("Los Platanos 300");
-		cliente.setProvincia("Buenos aires");
-		cliente.setLocalidad("Escobar");
+		cliente2.setDni("38674701");
+		cliente2.setNombre("Brian");
+		cliente2.setApellido("Bravo");
+		cliente2.setSexo("Masculino");
+		cliente2.setNacionalidad("Argentina");
+		cliente2.setFechaNacimiento(date2);
+		cliente2.setDireccion("Los Platanos 300");
+		cliente2.setProvincia("Buenos aires");
+		cliente2.setLocalidad("Escobar");
 		
 		//Usuario 2
 		Usuario usuario2 = new Usuario(cliente2);		
-		cliente.setUser(usuario2);
+		cliente2.setUser(usuario2);
 		
 		session.save(usuario2);
 		session.save(cliente2);
@@ -95,50 +97,43 @@ public class Main {
 				
 		//Cliente 3
 		Cliente cliente3 = new Cliente();
-		cliente.setDni("41715987");
-		cliente.setNombre("Lucas");
-		cliente.setApellido("Abbiatici");
-		cliente.setSexo("Masculino");
-		cliente.setNacionalidad("Argentina");
-		cliente.setFechaNacimiento(date3);
-		cliente.setDireccion("Guayaquil 201");
-		cliente.setProvincia("Buenos aires");
-		cliente.setLocalidad("Grand Bourg");
+		cliente3.setDni("41715987");
+		cliente3.setNombre("Lucas");
+		cliente3.setApellido("Abbiatici");
+		cliente3.setSexo("Masculino");
+		cliente3.setNacionalidad("Argentina");
+		cliente3.setFechaNacimiento(date3);
+		cliente3.setDireccion("Guayaquil 201");
+		cliente3.setProvincia("Buenos aires");
+		cliente3.setLocalidad("Grand Bourg");
 						
 		//Usuario 3
 		Usuario usuario3 = new Usuario(cliente3);		
-		cliente.setUser(usuario3);
+		cliente3.setUser(usuario3);
 		
 		session.save(usuario3);
 		session.save(cliente3);
 		
-		//---------------------------------------------------------------
+		//----------------- TIPO DE CUENTA Y TIPO DE MOVIMIENTO ------------------------
 		
-		//Date 4
-		String str4 = "1999-02-24";
-		Date date4 = Date.valueOf(str4);
-				
-		//Cliente 4
-		Cliente cliente4 = new Cliente();
-		cliente.setDni("41715987");
-		cliente.setNombre("Lucas");
-		cliente.setApellido("Abbiatici");
-		cliente.setSexo("Masculino");
-		cliente.setNacionalidad("Argentina");
-		cliente.setFechaNacimiento(date4);
-		cliente.setDireccion("Guayaquil 201");
-		cliente.setProvincia("Buenos aires");
-		cliente.setLocalidad("Grand Bourg");
-		cliente.setUser(usuario3);
-						
-		//Usuario 4
-		Usuario usuario4 = new Usuario(cliente4);		
-		cliente.setUser(usuario4);
+		TipoCuenta tipoCuenta = new TipoCuenta();
+		tipoCuenta.setDescripcion("Caja de ahorro en pesos");
+		session.save(tipoCuenta);
 		
-		session.save(usuario4);
-		session.save(cliente4);
+		TipoCuenta tipoCuenta2 = new TipoCuenta();
+		tipoCuenta2.setDescripcion("Caja de ahorro en dolares");
+		session.save(tipoCuenta2);
 		
-		//---------------------------------------------------------------
+		TipoMovimiento tipoMovimiento = new TipoMovimiento();
+		tipoMovimiento.setDescripcion("Negativo");
+		session.save(tipoMovimiento);
+		
+		TipoMovimiento tipoMovimiento2 = new TipoMovimiento();
+		tipoMovimiento2.setDescripcion("Positivo");
+		session.save(tipoMovimiento2);
+		
+		//----------------- TIPO DE CUENTA Y TIPO DE MOVIMIENTO ------------------------
+		
 		
 		session.getTransaction().commit();
 		session.close();

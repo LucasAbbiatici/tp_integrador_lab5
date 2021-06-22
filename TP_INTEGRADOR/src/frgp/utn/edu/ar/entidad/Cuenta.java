@@ -28,7 +28,7 @@ public class Cuenta implements Serializable{
 	private Cliente cliente;
 	@Column(name="fechacreacion")
 	private Date fechaCreacion;
-	@OneToMany(cascade={CascadeType.ALL})
+	@ManyToOne(cascade={CascadeType.ALL})
 	@JoinColumn(name="tipo")
 	private TipoCuenta tipoDeCuenta;
 	@Column(name="nombre")
