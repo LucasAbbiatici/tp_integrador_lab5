@@ -13,6 +13,8 @@ import javax.persistence.Table;
 @Table(name="usuarios")
 public class Usuario implements Serializable{
 	
+	private static int count = 0;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -20,8 +22,27 @@ public class Usuario implements Serializable{
 	private String user;
 	@Column(name="password")
 	private String pass;
+	@Column(name="admin")
+	private Boolean admin;
 	
 	public Usuario() {}
+	
+	public Usuario(Cliente cli) 
+	{
+		count++;
+		this.user = cli.getNombre() + count;
+		this.pass = cli.getDni();
+		this.admin = false;
+	}
+
+
+	public Boolean getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
 
 	public int getId() {
 		return id;
@@ -46,6 +67,9 @@ public class Usuario implements Serializable{
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	
+	
+	
 
 	@Override
 	public String toString() {

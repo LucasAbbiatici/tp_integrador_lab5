@@ -22,7 +22,7 @@ public class Cliente implements Serializable{
 	@Column(name="id")
 	private int id;
 	@Column(name="DNI",unique=true)
-	private int dni;
+	private String dni;
 	@Column(name="nombre")
 	private String nombre;
 	@Column(name="apellido")
@@ -53,11 +53,11 @@ public class Cliente implements Serializable{
 		this.id = id;
 	}
 
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 
