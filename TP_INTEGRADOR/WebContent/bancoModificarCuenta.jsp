@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
-	<title>Transferencia</title>
+	<title>Modificar Cuenta</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -23,9 +23,9 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="assets/css/tailwind.min.css">
 </head>
-<body class="flex items-center h-screen w-screen bg-gray-300">	
+<body class="flex  h-screen  bg-gray-300">	
 	
-	<jsp:include page="PageMaster/SidebarCliente.jsp"/>
+	<jsp:include page="PageMaster/SidebarBanco.jsp"/>
 	
 	
 	<!--  FORMULARIO  -->
@@ -33,68 +33,44 @@
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					Transferencia
+					Modificar Cuenta
 				</span>
 
+						<div class="wrap-input100 validate-input">
+							<span class="label-input100">Nombre</span>
+							<input class="input100" type="text" name="nombre" placeholder="Ingresar Nombre">
+							<span class="focus-input100"></span>
+						</div>
+					
 				<div class="wrap-input100 input100-select">
-					<span class="label-input100">Cuenta origen</span>
+					<span class="label-input100">Tipo de cuenta</span>
 					<div>
-						<select class="selection-2" name="cuentas-origen">
-							<option>Seleccionar cuenta</option>
-							<option>2850590940090418135201 - $saldo</option>
-							<option>2859530979095418432211 - $saldo</option>
+						<select class="selection-2" name="tipoCuenta">
+							<option>Seleccionar tipo de cuenta</option>
+							<option>Caja de Ahorro en Pesos</option>
+							<option>Caja de Ahorro en Dolares</option>
 						</select>
 					</div>
 					<span class="focus-input100"></span>
 				</div>
 
-
-				<div>
-					<label class="label-input100">Cuenta destino</label>
-					<div class="p-t-15">
-						<label class="label-input100">Cuentas propias
-							<input type="radio" checked="checked" id="Si" name="seguro" value="si">
-							<span class="checkmark"></span>
-						</label>
-						<div class="wrap-input100 input100-select">
-							<select class="selection-2" name="cuentas-destino">
-								<option>Seleccionar cuenta</option>
-								<option>2850590940090418135201</option>
-								<option>2859530979095418432211</option>
-							</select>
-						</div>
-						<br>
-						<label class="label-input100">Cuentas externas
-							<input type="radio" id="No" name="seguro" value="no">
-							<span class="checkmark"></span>
-						</label>
-
-						<div class="wrap-input100 validate-input">
-							<span class="label-input100">CBU</span>
-							<input class="input100" type="text" name="cbu" placeholder="Ingresar CBU">
-							<span class="focus-input100"></span>
-						</div>
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Asignar Cliente</span>
+					<div>
+						<select class="selection-2" name="ddl_clientes">
+							<option>41715987 - Abbiatici Lucas</option>
+							
+						</select>
 					</div>
-				</div>
-
-				<div class="wrap-input100 validate-input">
-					<span class="label-input100">Monto</span>
-					<input class="input100" type="text" name="monto" placeholder="$">
 					<span class="focus-input100"></span>
 				</div>
-
-				<div class="wrap-input100 validate-input">
-					<span class="label-input100">Concepto</span>
-					<input class="input100" type="text" name="concepto" placeholder="Detalle o concepto">
-					<span class="focus-input100"></span>
-				</div>
-
+				
 				<div class="container-contact100-form-btn">
 					<div class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn bg-blue-900"></div>
 						<button class="contact100-form-btn">
 							<span>
-								Transferir
+								Modificar Cuenta
 								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
 							</span>
 						</button>

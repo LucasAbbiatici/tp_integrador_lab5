@@ -13,9 +13,9 @@
 
 <div class="cuerpo">
 
-	<div>
+
 		<jsp:include page="PageMaster/SidebarCliente.jsp"/>
-	</div>
+
 	
 <div class="containerTabla" style="flex-flow: column nowrap;">
 	<h5 style="font-weight: bold; font-size: 25px; margin-bottom: 25px;"> Movimientos </h5>
