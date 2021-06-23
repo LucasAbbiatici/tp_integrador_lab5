@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <meta charset="utf-8">
   <title>UTN BANK</title>
-  <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+  <link type="text/css" href="<c:url value="assets/css/index.css" />" rel="stylesheet" >
 </head>
 
 <body>
@@ -51,7 +52,7 @@
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
               <span class="padding-bottom--15">Iniciar Sesion</span>
-              <form id="stripe-login">
+              <form id="stripe-login" action="/login" method="get">
                 <div class="field padding-bottom--24">
                   <label for="email">Usuario</label>
                   <input type="email" name="email">
