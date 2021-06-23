@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name="tipo_movimiento")
 public class TipoMovimiento implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
