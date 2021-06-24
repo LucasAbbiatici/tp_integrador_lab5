@@ -14,4 +14,11 @@ public class PaginaController {
 		return MV;
 	}
 	
+	@RequestMapping("/login.html")
+	public ModelAndView eventoRedireccionarCliente() {
+		ModelAndView MV = new ModelAndView();
+		MV.setViewName("mainCliente");
+		return MV;
+	}
+	
 }
