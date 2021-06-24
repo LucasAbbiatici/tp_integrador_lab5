@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PaginaController {
 
-	@RequestMapping("redireccionar_index.html")
+	@RequestMapping("/redireccionar_index.html")
 	public ModelAndView eventoRedireccionarIndex() {
 		ModelAndView MV = new ModelAndView();
 		MV.setViewName("index");
