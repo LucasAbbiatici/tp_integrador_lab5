@@ -52,16 +52,16 @@
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
               <span class="padding-bottom--15">Iniciar Sesion</span>
-              <form id="stripe-login" action="login.html">
+              <form id="stripe-login" action="login.html" method="get">
                 <div class="field padding-bottom--24">
-                  <label for="email">Usuario</label>
-                  <input type="email" name="email">
+                  <label for="txtUsuario">Usuario</label>
+                  <input type="text" name="txtUsuario">
                 </div>
                 <div class="field padding-bottom--24">
                   <div class="grid--50-50">
-                    <label for="password">Clave digital</label>
+                    <label for="txtPassword">Clave digital</label>
                   </div>
-                  <input type="password" name="password">
+                  <input type="password" name="txtPassword">
                 </div>
                
                 <div class="field padding-bottom--24">
@@ -73,6 +73,9 @@
           </div>
           <div class="footer-link padding-top--24">
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+            	<div>
+            		${estadoUsuario}
+            	</div>
               <span>©UTN BANK</span>
             </div>
           </div>

@@ -71,9 +71,9 @@ public class Usuario implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", user=" + user + ", pass=" + pass + "]";
+		return "Usuario [id=" + id + ", user=" + user + ", pass=" + pass + ", admin=" + admin + "]";
 	}
-	
+
 	public static String alphaNumericString(int len) {
 	    String AB = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	    Random rnd = new Random();

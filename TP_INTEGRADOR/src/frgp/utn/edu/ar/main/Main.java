@@ -7,6 +7,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Cuenta;
@@ -14,11 +17,39 @@ import frgp.utn.edu.ar.entidad.Movimiento;
 import frgp.utn.edu.ar.entidad.TipoCuenta;
 import frgp.utn.edu.ar.entidad.TipoMovimiento;
 import frgp.utn.edu.ar.entidad.Usuario;
+import frgp.utn.edu.ar.resources.Config;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
+		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
+		
+		Usuario u = (Usuario)appContext.getBean("beanUsuario");
+		System.out.println(u.toString());
+		
+		SessionFactory sessionFactory;
+		
+		Configuration configuration = new Configuration();
+		configuration.configure();
+		
+		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
+		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+		
+		Session session = sessionFactory.openSession();
+		
+		session.beginTransaction();
+		
+		session.save(u);
+		
+		session.getTransaction().commit();
+		session.close();
+		
+		sessionFactory.close();
+		
+		((ConfigurableApplicationContext)(appContext)).close();
+		
+		/*
 		SessionFactory sessionFactory;
 		
 		Configuration configuration = new Configuration();
@@ -609,6 +640,7 @@ public class Main {
 		session.close();
 		
 		sessionFactory.close();
+		*/
 		
 	}
 }

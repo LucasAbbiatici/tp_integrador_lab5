@@ -75,7 +75,7 @@
 					</svg>
 					<span class="ml-2 text-sm font-medium">Transferencias</span>
 				</a>
-				<a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" href="#">
+				<a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" href="/TP_INTEGRADOR/redireccionar_index.html">
 					<svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512" stroke="currentColor">
 						<path d="M503.971,242.039l-121.055-89.303c-9.814-7.24-23.72-0.206-23.72,11.977v44.651h-29.768V44.651
 									C329.429,20.031,309.398,0,284.777,0H46.637C22.063,0,1.986,20.027,1.986,44.651c0,13.702,0,324.373,0,343.264
@@ -93,11 +93,11 @@
 				</a>
 			</div>
 		</div>
-		<a class="flex items-center justify-center w-full h-16 mt-auto bg-gray-800 hover:bg-gray-700 hover:text-gray-300" href="#">
+		<a class="flex items-center justify-center w-full h-16 mt-auto bg-gray-800 hover:bg-gray-700 hover:text-gray-300">
 			<svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
 			</svg>
-			<span class="ml-2 text-sm font-medium">Nombre Usuario</span>
+			<span class="ml-2 text-sm font-medium">${usuario.user}</span>
 		</a>
 	</div>
 	<!-- Component End  -->
