@@ -18,20 +18,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import frgp.utn.edu.ar.entidad.Usuario;
-import frgp.utn.edu.ar.negocio.UsuarioNeg;
+import frgp.utn.edu.ar.negocioImpl.UsuarioNegImpl;
 import frgp.utn.edu.ar.resources.Config;
 
 @Controller
 public class PaginaController {
 	
 	@Autowired
-	@Qualifier("UsuarioNeg")
-	private UsuarioNeg usuarioNeg;
+	private UsuarioNegImpl usuarioNeg;
 	@Autowired
 	private Usuario usuario;
 	
 	
-	@RequestMapping("/redireccionar_index.html")
+	@RequestMapping("/index.html")
 	public ModelAndView eventoRedireccionarIndex() {
 		return new ModelAndView("index");
 	}

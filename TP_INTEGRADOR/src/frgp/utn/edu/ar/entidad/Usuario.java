@@ -27,14 +27,26 @@ public class Usuario implements Serializable{
 	private String pass;
 	@Column(name="admin")
 	private Boolean admin;
+	@Column(name="estado")
+	private Boolean estado;
 	
-	public Usuario() {}
+	public Usuario() {
+		this.estado = true;
+	}
 	
 	public Usuario(Cliente cli) 
 	{
 		this.user = cli.getDni();
 		this.pass = alphaNumericString(10);
 		this.admin = false;
+	}
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 
 	public Boolean getAdmin() {

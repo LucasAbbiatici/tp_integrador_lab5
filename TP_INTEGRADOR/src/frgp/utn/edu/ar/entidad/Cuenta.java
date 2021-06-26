@@ -40,13 +40,23 @@ public class Cuenta implements Serializable{
 	private String nombre;
 	@Column(name="saldo")
 	private float saldo;
+	@Column(name="estado")
+	private Boolean estado;
 	
 	public Cuenta() {
 		
 		//verificar que cbu no exista
 		this.CBU = NumericString();
 		this.saldo = 10000;
-		
+		this.estado = true;
+	}
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 
 	public int getNroCuenta() {

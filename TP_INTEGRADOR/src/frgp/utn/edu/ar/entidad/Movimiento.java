@@ -37,8 +37,22 @@ public class Movimiento implements Serializable {
 	@ManyToOne(cascade={CascadeType.ALL})
 	@JoinColumn(name="cuenta_mov")
 	private Cuenta cuenta;
+	@Column(name="estado")
+	private Boolean estado;
 	
-	public Movimiento() {}
+	public Movimiento() {
+		this.estado = true;
+	}
+	
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+
+
 
 	public int getNroMovimiento() {
 		return NroMovimiento;

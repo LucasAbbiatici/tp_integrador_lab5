@@ -46,8 +46,20 @@ public class Cliente implements Serializable{
 	@OneToOne(cascade={CascadeType.ALL})
 	@JoinColumn(name="usuario")
 	private Usuario user;
+	@Column(name="estado")
+	private Boolean estado;
 	
-	public Cliente() {}
+	public Cliente() {
+		this.estado = true;
+	}
+	
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
 
 	public int getId() {
 		return id;

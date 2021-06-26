@@ -12,7 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import frgp.utn.edu.ar.dao.Conexion;
+import frgp.utn.edu.ar.daoImpl.Conexion;
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Cuenta;
 import frgp.utn.edu.ar.entidad.Movimiento;
