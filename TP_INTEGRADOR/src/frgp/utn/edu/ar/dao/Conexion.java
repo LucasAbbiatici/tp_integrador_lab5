@@ -25,7 +25,12 @@ public class Conexion {
 	
 	public Session abrirConexion()
 	{
-		session=sessionFactory.openSession();
+		try {
+			session=sessionFactory.openSession();
+			return session;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return session;
 	}
 	
@@ -34,7 +39,6 @@ public class Conexion {
 		session.close();
 		cerrarSessionFactory();
 	}
-	
 	
 	private void cerrarSessionFactory()
 	{

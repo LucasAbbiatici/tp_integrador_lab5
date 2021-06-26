@@ -14,7 +14,7 @@ import frgp.utn.edu.ar.entidad.Usuario;
 public class Config {
 	
 	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
+	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Usuario beanUsuario() {
 		
 		//Date 3

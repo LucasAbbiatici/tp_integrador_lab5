@@ -22,34 +22,7 @@ import frgp.utn.edu.ar.resources.Config;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		Usuario u = (Usuario)appContext.getBean("beanUsuario");
-		System.out.println(u.toString());
-		
-		SessionFactory sessionFactory;
-		
-		Configuration configuration = new Configuration();
-		configuration.configure();
-		
-		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-		
-		Session session = sessionFactory.openSession();
-		
-		session.beginTransaction();
-		
-		session.save(u);
-		
-		session.getTransaction().commit();
-		session.close();
-		
-		sessionFactory.close();
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-		
-		/*
+				
 		SessionFactory sessionFactory;
 		
 		Configuration configuration = new Configuration();
@@ -640,7 +613,6 @@ public class Main {
 		session.close();
 		
 		sessionFactory.close();
-		*/
 		
 	}
 }

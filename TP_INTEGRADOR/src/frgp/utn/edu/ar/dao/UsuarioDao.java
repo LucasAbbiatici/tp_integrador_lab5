@@ -28,8 +28,6 @@ public class UsuarioDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		conexion.cerrarSession();
 		
 		System.out.println(usu.toString());
 		return usu;
