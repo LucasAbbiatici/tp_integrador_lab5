@@ -7,10 +7,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import frgp.utn.edu.ar.dao.Conexion;
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Cuenta;
 import frgp.utn.edu.ar.entidad.Movimiento;
@@ -21,8 +23,9 @@ import frgp.utn.edu.ar.resources.Config;
 
 public class Main {
 
+		
 	public static void main(String[] args) {
-				
+			
 		SessionFactory sessionFactory;
 		
 		Configuration configuration = new Configuration();
@@ -35,6 +38,11 @@ public class Main {
 		
 		session.beginTransaction();
 		
+		/*
+		Conexion conexion = new Conexion();
+		Session session = conexion.abrirConexion();
+		session.beginTransaction();
+		*/
 		//---------------------------------------------------------------
 
 		//ADMIN

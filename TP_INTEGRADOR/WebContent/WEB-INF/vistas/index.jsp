@@ -52,7 +52,7 @@
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
               <span class="padding-bottom--15">Iniciar Sesion</span>
-              <form id="stripe-login" action="login.html" method="get">
+              <form id="stripe-login" action="login" method="POST">
                 <div class="field padding-bottom--24">
                   <label for="txtUsuario">Usuario</label>
                   <input type="text" name="txtUsuario">

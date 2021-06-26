@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -62,7 +63,7 @@
 					</svg>
 					<span class="ml-2 text-sm font-medium">Mis Cuentas</span>
 				</a>
-				<a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" href="#">
+				<a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" href="/TP_INTEGRADOR/transferencias">
 					<svg class="w-6 h-6 stroke-current" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" stroke="currentColor">
 						<g id="_13-transfer" data-name="13-transfer"><g id="linear_color" data-name="linear color">
 						<path d="M32,454a10,10,0,0,0,0,20H224a10,10,0,0,0,0-20h-6V361h6a10,10,0,0,0,10-10V336a10,10,0,0,0-4.453-8.32l-96-64a10,10,0,0,0-11.094,0l-96,64A10,10,0,0,0,22,336v15a10,10,0,0,0,10,10h6v93Zm58-92h76v92H90Zm96,92V362h12v92ZM128,284.019,213.472,341H42.528ZM58,362H70v92H58Z"/>
@@ -97,7 +98,7 @@
 			<svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
 			</svg>
-			<span class="ml-2 text-sm font-medium">${usuario.user}</span>
+			<span class="ml-2 text-sm font-medium"><c:out value="${sessionScope.usuario.user}"/></span>
 		</a>
 	</div>
 	<!-- Component End  -->

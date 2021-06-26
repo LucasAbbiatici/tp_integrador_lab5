@@ -1,5 +1,7 @@
 package frgp.utn.edu.ar.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -12,6 +14,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import frgp.utn.edu.ar.entidad.Usuario;
@@ -26,16 +29,15 @@ public class PaginaController {
 	private UsuarioNeg usuarioNeg;
 	@Autowired
 	private Usuario usuario;
-
+	
+	
 	@RequestMapping("/redireccionar_index.html")
 	public ModelAndView eventoRedireccionarIndex() {
-		ModelAndView MV = new ModelAndView();
-		MV.setViewName("index");
-		return MV;
+		return new ModelAndView("index");
 	}
 	
-	@RequestMapping("/login.html")
-	public ModelAndView eventoRedireccionarUsuario(String txtUsuario, String txtPassword) {
+	@RequestMapping(value="/login",method=RequestMethod.POST)
+	public ModelAndView eventoRedireccionarUsuario(String txtUsuario, String txtPassword,HttpServletRequest request) {
 		ModelAndView MV = new ModelAndView();
 		
 		usuario.setUser(txtUsuario);
@@ -48,15 +50,21 @@ public class PaginaController {
 			MV.addObject("estadoUsuario", "El usuario y/o contraseña son incorrectos");
 			MV.setViewName("index");
 		} else {
-			MV.addObject("usuario", usuario);
+			
+			request.getSession().setAttribute("usuario", usuario);
+			
+			//MV.addObject("usuario", usuario);
 			if(usuario.getAdmin() == false) {
 				MV.setViewName("mainCliente");
 			} else {
 				MV.setViewName("mainBanco");
 			}
 		}
-		
 		return MV;
 	}
 	
+	@RequestMapping("/transferencias")
+	public ModelAndView eventoRedireccionarTransferencias() {
+		return new ModelAndView("transferenciaCliente");
+	}
 }

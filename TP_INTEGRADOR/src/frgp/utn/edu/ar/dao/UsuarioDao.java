@@ -23,13 +23,11 @@ public class UsuarioDao {
 		query.setParameter("username", usuario.getUser());
 		query.setParameter("password", usuario.getPass());
 
-		System.out.println(query.list().get(0));
 		usu = (Usuario)query.list().get(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		System.out.println(usu.toString());
 		return usu;
 	}
 	
