@@ -36,7 +36,7 @@
 					<span class="ml-2 text-sm font-medium">Cuentas</span>
 				</a>
 				
-				<a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" href="/TP_INTEGRADOR/index.html">
+				<a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" href="/TP_INTEGRADOR/login">
 					<svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512" stroke="currentColor">
 						<path d="M503.971,242.039l-121.055-89.303c-9.814-7.24-23.72-0.206-23.72,11.977v44.651h-29.768V44.651
 									C329.429,20.031,309.398,0,284.777,0H46.637C22.063,0,1.986,20.027,1.986,44.651c0,13.702,0,324.373,0,343.264

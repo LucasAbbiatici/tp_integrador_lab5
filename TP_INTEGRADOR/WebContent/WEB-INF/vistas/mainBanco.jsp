@@ -53,7 +53,7 @@
 				<td>${item.localidad}</td>
 				<td>${item.provincia}</td>
 				<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
-			    <td><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></td>
+			    <td><a href="<c:url value='/delete-user-${item.id}' />">Borrar</a></td>
 				
 				</tr>
 				
@@ -68,7 +68,9 @@
 		<div>
 			<input type="submit" value="Agregar un Nuevo Cliente" name="btnAgregarCliente" class="btnAgregarCliente">
 		</div>
-		
+		<div>
+			${mensaje}
+		</div>
 		</div>
 	</div>
 	

@@ -21,12 +21,6 @@ public class ClienteNegImpl implements ClienteNeg {
 	}
 
 	@Override
-	public boolean delete(Cliente cli) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean update(Cliente cli) {
 		// TODO Auto-generated method stub
 		return false;
@@ -42,6 +36,11 @@ public class ClienteNegImpl implements ClienteNeg {
 	public Cliente obtenerCliente() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean delete(int _id) {
+		return dao.delete(_id);
 	}
 
 }

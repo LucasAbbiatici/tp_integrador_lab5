@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -31,8 +32,23 @@ public class ClienteDaoImpl implements ClienteDao {
 	}
 
 	@Override
-	public boolean delete(Cliente cli) {
-		// TODO Auto-generated method stub
+	public boolean delete(int _id) {
+		Session session = conexion.abrirConexion();
+		Transaction transaction = session.beginTransaction();
+		try {
+			Query query = session.createQuery("UPDATE Cliente c SET c.estado = 0 WHERE c.id =:idCliente and c.estado = 1");
+			query.setParameter("idCliente", _id);
+			
+			if( query.executeUpdate() > 0) {
+				transaction.commit();
+				return true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		
 		return false;
 	}
 
@@ -55,9 +71,9 @@ public class ClienteDaoImpl implements ClienteDao {
 	        	 clientes.add((Cliente)o);
 	         }
 			
-			} catch (Exception e) {
+		} catch (Exception e) {
 				e.printStackTrace();
-			}
+		}
 			
 			return  clientes;
 	}

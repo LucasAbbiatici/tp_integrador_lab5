@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -58,7 +59,7 @@ public class PaginaController {
 		
 		if(usuario.getId() == 0)
 		{
-			MV.addObject("estadoUsuario", "El usuario y/o contraseña son incorrectos");
+			MV.addObject("estadoUsuario", "El usuario y/o contraseï¿½a son incorrectos");
 			MV.setViewName("index");
 		} else {
 			
@@ -93,6 +94,28 @@ public class PaginaController {
 		
 		return MV;
 	}
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	public ModelAndView eliminarSession(HttpServletRequest request) {
+		request.getSession().removeAttribute("usuario");		
+		return new ModelAndView("index");
+	}
+	
+	@RequestMapping(value = { "/delete-user-{ssoId}" }, method = RequestMethod.GET)
+    public ModelAndView deleteUser(@PathVariable int ssoId) {
+
+		ModelAndView MV = new ModelAndView();
+		if(clienteNeg.delete(ssoId)) {
+			MV.addObject("mensaje","Se pudo eliminar correctamente");
+			MV.addObject("listaClientes",this.clienteNeg.readAll());
+			MV.setViewName("mainBanco");
+		}else {
+			MV.addObject("mensaje","No se pudo eliminar correctamente");
+			MV.addObject("listaClientes",this.clienteNeg.readAll());
+			MV.setViewName("mainBanco"); 
+		}
+		return MV;
+    }
+	
 }
 
 
