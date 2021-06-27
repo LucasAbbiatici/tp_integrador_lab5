@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -37,50 +38,30 @@
 				</thead>	
 				<tbody>
 				
-					<tr>  
-						<td>38674701</td>   
-						<td>kryat</td>
-						<td>Brian</td>   
-						<td>Bravo</td>  
-						<td>Masculino</td>  
-						<td>Argentina</td>  
-						<td>11/01/1995</td>  
-						<td>Cube 602</td>  
-						<td>Escobar</td>  
-						<td>Buenos Aires</td>  
-						<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
-						<td><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></td>
-					</tr>
+				<c:forEach items="${listaClientes}" var="item">
+				
+				<tr>
+			
+				<td> ${item.dni} </td>
+				<td>${item.user.user}</td>
+				<td>${item.nombre}</td>
+				<td>${item.apellido}</td>
+				<td>${item.sexo}</td>
+				<td>${item.nacionalidad}</td>
+				<td>${item.fechaNacimiento}</td>
+				<td>${item.direccion}</td>
+				<td>${item.localidad}</td>
+				<td>${item.provincia}</td>
+				<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
+			    <td><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></td>
+				
+				</tr>
+				
+			</c:forEach>
+	
+				
 					
-					<tr>  
-						<td>41715987</td>   
-						<td>Saxer</td>
-						<td>Lucas</td>   
-						<td>Abbiatici</td>  
-						<td>Masculino</td>  
-						<td>Argentina</td>  
-						<td>24/02/1999</td>  
-						<td>Guayaquil 2075</td>  
-						<td>Grand Bourg</td>  
-						<td>Buenos Aires</td>  
-						<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
-						<td><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></td>
-					</tr>
 					
-					<tr>  
-						<td>44519520</td>   
-						<td>Cabehear</td>
-						<td>Luca</td>   
-						<td>Adinolfi</td>  
-						<td>Masculino</td>  
-						<td>Argentina</td>  
-						<td>10/10/2002</td>  
-						<td>1045 700</td>  
-						<td>La plata</td>  
-						<td>Buenos Aires</td>  
-						<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
-						<td><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></td>
-					</tr>
 				</tbody>
 			</table>
 		

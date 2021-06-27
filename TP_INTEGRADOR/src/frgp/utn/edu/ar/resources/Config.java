@@ -7,8 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+import frgp.utn.edu.ar.daoImpl.Conexion;
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Usuario;
+import frgp.utn.edu.ar.negocioImpl.ClienteNegImpl;
 
 @Configuration
 public class Config {
@@ -40,4 +42,18 @@ public class Config {
 		return usuario3;
 	}
 	
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public ClienteNegImpl beanClienteNeg() {
+		return new ClienteNegImpl();
+	}
+	
+	@Bean
+    @Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
+	public Conexion beanConexion() {
+		return new Conexion();
+	}
+	
+	
 }
+	

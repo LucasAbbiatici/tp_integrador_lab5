@@ -31,5 +31,11 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		
 		return usu;
 	}
+
+	@Override
+	public boolean insert(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

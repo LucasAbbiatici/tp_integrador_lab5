@@ -1,28 +1,29 @@
 package frgp.utn.edu.ar.controller;
 
+
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Usuario;
+import frgp.utn.edu.ar.negocioImpl.ClienteNegImpl;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegImpl;
-import frgp.utn.edu.ar.resources.Config;
+
 
 @Controller
 public class PaginaController {
+	
+	@Autowired
+	private ClienteNegImpl clienteNeg;
 	
 	@Autowired
 	private UsuarioNegImpl usuarioNeg;
@@ -56,6 +57,8 @@ public class PaginaController {
 			if(usuario.getAdmin() == false) {
 				MV.setViewName("mainCliente");
 			} else {
+				List<Cliente> clientes = clienteNeg.readAll();
+				MV.addObject("listaClientes",clientes);
 				MV.setViewName("mainBanco");
 			}
 		}
