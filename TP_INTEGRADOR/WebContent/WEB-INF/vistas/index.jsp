@@ -69,13 +69,13 @@
                 </div>
                
               </form>
+            <div style="color: red; text-align: center;">
+            	${estadoUsuario}
+            </div>
             </div>
           </div>
           <div class="footer-link padding-top--24">
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
-            	<div>
-            		${estadoUsuario}
-            	</div>
               <span>©UTN BANK</span>
             </div>
           </div>

@@ -3,13 +3,16 @@ package frgp.utn.edu.ar.negocioImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import frgp.utn.edu.ar.daoImpl.ClienteDaoImpl;
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.negocio.ClienteNeg;
 
 public class ClienteNegImpl implements ClienteNeg {
 
-	ClienteDaoImpl dao = new ClienteDaoImpl();
+	@Autowired
+	private ClienteDaoImpl dao;
 	
 	@Override
 	public boolean insert(Cliente cli) {

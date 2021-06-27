@@ -8,12 +8,12 @@ import org.springframework.stereotype.Repository;
 import frgp.utn.edu.ar.dao.UsuarioDao;
 import frgp.utn.edu.ar.entidad.Usuario;
 
-@Repository("UsuarioDaoImpl")
 public class UsuarioDaoImpl implements UsuarioDao{
 
 	@Autowired
 	private Conexion conexion;
 	
+	@Override
 	public Usuario validarUsuario(Usuario usuario) {
 		Session session = conexion.abrirConexion();
 		

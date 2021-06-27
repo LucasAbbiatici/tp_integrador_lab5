@@ -1,22 +1,28 @@
 package frgp.utn.edu.ar.daoImpl;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 import frgp.utn.edu.ar.dao.ClienteDao;
 import frgp.utn.edu.ar.entidad.Cliente;
-import frgp.utn.edu.ar.entidad.Usuario;
 
 public class ClienteDaoImpl implements ClienteDao {
+/*
+	private SessionFactory sessionFactory;
 
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+	*/
 	@Autowired
 	private Conexion conexion;
-	
 	
 	@Override
 	public boolean insert(Cliente cli) {
@@ -38,14 +44,14 @@ public class ClienteDaoImpl implements ClienteDao {
 
 	@Override
 	public List<Cliente> readAll() {
-	Session session = conexion.abrirConexion();
+		Session session = conexion.abrirConexion();
 			
-			final List<Cliente> clientes = new LinkedList<>();
+		final List<Cliente> clientes = new LinkedList<>();
 			
-			try {
+		try {
 			Query query = session.createQuery("FROM Cliente c WHERE c.estado = 1 ");
 			
-	         for(final Object o : query.list()) {
+			for(final Object o : query.list()) {
 	        	 clientes.add((Cliente)o);
 	         }
 			

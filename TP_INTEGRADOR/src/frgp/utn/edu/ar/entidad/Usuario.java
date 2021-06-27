@@ -39,6 +39,7 @@ public class Usuario implements Serializable{
 		this.user = cli.getDni();
 		this.pass = alphaNumericString(10);
 		this.admin = false;
+		this.estado = true;
 	}
 
 	public Boolean getEstado() {
