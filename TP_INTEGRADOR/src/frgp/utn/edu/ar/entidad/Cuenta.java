@@ -25,7 +25,7 @@ public class Cuenta implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int NroCuenta;
+	private int id;
 	@Column(name="cbu",unique=true)
 	private String CBU;
 	@ManyToOne(cascade={CascadeType.ALL})
@@ -59,12 +59,12 @@ public class Cuenta implements Serializable{
 		this.estado = estado;
 	}
 
-	public int getNroCuenta() {
-		return NroCuenta;
+	public int getId() {
+		return id;
 	}
 
-	public void setNroCuenta(int nroCuenta) {
-		NroCuenta = nroCuenta;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCBU() {
@@ -72,7 +72,7 @@ public class Cuenta implements Serializable{
 	}
 
 	public void setCBU(String cBU) {
-		CBU = cBU;
+		this.CBU = cBU;
 	}
 
 	public Cliente getCliente() {
@@ -118,7 +118,7 @@ public class Cuenta implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Cuenta [NroCuenta=" + NroCuenta + ", CBU=" + CBU + ", cliente=" + cliente + ", fechaCreacion="
+		return "Cuenta [NroCuenta=" + id + ", CBU=" + CBU + ", cliente=" + cliente + ", fechaCreacion="
 				+ fechaCreacion + ", tipoDeCuenta=" + tipoDeCuenta + ", nombre=" + nombre + ", saldo=" + saldo + "]";
 	}
 	

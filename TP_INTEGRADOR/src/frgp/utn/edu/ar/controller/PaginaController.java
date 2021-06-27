@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import frgp.utn.edu.ar.entidad.Cliente;
+import frgp.utn.edu.ar.entidad.Cuenta;
 import frgp.utn.edu.ar.entidad.Usuario;
 import frgp.utn.edu.ar.negocioImpl.ClienteNegImpl;
+import frgp.utn.edu.ar.negocioImpl.CuentaNegImpl;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegImpl;
 import frgp.utn.edu.ar.resources.Config;
 
@@ -30,6 +32,8 @@ public class PaginaController {
 	private UsuarioNegImpl usuarioNeg;
 	@Autowired
 	private Usuario usuario;
+	@Autowired
+	private CuentaNegImpl cuentaNegImpl;
 	/*
 	@PostConstruct
 	public void init() {
@@ -76,4 +80,21 @@ public class PaginaController {
 	public ModelAndView eventoRedireccionarTransferencias() {
 		return new ModelAndView("transferenciaCliente");
 	}
+	
+	@RequestMapping("/listaCuentas.html")
+	public ModelAndView eventoListarCuentas() {
+		ModelAndView MV = new ModelAndView();
+		
+		List<Cuenta> listaCuentas = cuentaNegImpl.readAll();
+		
+		MV.addObject("listaCuentas",listaCuentas);
+		
+		MV.setViewName("bancoCuentas");
+		
+		return MV;
+	}
 }
+
+
+
+

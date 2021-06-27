@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -35,50 +36,29 @@
 				</thead>	
 				<tbody>
 				
-					<tr>  
-						<td>001</td>   
-						<td>2850590940090418135201</td>
-						<td>41715987</td>   
-						<td>21/06/2021</td>  
-						<td>Caja de ahorros en pesos</td>  
-						<td>Cuenta Lucas Pesos</td>  
-						<td>$40000</td>  
-						<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
-						<td><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></td>
-					</tr>
-					
-					<tr>  
-						<td>002</td>   
-						<td>2859530979095418432211</td>
-						<td>41715987</td>   
-						<td>21/06/2021</td>  
-						<td>Caja de ahorros en dolares</td>  
-						<td>Cuenta Lucas Dolares</td>  
-						<td>$1000</td>  
-						<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
-						<td><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></td>
-					</tr>
-					
-					<tr>  
-						<td>003</td>   
-						<td>2859500000005418432211</td>
-						<td>38674701</td>   
-						<td>21/03/2019</td>  
-						<td>Caja de ahorros en pesos</td>  
-						<td>Cuenta Brian Pesos</td>  
-						<td>$10000</td>  
-						<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
-						<td><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></td>
-					</tr>
+					<c:forEach items="${listaCuentas}" var="item">
+						<tr>
+							<td>${item.id} </td>
+							<td>${item.CBU}</td>
+							<td>${item.cliente.dni} - ${item.cliente.nombre} ${item.cliente.apellido}</td>
+							<td>${item.fechaCreacion}</td>
+							<td>${item.tipoDeCuenta.descripcion}</td>
+							<td>${item.nombre}</td>
+							<td>${item.saldo}</td>
+							<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
+						    <td><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></td>
+						</tr>
+					</c:forEach>
 					
 				</tbody>
 			</table>
+			
+			<div>
+				<input type="submit" value="Crear Nueva Cuenta" name="btnCrearCuenta" class="btnAgregarCliente">
+			</div>
 		
-		<div>
-			<input type="submit" value="Crear Nueva Cuenta" name="btnCrearCuenta" class="btnAgregarCliente">
 		</div>
 		
-		</div>
 	</div>
 	
 </body>

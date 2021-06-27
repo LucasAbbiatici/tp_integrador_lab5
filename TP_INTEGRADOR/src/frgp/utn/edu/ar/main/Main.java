@@ -332,7 +332,7 @@ public class Main {
 		
 		cuenta.setCliente(cliente);
 		cuenta.setFechaCreacion(dateCuenta);
-		cuenta.setNombre("alias."+cliente.getApellido()+"."+cuenta.getNroCuenta());
+		cuenta.setNombre("alias."+cliente.getApellido()+"."+cuenta.getId());
 		cuenta.setSaldo(100000);
 		cuenta.setTipoDeCuenta(pesos);
 		session.save(cuenta);
@@ -347,7 +347,7 @@ public class Main {
 		
 		cuenta2.setCliente(cliente2);
 		cuenta2.setFechaCreacion(dateCuenta2);
-		cuenta2.setNombre("alias."+cliente2.getApellido()+"."+cuenta2.getNroCuenta());
+		cuenta2.setNombre("alias."+cliente2.getApellido()+"."+cuenta2.getId());
 		cuenta2.setTipoDeCuenta(pesos);
 		session.save(cuenta2);
 		
@@ -361,7 +361,7 @@ public class Main {
 		
 		cuenta3.setCliente(cliente3);
 		cuenta3.setFechaCreacion(dateCuenta3);
-		cuenta3.setNombre("alias."+cliente3.getApellido()+"."+cuenta3.getNroCuenta());
+		cuenta3.setNombre("alias."+cliente3.getApellido()+"."+cuenta3.getId());
 		cuenta3.setTipoDeCuenta(pesos);
 		session.save(cuenta3);
 		
@@ -375,7 +375,7 @@ public class Main {
 		
 		cuenta4.setCliente(cliente);
 		cuenta4.setFechaCreacion(dateCuenta4);
-		cuenta4.setNombre("alias."+cliente.getApellido()+"."+cuenta4.getNroCuenta());
+		cuenta4.setNombre("alias."+cliente.getApellido()+"."+cuenta4.getId());
 		cuenta4.setTipoDeCuenta(dolares);
 		cuenta4.setSaldo(62);
 		session.save(cuenta4);
@@ -390,7 +390,7 @@ public class Main {
 		
 		cuenta5.setCliente(cliente5);
 		cuenta5.setFechaCreacion(dateCuenta5);
-		cuenta5.setNombre("alias."+cliente5.getApellido()+"."+cuenta5.getNroCuenta());
+		cuenta5.setNombre("alias."+cliente5.getApellido()+"."+cuenta5.getId());
 		cuenta5.setTipoDeCuenta(pesos);
 		session.save(cuenta5);
 		
@@ -404,7 +404,7 @@ public class Main {
 		
 		cuenta6.setCliente(cliente10);
 		cuenta6.setFechaCreacion(dateCuenta6);
-		cuenta6.setNombre("alias."+cliente10.getApellido()+"."+cuenta6.getNroCuenta());
+		cuenta6.setNombre("alias."+cliente10.getApellido()+"."+cuenta6.getId());
 		cuenta6.setTipoDeCuenta(dolares);
 		cuenta6.setSaldo(62);
 		session.save(cuenta6);
@@ -419,7 +419,7 @@ public class Main {
 		
 		cuenta7.setCliente(cliente);
 		cuenta7.setFechaCreacion(dateCuenta);
-		cuenta7.setNombre("alias."+cliente.getApellido()+"."+cuenta7.getNroCuenta());
+		cuenta7.setNombre("alias."+cliente.getApellido()+"."+cuenta7.getId());
 		cuenta7.setTipoDeCuenta(pesos);
 		cuenta7.setSaldo(100000);
 		session.save(cuenta7);
@@ -434,7 +434,7 @@ public class Main {
 		
 		cuenta8.setCliente(cliente8);
 		cuenta8.setFechaCreacion(dateCuenta8);
-		cuenta8.setNombre("alias."+cliente8.getApellido()+"."+cuenta8.getNroCuenta());
+		cuenta8.setNombre("alias."+cliente8.getApellido()+"."+cuenta8.getId());
 		cuenta8.setTipoDeCuenta(dolares);
 		cuenta8.setSaldo(62);
 		session.save(cuenta8);
@@ -449,7 +449,7 @@ public class Main {
 		
 		cuenta9.setCliente(cliente8);
 		cuenta9.setFechaCreacion(dateCuenta9);
-		cuenta9.setNombre("alias."+cliente8.getApellido()+"."+cuenta9.getNroCuenta());
+		cuenta9.setNombre("alias."+cliente8.getApellido()+"."+cuenta9.getId());
 		cuenta9.setTipoDeCuenta(pesos);
 		cuenta9.setSaldo(50000);
 		session.save(cuenta9);
@@ -464,7 +464,7 @@ public class Main {
 		
 		cuenta10.setCliente(cliente5);
 		cuenta10.setFechaCreacion(dateCuenta10);
-		cuenta10.setNombre("alias."+cliente5.getApellido()+"."+cuenta10.getNroCuenta());
+		cuenta10.setNombre("alias."+cliente5.getApellido()+"."+cuenta10.getId());
 		cuenta10.setTipoDeCuenta(dolares);
 		cuenta10.setSaldo(62);
 		session.save(cuenta10);

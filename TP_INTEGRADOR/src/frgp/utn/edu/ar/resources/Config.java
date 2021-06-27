@@ -9,10 +9,12 @@ import org.springframework.context.annotation.Scope;
 
 import frgp.utn.edu.ar.daoImpl.ClienteDaoImpl;
 import frgp.utn.edu.ar.daoImpl.Conexion;
+import frgp.utn.edu.ar.daoImpl.CuentaDaoImpl;
 import frgp.utn.edu.ar.daoImpl.UsuarioDaoImpl;
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Usuario;
 import frgp.utn.edu.ar.negocioImpl.ClienteNegImpl;
+import frgp.utn.edu.ar.negocioImpl.CuentaNegImpl;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegImpl;
 
 @Configuration
@@ -41,7 +43,6 @@ public class Config {
 		//Usuario 3
 		Usuario usuario3 = new Usuario(cliente3);		
 		cliente3.setUser(usuario3);
-		System.out.println("que puto que sos pasi");
 		return usuario3;
 	}
 	
@@ -75,5 +76,16 @@ public class Config {
 		return new UsuarioDaoImpl();
 	}
 	
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public CuentaNegImpl beanCuentaNeg() {
+		return new CuentaNegImpl();
+	}
+	
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public CuentaDaoImpl beanCuentaDao() {
+		return new CuentaDaoImpl();
+	}
 }
 	
