@@ -2,6 +2,7 @@ package frgp.utn.edu.ar.daoImpl;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -34,8 +35,18 @@ public class UsuarioDaoImpl implements UsuarioDao{
 
 	@Override
 	public boolean insert(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return false;
+		Session session = conexion.abrirConexion();
+		Transaction transaction = session.beginTransaction();
+			
+		try {
+			session.save(usuario);
+			transaction.commit();
+			return true;
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
 	}
 	
 }

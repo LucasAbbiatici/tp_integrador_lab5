@@ -16,8 +16,7 @@ public class ClienteNegImpl implements ClienteNeg {
 	
 	@Override
 	public boolean insert(Cliente cli) {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.insert(cli);
 	}
 
 	@Override

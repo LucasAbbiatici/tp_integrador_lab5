@@ -30,8 +30,20 @@ public class ClienteDaoImpl implements ClienteDao {
 	
 	@Override
 	public boolean insert(Cliente cli) {
-		// TODO Auto-generated method stub
-		return false;
+		Session session = conexion.abrirConexion();
+		Transaction transaction = session.beginTransaction();
+		
+			
+		try {
+			session.save(cli);
+			transaction.commit();
+			return true;
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+	
 	}
 
 	@Override

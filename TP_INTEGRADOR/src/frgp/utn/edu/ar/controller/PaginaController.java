@@ -4,12 +4,11 @@ package frgp.utn.edu.ar.controller;
 import java.sql.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +23,6 @@ import frgp.utn.edu.ar.negocioImpl.ClienteNegImpl;
 import frgp.utn.edu.ar.negocioImpl.CuentaNegImpl;
 import frgp.utn.edu.ar.negocioImpl.TipoCuentaNegImpl;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegImpl;
-import frgp.utn.edu.ar.resources.Config;
 
 
 @Controller
@@ -35,6 +33,10 @@ public class PaginaController {
 	@Autowired
 	private UsuarioNegImpl usuarioNeg;
 	@Autowired
+	@Qualifier("beanUsuarioLogeado")
+	private Usuario usuario2;
+	@Autowired
+	@Qualifier("beanUsuario")
 	private Usuario usuario;
 	@Autowired
 	private CuentaNegImpl cuentaNegImpl;
@@ -224,9 +226,54 @@ public class PaginaController {
 		return MV;
 	}
 	
-	@RequestMapping("/AgregarCliente")
+	@RequestMapping("/redireccionarAgregarCliente")
 	public ModelAndView redireccionAgregarCliente() {
 		return new ModelAndView("bancoAgregarCliente");
+	}
+	
+	@RequestMapping(value = "/agregarCliente", method = RequestMethod.POST)
+	public ModelAndView agregarCliente(String txtDni, String txtNombre, String txtApellido, String selectSexo, Date date_fechaNacimiento, String txtNacionalidad, String txtDireccion, String provincias, String localidades) {
+		ModelAndView MV = new ModelAndView();
+		
+		cliente.setDni(txtDni);
+		cliente.setNombre(txtNombre);
+		cliente.setApellido(txtApellido);
+		cliente.setSexo(selectSexo);
+		cliente.setFechaNacimiento(date_fechaNacimiento);
+		cliente.setNacionalidad(txtNacionalidad);
+		cliente.setDireccion(txtDireccion);
+		cliente.setProvincia(provincias);
+		cliente.setLocalidad(localidades);
+		
+		usuario2.setUser(cliente.getDni());
+		usuario2.setPass(usuario.crearContrasenia(10));
+		usuario2.setAdmin(false);
+		
+		cliente.setUser(usuario2);
+		
+		if(usuarioNeg.insert(usuario2)) {
+			
+			if(clienteNeg.insert(cliente)) {
+				
+				MV.addObject("mensaje", "El cliente fue ingresado correctamente");
+				MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
+				
+			} else {
+				
+				MV.addObject("mensaje", "No se pudo agregar el cliente(error cliente)");
+				MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+				
+			}
+			
+		} else {
+			
+			MV.addObject("mensaje", "No se pudo agregar el cliente(error usuario)");
+			MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+			
+		}
+		
+		MV.setViewName("bancoAgregarCliente");
+		return MV;	
 	}
 	
 }

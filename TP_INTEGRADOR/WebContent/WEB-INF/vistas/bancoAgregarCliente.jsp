@@ -31,7 +31,7 @@
 	<!--  FORMULARIO  -->
 	<div class="container-contact100 overflow-auto">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form class="contact100-form validate-form" action="/TP_INTEGRADOR/agregarCliente" method="POST">
 				<span class="contact100-form-title">
 					Agregar Cliente
 				</span>
@@ -39,17 +39,17 @@
 					
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">DNI</span>
-							<input class="input100" type="text" name="dni" placeholder="Ingresar DNI">
+							<input class="input100" type="text" name="txtDni" placeholder="Ingresar DNI">
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Nombres</span>
-							<input class="input100" type="text" name="nombre" placeholder="Ingresar Nombres">
+							<input class="input100" type="text" name="txtNombre" placeholder="Ingresar Nombres">
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Apellido</span>
-							<input class="input100" type="text" name="apellido" placeholder="Ingresar Apellido">
+							<input class="input100" type="text" name="txtApellido" placeholder="Ingresar Apellido">
 							<span class="focus-input100"></span>
 						</div>
 					
@@ -58,7 +58,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Sexo</span>
 					<div>
-						<select class="selection-2" name="sexo">
+						<select class="selection-2" name="selectSexo">
 							<option>Seleccionar sexo</option>
 							<option value="Masculino">Masculino</option>
 							<option value="Femenino">Femenino</option>
@@ -80,13 +80,13 @@
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Nacionalidad</span>
-					<input class="input100" type="text" name="Nacionalidad" placeholder="Ingresar Nacionalidad">
+					<input class="input100" type="text" name="txtNacionalidad" placeholder="Ingresar Nacionalidad">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Direccion</span>
-					<input class="input100" type="text" name="Direccion" placeholder="Ingresar Direccion">
+					<input class="input100" type="text" name="txtDireccion" placeholder="Ingresar Direccion">
 					<span class="focus-input100"></span>
 				</div>
 				
@@ -121,6 +121,9 @@
 				</div>
 				
 			</form>
+			<div style="${color}">
+				${mensaje}
+			</div>
 		</div>
 	</div>
 	<!--  END FORMULARIO  -->

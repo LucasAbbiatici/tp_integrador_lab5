@@ -22,9 +22,16 @@ import frgp.utn.edu.ar.negocioImpl.UsuarioNegImpl;
 @Configuration
 public class Config {
 	
+	
 	@Bean
 	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public Usuario beanUsuario() {
+		return new Usuario();
+	}
+	
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public Usuario beanUsuarioLogeado() {
 		return new Usuario();
 	}
 	

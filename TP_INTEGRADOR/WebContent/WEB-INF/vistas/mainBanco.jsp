@@ -55,7 +55,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-		<form action="/TP_INTEGRADOR/AgregarCliente" method="get">
+		<form action="/TP_INTEGRADOR/redireccionarAgregarCliente" method="get">
 			<div>
 				<input type="submit" value="Agregar un Nuevo Cliente" name="btnAgregarCliente" class="btnAgregarCliente">
 			</div>

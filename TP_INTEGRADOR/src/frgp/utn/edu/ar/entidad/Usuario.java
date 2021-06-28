@@ -37,7 +37,7 @@ public class Usuario implements Serializable{
 	public Usuario(Cliente cli) 
 	{
 		this.user = cli.getDni();
-		this.pass = alphaNumericString(10);
+		this.pass = crearContrasenia(10);
 		this.admin = false;
 		this.estado = true;
 	}
@@ -87,7 +87,7 @@ public class Usuario implements Serializable{
 		return "Usuario [id=" + id + ", user=" + user + ", pass=" + pass + ", admin=" + admin + "]";
 	}
 
-	public static String alphaNumericString(int len) {
+	public String crearContrasenia(int len) {
 	    String AB = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	    Random rnd = new Random();
 

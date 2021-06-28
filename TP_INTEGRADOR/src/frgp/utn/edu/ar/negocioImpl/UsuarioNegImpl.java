@@ -19,8 +19,7 @@ public class UsuarioNegImpl implements UsuarioNeg{
 
 	@Override
 	public boolean insert(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.insert(usuario);
 	}
 	
 }
