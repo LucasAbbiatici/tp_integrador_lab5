@@ -93,7 +93,7 @@ public class CuentaDaoImpl implements CuentaDao {
 				
 		try {
 			Query query = session.createQuery("SELECT COUNT(*) FROM Cuenta c"
-					+ " join c.cliente cliente  WHERE cliente.id = :idCliente");
+					+ " join c.cliente cliente  WHERE cliente.id = :idCliente AND c.estado=1");
 			query.setParameter("idCliente", _idCliente);
 			
 			//Cualquiera de los dos devuelve el valor de COUNT
