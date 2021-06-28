@@ -53,22 +53,19 @@
 				<td>${item.localidad}</td>
 				<td>${item.provincia}</td>
 				<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
-			    <td><a href="<c:url value='/delete-user-${item.id}' />">Borrar</a></td>
+			    <td><a href="<c:url value='/delete-user-${item.id}' />"><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></a></td>
 				
 				</tr>
 				
 			</c:forEach>
-	
 				
-					
-					
 				</tbody>
 			</table>
 		
 		<div>
 			<input type="submit" value="Agregar un Nuevo Cliente" name="btnAgregarCliente" class="btnAgregarCliente">
 		</div>
-		<div>
+		<div style="${color}">
 			${mensaje}
 		</div>
 		</div>

@@ -72,4 +72,24 @@ public class CuentaDaoImpl implements CuentaDao {
 		return null;
 	}
 
+	@Override
+	public boolean verificarCantCuentas(int _idCliente) {
+		Session session = conexion.abrirConexion();
+				
+		try {
+			Query query = session.createQuery("SELECT COUNT(*) FROM Cuenta c WHERE c.cliente =:idCliente AND c.estado = 1");
+			query.setParameter("idCliente", _idCliente);
+			
+			if((int)query.list().get(0) >= 4) {
+				return false;
+			} else {
+				return true;
+			}
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+				return true;
+			}
+	}
+
 }

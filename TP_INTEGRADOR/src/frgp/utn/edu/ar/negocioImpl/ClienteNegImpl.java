@@ -33,9 +33,8 @@ public class ClienteNegImpl implements ClienteNeg {
 	}
 
 	@Override
-	public Cliente obtenerCliente() {
-		// TODO Auto-generated method stub
-		return null;
+	public Cliente obtenerCliente(int _id) {
+		return dao.obtenerCliente(_id);
 	}
 
 	@Override

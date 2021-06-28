@@ -47,7 +47,6 @@ public class Cuenta implements Serializable{
 		
 		//verificar que cbu no exista
 		this.CBU = NumericString();
-		this.saldo = 10000;
 		this.estado = true;
 	}
 

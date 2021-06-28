@@ -15,6 +15,13 @@ public class CuentaNegImpl implements CuentaNeg {
 	
 	@Override
 	public boolean insert(Cuenta cue) {
+		
+		if(cue.getTipoDeCuenta().getId() == 1) {
+			cue.setSaldo(10000);
+		} else {
+			cue.setSaldo(62);
+		}
+		
 		return dao.insert(cue);
 	}
 
@@ -40,6 +47,11 @@ public class CuentaNegImpl implements CuentaNeg {
 	public Cuenta obtenerCuenta() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean verificarCantCuentas(int _idCliente) {
+		return dao.verificarCantCuentas(_idCliente);
 	}
 
 }

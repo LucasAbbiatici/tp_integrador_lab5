@@ -10,4 +10,5 @@ public interface CuentaDao {
 	public boolean update(Cuenta cue);	
 	public List<Cuenta> readAll();
 	public Cuenta obtenerCuenta();
+	public boolean verificarCantCuentas(int _idCliente);
 }

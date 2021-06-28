@@ -25,6 +25,9 @@ public class ClienteDaoImpl implements ClienteDao {
 	@Autowired
 	private Conexion conexion;
 	
+	@Autowired
+	private Cliente cliente;
+	
 	@Override
 	public boolean insert(Cliente cli) {
 		// TODO Auto-generated method stub
@@ -79,9 +82,25 @@ public class ClienteDaoImpl implements ClienteDao {
 	}
 
 	@Override
-	public Cliente obtenerCliente() {
-		// TODO Auto-generated method stub
-		return null;
+	public Cliente obtenerCliente(int _id) {
+		
+		Session session = conexion.abrirConexion();
+		
+		try {
+			
+			Query query = session.createQuery("FROM Cliente c WHERE c.id =:idCliente");
+			query.setParameter("idCliente", _id);
+			
+			cliente = (Cliente)query.list().get(0);
+			
+			return cliente;
+			
+		} catch (Exception e) {
+				e.printStackTrace();
+		}
+			
+			return cliente;
+		
 	}
 
 }

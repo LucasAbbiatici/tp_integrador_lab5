@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import frgp.utn.edu.ar.dao.TipoCuentaDao;
+import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Cuenta;
 import frgp.utn.edu.ar.entidad.TipoCuenta;
 
@@ -15,6 +16,8 @@ public class TipoCuentaDaoImpl implements TipoCuentaDao {
 
 	@Autowired
 	Conexion conexion;
+	@Autowired
+	TipoCuenta tc;
 	
 	@Override
 	public List<TipoCuenta> readAll() {
@@ -35,6 +38,26 @@ public class TipoCuentaDaoImpl implements TipoCuentaDao {
 			
 			return  tipoCuenta;
 	
+	}
+
+	@Override
+	public TipoCuenta obtenerTipoCuenta(int _id) {
+		Session session = conexion.abrirConexion();
+		
+		try {
+			
+			Query query = session.createQuery("FROM TipoCuenta tc WHERE tc.id =:idTipoCuenta");
+			query.setParameter("idTipoCuenta", _id);
+			
+			tc = (TipoCuenta)query.list().get(0);
+			
+			return tc;
+			
+		} catch (Exception e) {
+				e.printStackTrace();
+		}
+			
+			return tc;
 	}
 
 }

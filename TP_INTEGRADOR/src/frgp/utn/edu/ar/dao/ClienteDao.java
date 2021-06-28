@@ -11,7 +11,7 @@ public interface ClienteDao {
 	public boolean delete(int _id);
 	public boolean update(Cliente cli);	
 	public List<Cliente> readAll();
-	public Cliente obtenerCliente();
+	public Cliente obtenerCliente(int _id);
 	
 	
 }

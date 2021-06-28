@@ -18,4 +18,9 @@ public class TipoCuentaNegImpl implements TipoCuentaNeg {
 		return dao.readAll();
 	}
 
+	@Override
+	public TipoCuenta obtenerTipoCuenta(int _id) {
+		return dao.obtenerTipoCuenta(_id);
+	}
+
 }

@@ -6,4 +6,5 @@ import frgp.utn.edu.ar.entidad.TipoCuenta;
 
 public interface TipoCuentaDao {
 	public List<TipoCuenta> readAll();
+	public TipoCuenta obtenerTipoCuenta(int _id);
 }

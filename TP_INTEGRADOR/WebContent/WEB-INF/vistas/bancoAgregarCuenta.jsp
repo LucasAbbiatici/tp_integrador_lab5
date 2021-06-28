@@ -58,9 +58,10 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Asignar Cliente</span>
 					<div>
-						<select class="selection-2" name="ddl_clientes">
-							<option>Seleccione un Cliente</option>
-							
+						<select class="selection-2" name="selectClientes">
+							<c:forEach items="${listaClientes}" var="item">
+								<option value="${item.id}">${item.dni} - ${item.nombre} ${item.apellido}</option>
+							</c:forEach>
 						</select>
 					</div>
 					<span class="focus-input100"></span>
@@ -78,6 +79,9 @@
 					</div>
 				</div>
 			</form>
+			<div style="${color}">
+				${mensaje}
+			</div>
 		</div>
 	</div>
 	<!--  END FORMULARIO  -->

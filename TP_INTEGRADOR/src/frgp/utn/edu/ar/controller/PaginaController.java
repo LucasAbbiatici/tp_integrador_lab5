@@ -1,6 +1,7 @@
 package frgp.utn.edu.ar.controller;
 
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -39,14 +40,12 @@ public class PaginaController {
 	private CuentaNegImpl cuentaNegImpl;
 	@Autowired
 	private TipoCuentaNegImpl tipoCuentaNeg;
-	/*
-	@PostConstruct
-	public void init() {
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Config.class);
-		
-		this.clienteNeg = (ClienteNegImpl) ctx.getBean("beanClienteNeg");
-	}
-	*/
+	@Autowired
+	private Cuenta cuenta; 
+	@Autowired
+	private TipoCuenta tc;
+	@Autowired
+	private Cliente cliente;
 	
 	@RequestMapping("/index.html")
 	public ModelAndView eventoRedireccionarIndex() {
@@ -64,7 +63,7 @@ public class PaginaController {
 		
 		if(usuario.getId() == 0)
 		{
-			MV.addObject("estadoUsuario", "El usuario y/o contraseï¿½a son incorrectos");
+			MV.addObject("estadoUsuario", "El usuario y/o contraseña son incorrectos");
 			MV.setViewName("index");
 		} else {
 			
@@ -85,6 +84,17 @@ public class PaginaController {
 	@RequestMapping("/transferencias")
 	public ModelAndView eventoRedireccionarTransferencias() {
 		return new ModelAndView("transferenciaCliente");
+	}
+	
+	@RequestMapping("/listaClientes")
+	public ModelAndView eventoRedireccionarListarClientes() {
+		ModelAndView MV = new ModelAndView();
+		
+		List<Cliente> clientes = clienteNeg.readAll();
+		MV.addObject("listaClientes",clientes);
+		MV.setViewName("mainBanco");
+		
+		return MV;
 	}
 	
 	@RequestMapping("/listaCuentas")
@@ -110,11 +120,13 @@ public class PaginaController {
 
 		ModelAndView MV = new ModelAndView();
 		if(clienteNeg.delete(ssoId)) {
-			MV.addObject("mensaje","Se pudo eliminar correctamente");
+			MV.addObject("mensaje","El cliente se pudo eliminar correctamente");
+			MV.addObject("color", "color: green; margin-top: 20px;");
 			MV.addObject("listaClientes",this.clienteNeg.readAll());
 			MV.setViewName("mainBanco");
 		}else {
-			MV.addObject("mensaje","No se pudo eliminar correctamente");
+			MV.addObject("mensaje","No se pudo eliminar correctamente el cliente");
+			MV.addObject("color", "color: red; margin-top: 20px;");
 			MV.addObject("listaClientes",this.clienteNeg.readAll());
 			MV.setViewName("mainBanco"); 
 		}
@@ -124,16 +136,65 @@ public class PaginaController {
 	@RequestMapping("/redireccionarAgregarCuenta")
 	public ModelAndView redireccionarAgregarCuenta() {
 		ModelAndView MV = new ModelAndView();
+		
 		List<TipoCuenta> tipoCue = tipoCuentaNeg.readAll();
+		List<Cliente> listaClientes = clienteNeg.readAll();
+		
 		MV.addObject("listaTipoCue",tipoCue);
+		MV.addObject("listaClientes",listaClientes);
 		MV.setViewName("bancoAgregarCuenta");
+		
 		return MV;
 	}
 	
 	@RequestMapping (value ="/agregarCuenta",method = RequestMethod.POST)
-	public ModelAndView  agregarCuenta() {
+	public ModelAndView  agregarCuenta(String txtNombre,int selectTipoCuenta, int selectClientes) {
 		ModelAndView MV = new ModelAndView();
-		return new ModelAndView("bancoAgregarCuenta");
+		
+		long millis = System.currentTimeMillis();  
+        Date date = new Date(millis);  
+		
+		tc = tipoCuentaNeg.obtenerTipoCuenta(selectTipoCuenta);
+		
+		cliente = clienteNeg.obtenerCliente(selectClientes);
+		
+		cuenta.setNombre(txtNombre);
+		cuenta.setCliente(cliente);
+		cuenta.setTipoDeCuenta(tc);
+		cuenta.setFechaCreacion(date);
+		
+		List<TipoCuenta> tipoCue = tipoCuentaNeg.readAll();
+		List<Cliente> listaClientes = clienteNeg.readAll();
+		
+		if(!cuentaNegImpl.verificarCantCuentas(selectClientes)) {
+			
+			MV.addObject("mensaje", "El cliente seleccionado ya posee 4 cuentas");
+			MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+			MV.addObject("listaTipoCue",tipoCue);
+			MV.addObject("listaClientes",listaClientes);
+			MV.setViewName("bancoAgregarCuenta");
+			
+		} else {
+			
+			if(cuentaNegImpl.insert(cuenta)) {
+				MV.addObject("mensaje", "La cuenta fue ingresada correctamente");
+				MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
+				MV.addObject("listaTipoCue",tipoCue);
+				MV.addObject("listaClientes",listaClientes);
+				MV.setViewName("bancoAgregarCuenta");
+				
+			} else {
+				
+				MV.addObject("mensaje", "No se pudo agregar la cuenta");
+				MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+				MV.addObject("listaTipoCue",tipoCue);
+				MV.addObject("listaClientes",listaClientes);
+				MV.setViewName("bancoAgregarCuenta");
+		
+			}
+		}
+		
+		return MV;
 	}
 }
 
