@@ -52,11 +52,11 @@
 					
 				</tbody>
 			</table>
-			
+			<form action="/redireccionarAgregarCuenta.html" method="POST">
 			<div>
 				<input type="submit" value="Crear Nueva Cuenta" name="btnCrearCuenta" class="btnAgregarCliente">
 			</div>
-		
+		</form>
 		</div>
 		
 	</div>

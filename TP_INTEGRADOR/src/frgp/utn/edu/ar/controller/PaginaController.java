@@ -17,9 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Cuenta;
+import frgp.utn.edu.ar.entidad.TipoCuenta;
 import frgp.utn.edu.ar.entidad.Usuario;
 import frgp.utn.edu.ar.negocioImpl.ClienteNegImpl;
 import frgp.utn.edu.ar.negocioImpl.CuentaNegImpl;
+import frgp.utn.edu.ar.negocioImpl.TipoCuentaNegImpl;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegImpl;
 import frgp.utn.edu.ar.resources.Config;
 
@@ -35,6 +37,8 @@ public class PaginaController {
 	private Usuario usuario;
 	@Autowired
 	private CuentaNegImpl cuentaNegImpl;
+	@Autowired
+	private TipoCuentaNegImpl tipoCuentaNeg;
 	/*
 	@PostConstruct
 	public void init() {
@@ -43,6 +47,7 @@ public class PaginaController {
 		this.clienteNeg = (ClienteNegImpl) ctx.getBean("beanClienteNeg");
 	}
 	*/
+	
 	@RequestMapping("/index.html")
 	public ModelAndView eventoRedireccionarIndex() {
 		return new ModelAndView("index");
@@ -116,6 +121,21 @@ public class PaginaController {
 		return MV;
     }
 	
+	@RequestMapping(value= "/redireccionarAgregarCuenta.html",method= RequestMethod.POST)
+	public ModelAndView redireccionarAgregarCuenta() {
+		ModelAndView MV = new ModelAndView();
+		List<TipoCuenta> tipoCue = tipoCuentaNeg.readAll();
+		MV.addObject("listaTipoCue",tipoCue);
+		MV.setViewName("bancoAgregarCuenta");
+		return MV;
+	}
+	
+	@RequestMapping (value ="/agregarCuenta.html",method = RequestMethod.POST)
+	public ModelAndView  agregarCuenta() {
+		ModelAndView MV = new ModelAndView();
+		return MV;
+		
+	}
 }
 
 

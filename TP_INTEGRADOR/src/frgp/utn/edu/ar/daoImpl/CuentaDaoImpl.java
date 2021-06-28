@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import frgp.utn.edu.ar.dao.CuentaDao;
@@ -17,8 +18,20 @@ public class CuentaDaoImpl implements CuentaDao {
 
 	@Override
 	public boolean insert(Cuenta cue) {
-		// TODO Auto-generated method stub
-		return false;
+		Session session = conexion.abrirConexion();
+		Transaction transaction = session.beginTransaction();
+		
+			
+		try {
+			session.save(cue);
+			transaction.commit();
+			return true;
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+			
 	}
 
 	@Override

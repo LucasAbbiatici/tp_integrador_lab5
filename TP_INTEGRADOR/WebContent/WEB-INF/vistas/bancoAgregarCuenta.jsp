@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html><head>
 	<title>Agregar Cuenta</title>
 	<meta charset="UTF-8">
@@ -31,24 +32,24 @@
 	<!--  FORMULARIO  -->
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form class="contact100-form validate-form" action="/agregarCuenta.html" method="post">
 				<span class="contact100-form-title">
 					Agregar Cuenta
 				</span>
 
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Nombre</span>
-							<input class="input100" type="text" name="nombre" placeholder="Ingresar Nombre">
+							<input class="input100" type="text" name="txtNombre" placeholder="Ingresar Nombre">
 							<span class="focus-input100"></span>
 						</div>
 					
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Tipo de cuenta</span>
 					<div>
-						<select class="selection-2" name="tipoCuenta">
-							<option>Seleccionar tipo de cuenta</option>
-							<option>Caja de Ahorro en Pesos</option>
-							<option>Caja de Ahorro en Dolares</option>
+						<select class="selection-2" name="selectTipoCuenta">
+							<c:forEach items="${listaTipoCue}" var="item">
+								<option value="${item.id}">${item.descripcion}</option>
+							</c:forEach>
 						</select>
 					</div>
 					<span class="focus-input100"></span>

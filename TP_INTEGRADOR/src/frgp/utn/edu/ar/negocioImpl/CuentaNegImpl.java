@@ -14,9 +14,8 @@ public class CuentaNegImpl implements CuentaNeg {
 	private CuentaDaoImpl dao;
 	
 	@Override
-	public boolean insert(Cuenta cli) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean insert(Cuenta cue) {
+		return dao.insert(cue);
 	}
 
 	@Override
@@ -26,7 +25,7 @@ public class CuentaNegImpl implements CuentaNeg {
 	}
 
 	@Override
-	public boolean update(Cuenta cli) {
+	public boolean update(Cuenta cue) {
 		// TODO Auto-generated method stub
 		return false;
 	}

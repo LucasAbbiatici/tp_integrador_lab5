@@ -10,11 +10,13 @@ import org.springframework.context.annotation.Scope;
 import frgp.utn.edu.ar.daoImpl.ClienteDaoImpl;
 import frgp.utn.edu.ar.daoImpl.Conexion;
 import frgp.utn.edu.ar.daoImpl.CuentaDaoImpl;
+import frgp.utn.edu.ar.daoImpl.TipoCuentaDaoImpl;
 import frgp.utn.edu.ar.daoImpl.UsuarioDaoImpl;
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Usuario;
 import frgp.utn.edu.ar.negocioImpl.ClienteNegImpl;
 import frgp.utn.edu.ar.negocioImpl.CuentaNegImpl;
+import frgp.utn.edu.ar.negocioImpl.TipoCuentaNegImpl;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegImpl;
 
 @Configuration
@@ -86,6 +88,18 @@ public class Config {
 	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public CuentaDaoImpl beanCuentaDao() {
 		return new CuentaDaoImpl();
+	}
+	
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public TipoCuentaDaoImpl beanTipoCuentaDao() {
+		return new TipoCuentaDaoImpl();
+	}
+	
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public TipoCuentaNegImpl beanTipoCuentaNeg() {
+		return new TipoCuentaNegImpl();
 	}
 }
 	
