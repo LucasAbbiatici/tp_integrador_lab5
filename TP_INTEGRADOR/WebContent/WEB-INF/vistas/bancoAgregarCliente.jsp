@@ -60,8 +60,8 @@
 					<div>
 						<select class="selection-2" name="sexo">
 							<option>Seleccionar sexo</option>
-							<option>Hombre</option>
-							<option>Mujer</option>
+							<option value="Masculino">Masculino</option>
+							<option value="Femenino">Femenino</option>
 						</select>
 					</div>
 					<span class="focus-input100"></span>
