@@ -37,28 +37,22 @@
 					</tr>
 				</thead>	
 				<tbody>
-				
-				<c:forEach items="${listaClientes}" var="item">
-				
-				<tr>
-			
-				<td> ${item.dni} </td>
-				<td>${item.user.user}</td>
-				<td>${item.nombre}</td>
-				<td>${item.apellido}</td>
-				<td>${item.sexo}</td>
-				<td>${item.nacionalidad}</td>
-				<td>${item.fechaNacimiento}</td>
-				<td>${item.direccion}</td>
-				<td>${item.localidad}</td>
-				<td>${item.provincia}</td>
-				<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
-			    <td><a href="<c:url value='/delete-user-${item.id}' />"><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></a></td>
-				
-				</tr>
-				
-			</c:forEach>
-				
+					<c:forEach items="${listaClientes}" var="item">
+						<tr>
+							<td>${item.dni}</td>
+							<td>${item.user.user}</td>
+							<td>${item.nombre}</td>
+							<td>${item.apellido}</td>
+							<td>${item.sexo}</td>
+							<td>${item.nacionalidad}</td>
+							<td>${item.fechaNacimiento}</td>
+							<td>${item.direccion}</td>
+							<td>${item.localidad}</td>
+							<td>${item.provincia}</td>
+							<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
+						    <td><a href="<c:url value='/delete-user-${item.id}' />"><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></a></td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		

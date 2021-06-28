@@ -86,7 +86,28 @@ public class CuentaDaoImpl implements CuentaDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	@Override
+	public List<Cuenta> obtenerCuentasCliente(int _idCliente) {
+		Session session = conexion.abrirConexion();
+		
+		final List<Cuenta> cuentas = new LinkedList<>();
+			
+		try {
+			Query query = session.createQuery("select c FROM Cuenta c join c.cliente cliente WHERE cliente.id = :idCliente AND c.estado = 1");
+			query.setParameter("idCliente", _idCliente);
+			for(final Object o : query.list()) {
+				cuentas.add((Cuenta)o);
+	         }
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return  cuentas;
+	}
+	
+	
 	@Override
 	public boolean verificarCantCuentas(int _idCliente) {
 		Session session = conexion.abrirConexion();

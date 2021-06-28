@@ -61,6 +61,8 @@ public class PaginaController {
 		
 		usuario = usuarioNeg.validarUsuario(usuario);
 		
+		
+		
 		if(usuario.getId() == 0)
 		{
 			MV.addObject("estadoUsuario", "El usuario y/o contraseña son incorrectos");
@@ -70,9 +72,15 @@ public class PaginaController {
 			request.getSession().setAttribute("usuario", usuario);
 			
 			MV.addObject("usuario", usuario);
+			//Si no es admin entra por aca.
 			if(usuario.getAdmin() == false) {
+				List<Cuenta> cuentas = cuentaNegImpl.obtenerCuentasCliente(clienteNeg.obtenerClientePorUsuario(usuario.getId())/*trae el id del cliente*/);
+				MV.addObject("listaCuentasCliente",cuentas);
 				MV.setViewName("mainCliente");
-			} else {
+				
+			} 
+			//Si es admin, entra por aca.
+			else {
 				List<Cliente> clientes = clienteNeg.readAll();
 				MV.addObject("listaClientes",clientes);
 				MV.setViewName("mainBanco");
@@ -81,6 +89,7 @@ public class PaginaController {
 		return MV;
 	}
 	
+
 	@RequestMapping("/transferencias")
 	public ModelAndView eventoRedireccionarTransferencias() {
 		return new ModelAndView("transferenciaCliente");

@@ -53,4 +53,9 @@ public class CuentaNegImpl implements CuentaNeg {
 		return dao.verificarCantCuentas(_idCliente);
 	}
 
+	@Override
+	public List<Cuenta> obtenerCuentasCliente(int _idCliente) {
+		return dao.obtenerCuentasCliente(_idCliente);
+	}
+
 }

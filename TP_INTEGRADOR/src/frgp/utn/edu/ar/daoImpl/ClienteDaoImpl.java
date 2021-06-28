@@ -103,4 +103,28 @@ public class ClienteDaoImpl implements ClienteDao {
 		
 	}
 
+	@Override
+	public int obtenerClientePorUsuario(int _idUser) {
+		
+		int idCliente = 0;
+		
+		Session session = conexion.abrirConexion();
+		
+		try {
+			
+			Query query = session.createQuery("select c.id FROM Cliente c join c.user u WHERE u.id = :idUsuario AND c.estado = 1");
+			
+			query.setParameter("idUsuario", _idUser);
+			
+			idCliente = (int)query.list().get(0);
+			
+			return idCliente;
+			
+		} catch (Exception e) {
+				e.printStackTrace();
+		}
+			
+			return idCliente;
+		
+	}
 }

@@ -42,4 +42,9 @@ public class ClienteNegImpl implements ClienteNeg {
 		return dao.delete(_id);
 	}
 
+	@Override
+	public int obtenerClientePorUsuario(int _id) {
+		return dao.obtenerClientePorUsuario(_id);
+	}
+
 }

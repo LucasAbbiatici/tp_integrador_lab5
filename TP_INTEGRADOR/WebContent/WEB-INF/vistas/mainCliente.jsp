@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -25,31 +26,22 @@
 				<th class="th-sm">Número de Cuenta</th>
 				<th class="th-sm">CBU</th>
 				<th class="th-sm">Tipo de Cuenta</th>
-				<th class="th-sm">Nombre</th>
+				<th class="th-sm">Nombre Cuenta</th>
 				<th class="th-sm">Saldo</th>
 				<th class="th-sm"> </th>
 			</tr>
 		</thead>	
 		<tbody>
-		
-			<tr>  
-				<td>001</td>   
-				<td>2850590940090418135201</td>
-				<td>Caja de ahorros en pesos</td>   
-				<td>Cuenta Lucas Pesos</td>     
-				<td>$40000 ARG</td>
-				<td><input type="submit" value="Movimientos" name="btnMovimientos" class="btnMovimientos"></td>
-			</tr>
-			
-			<tr>  
-				<td>002</td>   
-				<td>2859530979095418432211</td>
-				<td>Caja de ahorros en dolares</td>   
-				<td>Cuenta Lucas Dolares</td>     
-				<td>$1000 USD</td>
-				<td><input type="submit" value="Movimientos" name="btnMovimientos" class="btnMovimientos"></td>
-			</tr>
-			
+			<c:forEach items="${listaCuentasCliente}" var="item">
+				<tr>
+					<td>${item.id}</td>
+					<td>${item.CBU}</td>
+					<td>${item.tipoDeCuenta.descripcion}</td>
+					<td>${item.nombre}</td>
+					<td>${item.saldo}</td>
+					<td><input type="submit" value="Movimientos" name="btnMovimientos" class="btnMovimientos"></td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 
