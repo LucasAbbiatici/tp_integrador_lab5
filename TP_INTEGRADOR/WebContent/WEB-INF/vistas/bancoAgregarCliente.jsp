@@ -89,11 +89,11 @@
 					<input class="input100" type="text" name="Direccion" placeholder="Ingresar Direccion">
 					<span class="focus-input100"></span>
 				</div>
+				
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Provincia</span>
 					<div>
-						<select class="selection-2" name="ddl_provincias">
-							<option>Seleccione una Provincia</option>
+						<select id="provincias" name="provincias" >
 						</select>
 					</div>
 					<span class="focus-input100"></span>
@@ -101,15 +101,13 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Localidades</span>
 					<div>
-						<select class="selection-2" name="ddl_localidades">
-							<option>Seleccione una Localidad</option>
-							
+						<select name="localidades" id="localidades">
 						</select>
 					</div>
 					<span class="focus-input100"></span>
 				</div>
 				
-
+				
 				<div class="container-contact100-form-btn">
 					<div class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn bg-blue-900"></div>
@@ -121,6 +119,7 @@
 						</button>
 					</div>
 				</div>
+				
 			</form>
 		</div>
 	</div>
@@ -151,7 +150,7 @@
 	<script src="assets/vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
 	<script src="assets/js/transferencia.js"></script>
-
+	<script src="assets/js/prov_x_loca.js"></script>
 </body>
 
 </html>

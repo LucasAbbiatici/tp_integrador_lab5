@@ -55,10 +55,11 @@
 					</c:forEach>
 				</tbody>
 			</table>
-		
-		<div>
-			<input type="submit" value="Agregar un Nuevo Cliente" name="btnAgregarCliente" class="btnAgregarCliente">
-		</div>
+		<form action="/TP_INTEGRADOR/AgregarCliente" method="get">
+			<div>
+				<input type="submit" value="Agregar un Nuevo Cliente" name="btnAgregarCliente" class="btnAgregarCliente">
+			</div>
+		</form>
 		<div style="${color}">
 			${mensaje}
 		</div>

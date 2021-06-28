@@ -223,6 +223,12 @@ public class PaginaController {
 		
 		return MV;
 	}
+	
+	@RequestMapping("/AgregarCliente")
+	public ModelAndView redireccionAgregarCliente() {
+		return new ModelAndView("bancoAgregarCliente");
+	}
+	
 }
 
 
