@@ -27,8 +27,7 @@ public class CuentaNegImpl implements CuentaNeg {
 
 	@Override
 	public boolean delete(int _id) {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.delete(_id);
 	}
 
 	@Override

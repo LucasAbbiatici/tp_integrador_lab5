@@ -36,7 +36,22 @@ public class CuentaDaoImpl implements CuentaDao {
 
 	@Override
 	public boolean delete(int _id) {
-		// TODO Auto-generated method stub
+		Session session = conexion.abrirConexion();
+		Transaction transaction = session.beginTransaction();
+		try {
+			Query query = session.createQuery("UPDATE Cuenta c SET c.estado = 0 WHERE c.id =:idCuenta and c.estado = 1");
+			query.setParameter("idCuenta", _id);
+			
+			if( query.executeUpdate() > 0) {
+				transaction.commit();
+				return true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		
 		return false;
 	}
 

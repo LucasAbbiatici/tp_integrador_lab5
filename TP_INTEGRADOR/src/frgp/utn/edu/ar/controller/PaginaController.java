@@ -133,6 +133,24 @@ public class PaginaController {
 		return MV;
     }
 	
+	@RequestMapping(value = { "/delete-cuenta-{ssoId}" }, method = RequestMethod.GET)
+    public ModelAndView deleteCuenta(@PathVariable int ssoId) {
+
+		ModelAndView MV = new ModelAndView();
+		if(cuentaNegImpl.delete(ssoId)) {
+			MV.addObject("mensaje","La cuenta se pudo eliminar correctamente");
+			MV.addObject("color", "color: green; margin-top: 20px;");
+			MV.addObject("listaCuentas",this.cuentaNegImpl.readAll());
+			MV.setViewName("bancoCuentas");
+		}else {
+			MV.addObject("mensaje","No se pudo eliminar correctamente la cuenta");
+			MV.addObject("color", "color: red; margin-top: 20px;");
+			MV.addObject("listaCuentas",this.cuentaNegImpl.readAll());
+			MV.setViewName("bancoCuentas"); 
+		}
+		return MV;
+    }
+	
 	@RequestMapping("/redireccionarAgregarCuenta")
 	public ModelAndView redireccionarAgregarCuenta() {
 		ModelAndView MV = new ModelAndView();
