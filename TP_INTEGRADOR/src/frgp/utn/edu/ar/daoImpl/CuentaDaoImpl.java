@@ -113,19 +113,25 @@ public class CuentaDaoImpl implements CuentaDao {
 		Session session = conexion.abrirConexion();
 				
 		try {
-			Query query = session.createQuery("SELECT COUNT(*) FROM Cuenta c WHERE c.cliente =:idCliente AND c.estado = 1");
+			Query query = session.createQuery("SELECT COUNT(*) FROM Cuenta c"
+					+ " join c.cliente cliente  WHERE cliente.id = :idCliente AND c.estado=1");
 			query.setParameter("idCliente", _idCliente);
 			
-			if((int)query.list().get(0) >= 4) {
+			//Cualquiera de los dos devuelve el valor de COUNT
+			//long var = (long)query.list().get(0);
+			//long var2 = (long)query.uniqueResult();
+			
+			
+			if((long)query.list().get(0) >= 4) {
 				return false;
 			} else {
 				return true;
 			}
 			
-			} catch (Exception e) {
-				e.printStackTrace();
-				return true;
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return true;
+		}
 	}
 
 }
