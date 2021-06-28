@@ -46,7 +46,7 @@
 							<td>${item.nombre}</td>
 							<td>${item.saldo}</td>
 							<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
-						    <td><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></td>
+						    <td><a href="<c:url value='/delete-cuenta-${item.id}' />"><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></a></td>
 						</tr>
 					</c:forEach>
 					
@@ -57,6 +57,10 @@
 				<input type="submit" value="Crear Nueva Cuenta" name="btnCrearCuenta" class="btnAgregarCliente">
 			</div>
 		</form>
+		
+			<div style="${color}">
+			${mensaje}
+		</div>
 		</div>
 		
 	</div>
