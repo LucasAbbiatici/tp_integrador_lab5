@@ -121,7 +121,7 @@ public class PaginaController {
 		return MV;
     }
 	
-	@RequestMapping(value= "/redireccionarAgregarCuenta.html",method= RequestMethod.POST)
+	@RequestMapping("/redireccionarAgregarCuenta.html")
 	public ModelAndView redireccionarAgregarCuenta() {
 		ModelAndView MV = new ModelAndView();
 		List<TipoCuenta> tipoCue = tipoCuentaNeg.readAll();

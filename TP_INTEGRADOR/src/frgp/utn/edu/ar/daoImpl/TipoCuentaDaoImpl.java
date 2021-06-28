@@ -23,7 +23,7 @@ public class TipoCuentaDaoImpl implements TipoCuentaDao {
 		final List<TipoCuenta> tipoCuenta = new LinkedList<>();
 			
 		try {
-			Query query = session.createQuery("FROM TipoCuenta tc WHERE tc.estado = 1");
+			Query query = session.createQuery("SELECT tc FROM TipoCuenta tc");
 			
 			for(final Object o : query.list()) {
 				tipoCuenta.add((TipoCuenta)o);
