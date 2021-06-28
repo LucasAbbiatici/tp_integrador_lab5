@@ -87,7 +87,7 @@ public class PaginaController {
 		return new ModelAndView("transferenciaCliente");
 	}
 	
-	@RequestMapping("/listaCuentas.html")
+	@RequestMapping("/listaCuentas")
 	public ModelAndView eventoListarCuentas() {
 		ModelAndView MV = new ModelAndView();
 		
@@ -121,7 +121,7 @@ public class PaginaController {
 		return MV;
     }
 	
-	@RequestMapping("/redireccionarAgregarCuenta.html")
+	@RequestMapping("/redireccionarAgregarCuenta")
 	public ModelAndView redireccionarAgregarCuenta() {
 		ModelAndView MV = new ModelAndView();
 		List<TipoCuenta> tipoCue = tipoCuentaNeg.readAll();
@@ -130,11 +130,10 @@ public class PaginaController {
 		return MV;
 	}
 	
-	@RequestMapping (value ="/agregarCuenta.html",method = RequestMethod.POST)
+	@RequestMapping (value ="/agregarCuenta",method = RequestMethod.POST)
 	public ModelAndView  agregarCuenta() {
 		ModelAndView MV = new ModelAndView();
-		return MV;
-		
+		return new ModelAndView("bancoAgregarCuenta");
 	}
 }
 

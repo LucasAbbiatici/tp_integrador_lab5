@@ -52,7 +52,7 @@
 					
 				</tbody>
 			</table>
-			<form action="/TP_INTEGRADOR/redireccionarAgregarCuenta.html">
+			<form action="/TP_INTEGRADOR/redireccionarAgregarCuenta">
 			<div>
 				<input type="submit" value="Crear Nueva Cuenta" name="btnCrearCuenta" class="btnAgregarCliente">
 			</div>

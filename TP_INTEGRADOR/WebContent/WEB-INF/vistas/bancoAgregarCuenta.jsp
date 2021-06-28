@@ -32,7 +32,7 @@
 	<!--  FORMULARIO  -->
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" action="/agregarCuenta.html" method="post">
+			<form class="contact100-form validate-form" action="/TP_INTEGRADOR/agregarCuenta" method="post">
 				<span class="contact100-form-title">
 					Agregar Cuenta
 				</span>
