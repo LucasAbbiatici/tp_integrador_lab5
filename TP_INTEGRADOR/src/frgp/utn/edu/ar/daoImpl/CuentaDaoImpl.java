@@ -20,10 +20,9 @@ public class CuentaDaoImpl implements CuentaDao {
 	public boolean insert(Cuenta cue) {
 		Session session = conexion.abrirConexion();
 		Transaction transaction = session.beginTransaction();
-		
 			
 		try {
-			session.save(cue);
+			session.saveOrUpdate(cue);
 			transaction.commit();
 			return true;
 			
@@ -53,24 +52,6 @@ public class CuentaDaoImpl implements CuentaDao {
 		}
 		
 		return false;
-	}
-
-	@Override
-	public boolean update(Cuenta cue) {
-		Session session = conexion.abrirConexion();
-		Transaction transaction = session.beginTransaction();
-		
-		try {
-			session.update(cue);
-			transaction.commit();
-			return true;
-		} 
-		
-		catch (Exception e) {
-		e.printStackTrace();
-		return false;
-		}
-		
 	}
 
 	@Override

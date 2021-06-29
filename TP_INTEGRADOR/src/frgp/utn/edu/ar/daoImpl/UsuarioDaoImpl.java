@@ -39,7 +39,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		Transaction transaction = session.beginTransaction();
 			
 		try {
-			session.save(usuario);
+			session.saveOrUpdate(usuario);
 			transaction.commit();
 			return true;
 			
@@ -47,6 +47,24 @@ public class UsuarioDaoImpl implements UsuarioDao{
 				e.printStackTrace();
 				return false;
 			}
+	}
+
+	@Override
+	public Usuario obtenerUsuarioXid(String _id) {
+		Session session = conexion.abrirConexion();
+		
+		Usuario usu = new Usuario();
+		
+		try {
+		Query query = session.createQuery("SELECT u FROM Usuario u WHERE u.id = :idUser");
+		query.setParameter("idUser", _id);
+
+		usu = (Usuario)query.list().get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return usu;
 	}
 	
 }

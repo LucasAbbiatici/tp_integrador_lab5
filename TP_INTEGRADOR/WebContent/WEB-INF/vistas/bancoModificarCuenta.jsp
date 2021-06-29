@@ -83,7 +83,7 @@
 					</div>
 				</div>
 			</form>
-				<div style="${color}">
+			<div style="${color}">
 				${mensaje}
 			</div>
 		</div>

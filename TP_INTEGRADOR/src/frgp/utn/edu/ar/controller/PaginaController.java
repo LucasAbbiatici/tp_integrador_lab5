@@ -33,10 +33,10 @@ public class PaginaController {
 	@Autowired
 	private UsuarioNegImpl usuarioNeg;
 	@Autowired
-	@Qualifier("beanUsuarioLogeado")
+	@Qualifier("beanUsuario")
 	private Usuario usuario2;
 	@Autowired
-	@Qualifier("beanUsuario")
+	@Qualifier("beanUsuarioLogeado")
 	private Usuario usuario;
 	@Autowired
 	private CuentaNegImpl cuentaNegImpl;
@@ -264,14 +264,14 @@ public class PaginaController {
 				
 			} else {
 				
-				MV.addObject("mensaje", "No se pudo agregar el cliente(error cliente)");
+				MV.addObject("mensaje", "No se pudo agregar el cliente");
 				MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
 				
 			}
 			
 		} else {
 			
-			MV.addObject("mensaje", "No se pudo agregar el cliente(error usuario)");
+			MV.addObject("mensaje", "No se pudo agregar el cliente");
 			MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
 			
 		}
@@ -326,7 +326,7 @@ public class PaginaController {
 		}
 		else {
 			
-			if(cuentaNegImpl.update(cuenta)) {
+			if(cuentaNegImpl.insert(cuenta)) {
 				MV.addObject("mensaje", "La cuenta fue actualizada correctamente");
 				MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
 				MV.addObject("cuenta",cuenta);
@@ -363,57 +363,51 @@ public class PaginaController {
 		
 	}
 	
-	/*@RequestMapping("/modificarCliente")
-	public ModelAndView updateCuenta(int txtId,String txtNombre,int selectTipoCuenta,int selectClientes) {
+	@RequestMapping("/modificarCliente")
+	public ModelAndView modificarCliente(String txtId, String txtDni, String txtNombre, String txtApellido, String selectSexo, Date date_fechaNacimiento, String txtNacionalidad, String txtDireccion, String provincias, String localidades) {
 		ModelAndView MV = new ModelAndView();
 		
-		List<TipoCuenta> tipoCue = tipoCuentaNeg.readAll();
-		List<Cliente> listaClientes = clienteNeg.readAll();
+		cliente.setDni(txtDni);
+		cliente.setNombre(txtNombre);
+		cliente.setApellido(txtApellido);
+		cliente.setSexo(selectSexo);
+		cliente.setFechaNacimiento(date_fechaNacimiento);
+		cliente.setNacionalidad(txtNacionalidad);
+		cliente.setDireccion(txtDireccion);
+		cliente.setProvincia(provincias);
+		cliente.setLocalidad(localidades);
 		
-		cue = cuentaNegImpl.obtenerCuenta(txtId);
-		
-		tc = tipoCuentaNeg.obtenerTipoCuenta(selectTipoCuenta);
-		cliente = clienteNeg.obtenerCliente(selectClientes);
-		cuenta = cuentaNegImpl.obtenerCuenta(txtId);
-		cuenta.setNombre(txtNombre);
-		cuenta.setTipoDeCuenta(tc);
-		cuenta.setCliente(cliente);
-		
-		if(!cuentaNegImpl.verificarCantCuentas(selectClientes)) {
+		usuario2 = usuarioNeg.obtenerUsuarioXid(txtId);
+		usuario2.setUser(txtDni);
 			
-			MV.addObject("mensaje", "El cliente seleccionado ya posee 4 cuentas");
-			MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
-			MV.addObject("cuenta",cue);
-			MV.addObject("listaTipoCue",tipoCue);
-			MV.addObject("listaClientes",listaClientes);
-			MV.setViewName("bancoModificarCuenta");
+		if(usuarioNeg.insert(usuario2)) {
 			
-		}
-		else {
+			cliente.setUser(usuario2);
 			
-			if(cuentaNegImpl.update(cuenta)) {
-				MV.addObject("mensaje", "La cuenta fue actualizada correctamente");
+			if(clienteNeg.insert(cliente)) {
+				
+				MV.addObject("mensaje", "El cliente fue modificado correctamente");
 				MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
-				MV.addObject("cuenta",cuenta);
-				MV.addObject("listaTipoCue",tipoCue);
-				MV.addObject("listaClientes",listaClientes);
-				MV.setViewName("bancoModificarCuenta");
-			}
-			else {
-				MV.addObject("mensaje", "No se pudo actualizar la cuenta");
+				
+			} else {
+				
+				MV.addObject("mensaje", "No se pudo modificar el cliente");
 				MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
-				MV.addObject("cuenta",cue);
-				MV.addObject("listaTipoCue",tipoCue);
-				MV.addObject("listaClientes",listaClientes);
-				MV.setViewName("bancoModificarCuenta");
+				
 			}
+			
+		} else {
+			
+			MV.addObject("mensaje", "No se pudo modificar el usuario del cliente");
+			MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+			
 		}
 		
-			MV.setViewName("bancoModificarCuenta");
-		
-		return MV;
+			
+		MV.setViewName("bancoModificarCliente");
+		return MV;	
 	}
-	*/
+	
 }
 
 

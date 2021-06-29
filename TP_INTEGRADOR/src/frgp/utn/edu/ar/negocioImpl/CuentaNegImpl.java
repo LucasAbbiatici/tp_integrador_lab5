@@ -31,11 +31,6 @@ public class CuentaNegImpl implements CuentaNeg {
 	}
 
 	@Override
-	public boolean update(Cuenta cue) {
-		return dao.update(cue);
-	}
-
-	@Override
 	public List<Cuenta> readAll() {
 		
 		return dao.readAll();

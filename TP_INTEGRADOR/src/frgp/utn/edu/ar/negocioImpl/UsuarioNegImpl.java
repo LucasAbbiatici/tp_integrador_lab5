@@ -21,5 +21,10 @@ public class UsuarioNegImpl implements UsuarioNeg{
 	public boolean insert(Usuario usuario) {
 		return dao.insert(usuario);
 	}
+
+	@Override
+	public Usuario obtenerUsuarioXid(String _id) {
+		return dao.obtenerUsuarioXid(_id);
+	}
 	
 }

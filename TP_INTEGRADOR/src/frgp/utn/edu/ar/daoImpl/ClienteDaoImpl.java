@@ -35,7 +35,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		
 			
 		try {
-			session.save(cli);
+			session.saveOrUpdate(cli);;
 			transaction.commit();
 			return true;
 			
@@ -64,12 +64,6 @@ public class ClienteDaoImpl implements ClienteDao {
 			transaction.rollback();
 		}
 		
-		return false;
-	}
-
-	@Override
-	public boolean update(Cliente cli) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

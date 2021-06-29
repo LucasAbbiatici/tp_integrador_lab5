@@ -32,25 +32,25 @@
 	<!--  FORMULARIO  -->
 	<div class="container-contact100 overflow-auto">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form class="contact100-form validate-form" action="/TP_INTEGRADOR/modificarCliente">
 				<span class="contact100-form-title">
 					Modificar Cliente
 				</span>
 
-					
+						<input type="hidden" value="${cliente.user.id}" name="txtId">
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">DNI</span>
-							<input class="input100" type="text" name="dni" value="${cliente.dni}">
+							<input class="input100" type="text" name="txtDni" value="${cliente.dni}">
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Nombres</span>
-							<input class="input100" type="text" name="nombre" value="${cliente.nombre}">
+							<input class="input100" type="text" name="txtNombre" value="${cliente.nombre}">
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Apellido</span>
-							<input class="input100" type="text" name="apellido" value="${cliente.apellido}">
+							<input class="input100" type="text" name="txtApellido" value="${cliente.apellido}">
 							<span class="focus-input100"></span>
 						</div>
 					
@@ -59,7 +59,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Sexo</span>
 					<div>
-						<select class="selection-2" name="sexo">
+						<select class="selection-2" name="selectSexo">
 							<option value="Masculino"  
 							<c:if test="${ cliente.sexo == 'Masculino' }">
 								selected
@@ -92,13 +92,13 @@
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Nacionalidad</span>
-					<input class="input100" type="text" name="Nacionalidad" value="${cliente.nacionalidad}">
+					<input class="input100" type="text" name="txtNacionalidad" value="${cliente.nacionalidad}">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Direccion</span>
-					<input class="input100" type="text" name="Direccion" value="${cliente.direccion}">
+					<input class="input100" type="text" name="txtDireccion" value="${cliente.direccion}">
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 input100-select">
@@ -134,6 +134,9 @@
 					</div>
 				</div>
 			</form>
+			<div style="${color}">
+				${mensaje}
+			</div>
 		</div>
 	</div>
 	<!--  END FORMULARIO  -->

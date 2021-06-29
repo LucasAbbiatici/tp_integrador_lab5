@@ -20,12 +20,6 @@ public class ClienteNegImpl implements ClienteNeg {
 	}
 
 	@Override
-	public boolean update(Cliente cli) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public List<Cliente> readAll() {
 
 		return dao.readAll();
