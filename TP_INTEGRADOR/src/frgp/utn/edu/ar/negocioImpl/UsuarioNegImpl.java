@@ -23,7 +23,7 @@ public class UsuarioNegImpl implements UsuarioNeg{
 	}
 
 	@Override
-	public Usuario obtenerUsuarioXid(String _id) {
+	public Usuario obtenerUsuarioXid(int _id) {
 		return dao.obtenerUsuarioXid(_id);
 	}
 	

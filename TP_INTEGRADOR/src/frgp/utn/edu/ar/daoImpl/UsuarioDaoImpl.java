@@ -50,7 +50,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	}
 
 	@Override
-	public Usuario obtenerUsuarioXid(String _id) {
+	public Usuario obtenerUsuarioXid(int _id) {
 		Session session = conexion.abrirConexion();
 		
 		Usuario usu = new Usuario();
@@ -58,7 +58,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		try {
 		Query query = session.createQuery("SELECT u FROM Usuario u WHERE u.id = :idUser");
 		query.setParameter("idUser", _id);
-
+		
 		usu = (Usuario)query.list().get(0);
 		} catch (Exception e) {
 			e.printStackTrace();

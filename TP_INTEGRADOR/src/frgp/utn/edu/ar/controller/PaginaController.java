@@ -364,7 +364,7 @@ public class PaginaController {
 	}
 	
 	@RequestMapping("/modificarCliente")
-	public ModelAndView modificarCliente(String txtId, String txtDni, String txtNombre, String txtApellido, String selectSexo, Date date_fechaNacimiento, String txtNacionalidad, String txtDireccion, String provincias, String localidades) {
+	public ModelAndView modificarCliente(int txtId, String txtDni, String txtNombre, String txtApellido, String selectSexo, Date date_fechaNacimiento, String txtNacionalidad, String txtDireccion, String provincias, String localidades) {
 		ModelAndView MV = new ModelAndView();
 		
 		cliente.setDni(txtDni);
