@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
 	<title>Modificar Cliente</title>
@@ -39,17 +40,17 @@
 					
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">DNI</span>
-							<input class="input100" type="text" name="dni" placeholder="Ingresar DNI">
+							<input class="input100" type="text" name="dni" value="${cliente.dni}">
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Nombres</span>
-							<input class="input100" type="text" name="nombre" placeholder="Ingresar Nombres">
+							<input class="input100" type="text" name="nombre" value="${cliente.nombre}">
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Apellido</span>
-							<input class="input100" type="text" name="apellido" placeholder="Ingresar Apellido">
+							<input class="input100" type="text" name="apellido" value="${cliente.apellido}">
 							<span class="focus-input100"></span>
 						</div>
 					
@@ -59,9 +60,20 @@
 					<span class="label-input100">Sexo</span>
 					<div>
 						<select class="selection-2" name="sexo">
-							<option>Seleccionar sexo</option>
-							<option>Hombre</option>
-							<option>Mujer</option>
+							<option value="Masculino"  
+							<c:if test="${ cliente.sexo == 'Masculino' }">
+								selected
+							</c:if> 
+							>
+							Masculino
+							</option>
+							<option value="Femenino" 
+							<c:if test="${ cliente.sexo == 'Femenino' }">
+								selected
+							</c:if> 
+							>
+							Femenino
+							</option>
 						</select>
 					</div>
 					<span class="focus-input100"></span>
@@ -73,37 +85,37 @@
                         	<br>
                          	<div class="value">
                             <div class="input-group">
-                          		<input class="input100" type="date" name="date_fechaNacimiento" required>
+                          		<input class="input100" type="date" name="date_fechaNacimiento" value="${cliente.fechaNacimiento}" required>
                           	</div>
                           	</div>
                         </div>
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Nacionalidad</span>
-					<input class="input100" type="text" name="Nacionalidad" placeholder="Ingresar Nacionalidad">
+					<input class="input100" type="text" name="Nacionalidad" value="${cliente.nacionalidad}">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Direccion</span>
-					<input class="input100" type="text" name="Direccion" placeholder="Ingresar Direccion">
+					<input class="input100" type="text" name="Direccion" value="${cliente.direccion}">
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Provincia</span>
 					<div>
-						<select class="selection-2" name="ddl_provincias">
-							<option>Seleccione una Provincia</option>
+						<select id="provincias" name="provincias" >
+						
+							
 						</select>
 					</div>
 					<span class="focus-input100"></span>
 				</div>
-				<div class="wrap-input100 input100-select">
+			<div class="wrap-input100 input100-select">
 					<span class="label-input100">Localidades</span>
 					<div>
-						<select class="selection-2" name="ddl_localidades">
-							<option>Seleccione una Localidad</option>
-							
+						<select name="localidades" id="localidades">
+						
 						</select>
 					</div>
 					<span class="focus-input100"></span>
@@ -151,7 +163,8 @@
 	<script src="assets/vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
 	<script src="assets/js/transferencia.js"></script>
-
+	
+	
 </body>
 
 </html>
