@@ -9,7 +9,7 @@ public interface CuentaDao {
 	public boolean delete(int _id);
 	public boolean update(Cuenta cue);	
 	public List<Cuenta> readAll();
-	public Cuenta obtenerCuenta();
+	public Cuenta obtenerCuenta(int _id);
 	public boolean verificarCantCuentas(int _idCliente);
 	public List<Cuenta> obtenerCuentasCliente(int _idCliente);
 }

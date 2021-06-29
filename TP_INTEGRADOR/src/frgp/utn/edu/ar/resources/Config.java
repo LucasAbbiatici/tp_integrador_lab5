@@ -106,5 +106,11 @@ public class Config {
 	public TipoCuentaNegImpl beanTipoCuentaNeg() {
 		return new TipoCuentaNegImpl();
 	}
+	
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public Cuenta beanCuenta2() {
+		return new Cuenta();
+	}
 }
 	

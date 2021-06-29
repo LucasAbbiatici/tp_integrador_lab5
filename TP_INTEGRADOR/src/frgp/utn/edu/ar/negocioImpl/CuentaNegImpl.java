@@ -32,8 +32,7 @@ public class CuentaNegImpl implements CuentaNeg {
 
 	@Override
 	public boolean update(Cuenta cue) {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.update(cue);
 	}
 
 	@Override
@@ -43,9 +42,8 @@ public class CuentaNegImpl implements CuentaNeg {
 	}
 
 	@Override
-	public Cuenta obtenerCuenta() {
-		// TODO Auto-generated method stub
-		return null;
+	public Cuenta obtenerCuenta(int _id) {
+		return dao.obtenerCuenta(_id);
 	}
 
 	@Override

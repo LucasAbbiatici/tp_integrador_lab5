@@ -57,8 +57,20 @@ public class CuentaDaoImpl implements CuentaDao {
 
 	@Override
 	public boolean update(Cuenta cue) {
-		// TODO Auto-generated method stub
+		Session session = conexion.abrirConexion();
+		Transaction transaction = session.beginTransaction();
+		
+		try {
+			session.update(cue);
+			transaction.commit();
+			return true;
+		} 
+		
+		catch (Exception e) {
+		e.printStackTrace();
 		return false;
+		}
+		
 	}
 
 	@Override
@@ -82,9 +94,23 @@ public class CuentaDaoImpl implements CuentaDao {
 	}
 
 	@Override
-	public Cuenta obtenerCuenta() {
-		// TODO Auto-generated method stub
-		return null;
+	public Cuenta obtenerCuenta(int _id) {
+		Session session = conexion.abrirConexion();
+		Cuenta cue = new Cuenta();
+		
+		try {
+			Query query = session.createQuery("SELECT c FROM Cuenta c WHERE c.id=:idCuenta");
+			query.setParameter("idCuenta", _id);
+			
+				cue = (Cuenta)query.list().get(0);
+
+		} 
+		
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return cue;
 	}
 	
 	@Override

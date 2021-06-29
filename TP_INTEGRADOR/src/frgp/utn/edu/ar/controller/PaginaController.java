@@ -43,11 +43,15 @@ public class PaginaController {
 	@Autowired
 	private TipoCuentaNegImpl tipoCuentaNeg;
 	@Autowired
+	@Qualifier("beanCuenta")
 	private Cuenta cuenta; 
 	@Autowired
 	private TipoCuenta tc;
 	@Autowired
 	private Cliente cliente;
+	@Autowired
+	@Qualifier("beanCuenta2")
+	private Cuenta cue;
 	
 	@RequestMapping("/index.html")
 	public ModelAndView eventoRedireccionarIndex() {
@@ -274,6 +278,75 @@ public class PaginaController {
 		
 		MV.setViewName("bancoAgregarCliente");
 		return MV;	
+	}
+	
+	@RequestMapping(value="/redirec-updCuenta-{ssoId}",method=RequestMethod.GET)
+	public ModelAndView redireccionModificarCuenta(@PathVariable int ssoId) {
+		ModelAndView MV = new ModelAndView();
+		
+		cuenta = cuentaNegImpl.obtenerCuenta(ssoId);
+		
+		List<TipoCuenta> tipoCue = tipoCuentaNeg.readAll();
+		List<Cliente> listaClientes = clienteNeg.readAll();
+		
+		MV.addObject("cuenta",cuenta);
+		MV.addObject("listaTipoCue",tipoCue);
+		MV.addObject("listaClientes",listaClientes);
+		MV.setViewName("bancoModificarCuenta");
+		
+		return MV;
+		
+	}
+	
+	@RequestMapping("/modificarCuenta")
+	public ModelAndView modificarCuenta(int txtId,String txtNombre,int selectTipoCuenta,int selectClientes) {
+		ModelAndView MV = new ModelAndView();
+		
+		List<TipoCuenta> tipoCue = tipoCuentaNeg.readAll();
+		List<Cliente> listaClientes = clienteNeg.readAll();
+		
+		cue = cuentaNegImpl.obtenerCuenta(txtId);
+		
+		tc = tipoCuentaNeg.obtenerTipoCuenta(selectTipoCuenta);
+		cliente = clienteNeg.obtenerCliente(selectClientes);
+		cuenta = cuentaNegImpl.obtenerCuenta(txtId);
+		cuenta.setNombre(txtNombre);
+		cuenta.setTipoDeCuenta(tc);
+		cuenta.setCliente(cliente);
+		
+		if(!cuentaNegImpl.verificarCantCuentas(selectClientes)) {
+			
+			MV.addObject("mensaje", "El cliente seleccionado ya posee 4 cuentas");
+			MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+			MV.addObject("cuenta",cue);
+			MV.addObject("listaTipoCue",tipoCue);
+			MV.addObject("listaClientes",listaClientes);
+			MV.setViewName("bancoModificarCuenta");
+			
+		}
+		else {
+			
+			if(cuentaNegImpl.update(cuenta)) {
+				MV.addObject("mensaje", "La cuenta fue actualizada correctamente");
+				MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
+				MV.addObject("cuenta",cuenta);
+				MV.addObject("listaTipoCue",tipoCue);
+				MV.addObject("listaClientes",listaClientes);
+				MV.setViewName("bancoModificarCuenta");
+			}
+			else {
+				MV.addObject("mensaje", "No se pudo actualizar la cuenta");
+				MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+				MV.addObject("cuenta",cue);
+				MV.addObject("listaTipoCue",tipoCue);
+				MV.addObject("listaClientes",listaClientes);
+				MV.setViewName("bancoModificarCuenta");
+			}
+		}
+		
+			MV.setViewName("bancoModificarCuenta");
+		
+		return MV;
 	}
 	
 }

@@ -45,7 +45,7 @@
 							<td>${item.tipoDeCuenta.descripcion}</td>
 							<td>${item.nombre}</td>
 							<td>${item.saldo}</td>
-							<td><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></td>  
+							<td><a href="<c:url value='/redirec-updCuenta-${item.id}' />"><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></a></td>  
 						    <td><a href="<c:url value='/delete-cuenta-${item.id}' />"><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></a></td>
 						</tr>
 					</c:forEach>
