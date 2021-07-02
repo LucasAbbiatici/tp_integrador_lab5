@@ -17,10 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Cuenta;
+import frgp.utn.edu.ar.entidad.Movimiento;
 import frgp.utn.edu.ar.entidad.TipoCuenta;
 import frgp.utn.edu.ar.entidad.Usuario;
 import frgp.utn.edu.ar.negocioImpl.ClienteNegImpl;
 import frgp.utn.edu.ar.negocioImpl.CuentaNegImpl;
+import frgp.utn.edu.ar.negocioImpl.MovimientoNegImpl;
 import frgp.utn.edu.ar.negocioImpl.TipoCuentaNegImpl;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegImpl;
 
@@ -52,6 +54,8 @@ public class PaginaController {
 	@Autowired
 	@Qualifier("beanCuenta2")
 	private Cuenta cue;
+	@Autowired
+	private MovimientoNegImpl movimientoNeg;
 	
 	@RequestMapping("/index.html")
 	public ModelAndView eventoRedireccionarIndex() {
@@ -406,6 +410,31 @@ public class PaginaController {
 			
 		MV.setViewName("bancoModificarCliente");
 		return MV;	
+	}
+	
+	@RequestMapping(value="/movimientos-cuenta-{ssoId}",method=RequestMethod.GET)
+	public ModelAndView redireccionMovimientosCuenta(@PathVariable int ssoId) {
+		ModelAndView MV = new ModelAndView();
+		
+		List<Movimiento> listaMovimientos = movimientoNeg.movimientosXcuenta(ssoId);
+		
+		
+		MV.addObject("listaMovimientos", listaMovimientos);
+		MV.setViewName("movimientosCliente");
+		
+		return MV;
+		
+	}
+	
+	@RequestMapping("/redireccionarListaCuentas")
+	public ModelAndView redireccionarCuentasCliente() {
+		ModelAndView MV = new ModelAndView();
+		
+		List<Cuenta> cuentas = cuentaNegImpl.obtenerCuentasCliente(clienteNeg.obtenerClientePorUsuario(usuario.getId()));
+		MV.addObject("listaCuentasCliente",cuentas);
+		MV.setViewName("mainCliente");
+		
+		return MV;
 	}
 	
 }

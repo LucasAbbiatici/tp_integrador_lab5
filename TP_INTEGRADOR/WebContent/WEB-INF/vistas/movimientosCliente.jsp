@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -28,30 +29,15 @@
 			</tr>
 		</thead>	
 		<tbody>
-		
-			<tr>  
-				<td>10/05/2021</td>   
-				<td>Honorarios</td>     
-				<td style="color:#90ee90;">$60000</td>
-			</tr>
-			
-			<tr>  
-				<td>07/06/2020</td>   
-				<td>Varios</td>
-				<td style="color:red;">-$7000</td>   
-			</tr>
-			
-			<tr>  
-				<td>17/11/2020</td>   
-				<td>Bienes Registrables Habitualistas</td>
-				<td style="color:#90ee90;">$8000</td>   
-			</tr>
-			
-			<tr>  
-				<td>20/10/2020</td>   
-				<td>Cuotas</td>
-				<td style="color:red;">-$7600</td>   
-			</tr>
+			<c:forEach items="${listaMovimientos}" var="item">
+				<tr>  
+					<td>${item.fecha}</td>   
+					<td>${item.detalle}</td>     
+					<td <c:choose><c:when test="${item.tipoDeMovimiento.id == 2}"> style="color:#90ee90;"</c:when><c:when test="${item.tipoDeMovimiento.id == 1}"> style="color:red;" </c:when></c:choose>>
+					<c:if test="${item.tipoDeMovimiento.id == 1}">-</c:if> ${item.importe}	
+					</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 

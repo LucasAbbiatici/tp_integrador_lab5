@@ -39,7 +39,7 @@
 					<td>${item.tipoDeCuenta.descripcion}</td>
 					<td>${item.nombre}</td>
 					<td>${item.saldo}</td>
-					<td><input type="submit" value="Movimientos" name="btnMovimientos" class="btnMovimientos"></td>
+					<td><a href="<c:url value='/movimientos-cuenta-${item.id}' />"><input type="submit" value="Movimientos" name="btnMovimientos" class="btnMovimientos"></a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

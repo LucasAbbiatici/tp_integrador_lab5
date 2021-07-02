@@ -26,7 +26,7 @@
 		
 		<div class="w-full px-2">
 			<div class="flex flex-col items-center w-full mt-3 border-t border-gray-700">
-				<a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" href="#">
+				<a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" href="/TP_INTEGRADOR/redireccionarListaCuentas">
 					<svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512" stroke="currentColor">
 						<path d="M487.59,299.894h-7.662v-69.015c0-10.926-5.438-20.6-13.743-26.478v-9.397c0-13.631-11.089-24.72-24.72-24.72h-5.721
 								l21.889-32.12c7.337-10.766,4.547-25.495-6.219-32.833L302.883,4.111c-5.215-3.555-11.501-4.867-17.705-3.69
