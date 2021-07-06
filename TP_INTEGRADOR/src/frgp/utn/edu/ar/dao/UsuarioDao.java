@@ -6,4 +6,5 @@ public interface UsuarioDao {
 	public Usuario validarUsuario(Usuario usuario);
 	public boolean insert(Usuario usuario);
 	public Usuario obtenerUsuarioXid(int _id);
+	public boolean delete(int _id);
 }

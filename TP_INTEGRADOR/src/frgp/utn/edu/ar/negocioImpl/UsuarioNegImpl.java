@@ -26,5 +26,10 @@ public class UsuarioNegImpl implements UsuarioNeg{
 	public Usuario obtenerUsuarioXid(int _id) {
 		return dao.obtenerUsuarioXid(_id);
 	}
+
+	@Override
+	public boolean delete(int _id) {
+		return dao.delete(_id);
+	}
 	
 }

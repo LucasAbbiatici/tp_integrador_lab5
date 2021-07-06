@@ -81,23 +81,32 @@ public class PaginaController {
 		{
 			MV.addObject("estadoUsuario", "El usuario y/o contraseña son incorrectos");
 			MV.setViewName("index");
-		} else {
-			
-			request.getSession().setAttribute("usuario", usuario);
-			
-			MV.addObject("usuario", usuario);
-			//Si no es admin entra por aca.
-			if(usuario.getAdmin() == false) {
-				List<Cuenta> cuentas = cuentaNegImpl.obtenerCuentasCliente(clienteNeg.obtenerClientePorUsuario(usuario.getId())/*trae el id del cliente*/);
-				MV.addObject("listaCuentasCliente",cuentas);
-				MV.setViewName("mainCliente");
+		} 
+		else 
+		{
+			if(!usuario.getEstado())
+			{
+				MV.addObject("estadoUsuario", "El usuario ha sido borrado");
+				MV.setViewName("index");
+			}
+			else
+			{
+				request.getSession().setAttribute("usuario", usuario);
 				
-			} 
-			//Si es admin, entra por aca.
-			else {
-				List<Cliente> clientes = clienteNeg.readAll();
-				MV.addObject("listaClientes",clientes);
-				MV.setViewName("mainBanco");
+				MV.addObject("usuario", usuario);
+				//Si no es admin entra por aca.
+				if(usuario.getAdmin() == false) {
+					List<Cuenta> cuentas = cuentaNegImpl.obtenerCuentasCliente(clienteNeg.obtenerClientePorUsuario(usuario.getId())/*trae el id del cliente*/);
+					MV.addObject("listaCuentasCliente",cuentas);
+					MV.setViewName("mainCliente");
+					
+				} 
+				//Si es admin, entra por aca.
+				else {
+					List<Cliente> clientes = clienteNeg.readAll();
+					MV.addObject("listaClientes",clientes);
+					MV.setViewName("mainBanco");
+				}
 			}
 		}
 		return MV;
@@ -142,7 +151,9 @@ public class PaginaController {
     public ModelAndView deleteUser(@PathVariable int ssoId) {
 
 		ModelAndView MV = new ModelAndView();
-		if(clienteNeg.delete(ssoId)) {
+		
+		
+		if(clienteNeg.delete(ssoId) && usuarioNeg.delete(clienteNeg.obtenerCliente(ssoId).getUser().getId())  ) {
 			MV.addObject("mensaje","El cliente se pudo eliminar correctamente");
 			MV.addObject("color", "color: green; margin-top: 20px;");
 			MV.addObject("listaClientes",this.clienteNeg.readAll());
@@ -153,6 +164,10 @@ public class PaginaController {
 			MV.addObject("listaClientes",this.clienteNeg.readAll());
 			MV.setViewName("mainBanco"); 
 		}
+		
+		
+		
+		
 		return MV;
     }
 	

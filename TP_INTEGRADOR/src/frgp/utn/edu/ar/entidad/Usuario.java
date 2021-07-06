@@ -98,4 +98,5 @@ public class Usuario implements Serializable{
 	    return sb.toString();
 	}
 	
+	
 }

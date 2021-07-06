@@ -21,7 +21,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		Usuario usu = new Usuario();
 		
 		try {
-		Query query = session.createQuery("SELECT u FROM Usuario u WHERE u.user = :username AND u.pass = :password AND u.estado = 1");
+		Query query = session.createQuery("SELECT u FROM Usuario u WHERE u.user = :username AND u.pass = :password");
 		query.setParameter("username", usuario.getUser());
 		query.setParameter("password", usuario.getPass());
 
@@ -66,5 +66,27 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		
 		return usu;
 	}
+
+	@Override
+	public boolean delete(int _id) {
+		Session session = conexion.abrirConexion();
+		Transaction transaction = session.beginTransaction();
+		try {
+			Query query = session.createQuery("UPDATE Usuario u SET u.estado = 0 WHERE u.id =:idUsuario and u.estado = 1");
+			query.setParameter("idUsuario", _id);
+			
+			if( query.executeUpdate() > 0) {
+				transaction.commit();
+				return true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		
+		return false;
+	}
+	
 	
 }
