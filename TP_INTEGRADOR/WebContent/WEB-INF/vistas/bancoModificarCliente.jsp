@@ -45,12 +45,12 @@
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Nombres</span>
-							<input class="input100" type="text" name="txtNombre" value="${cliente.nombre}" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )   "  pattern="\s\S+." required>
+							<input class="input100" type="text" name="txtNombre" id="txtNombre" value="${cliente.nombre}" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )   "  required>
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Apellido</span>
-							<input class="input100" type="text" name="txtApellido" value="${cliente.apellido}" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )   "  pattern="\s\S+." required>
+							<input class="input100" type="text" name="txtApellido" id="txtApellido" value="${cliente.apellido}" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )   " required>
 							<span class="focus-input100"></span>
 						</div>
 					
@@ -92,13 +92,13 @@
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Nacionalidad</span>
-					<input class="input100" type="text" name="txtNacionalidad" value="${cliente.nacionalidad}" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )" pattern="\s\S+." required>
+					<input class="input100" type="text" name="txtNacionalidad" id="txtNacionalidad" value="${cliente.nacionalidad}" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )"  required>
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Direccion</span>
-					<input class="input100" type="text" name="txtDireccion" value="${cliente.direccion}" pattern="\s\S+.">
+					<input class="input100" type="text" name="txtDireccion" id="txtDireccion" value="${cliente.direccion}">
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 input100-select">
@@ -246,6 +246,65 @@
 	}
 	
 	</script>
+		<script>
+	function comprobarNombre(valor,campo){
+		 var mensaje="";
+		 if(!$('#txtNombre').val().trim().length){
+			 mensaje="Ingrese un nombre valido";
+		 }
+		 
+		 this.setCustomValidity(mensaje);
+		 
+	 }
+	 var nombre=document.querySelector("#txtNombre");
+	    nombre.addEventListener("invalid", comprobarNombre);
+		nombre.addEventListener("input", comprobarNombre);
+</script>
+	
+<script>
+	function comprobarApellido(valor,campo){
+		 var mensaje="";
+		 if(!$('#txtApellido').val().trim().length){
+			 mensaje="Ingrese un apellido valido";
+		 }
+		 
+		 this.setCustomValidity(mensaje);
+		 
+	 }
+	 var nombre=document.querySelector("#txtApellido");
+	    nombre.addEventListener("invalid", comprobarApellido);
+		nombre.addEventListener("input", comprobarApellido);
+</script>
+	
+	<script>
+	function comprobarNacionalidad(valor,campo){
+		 var mensaje="";
+		 if(!$('#txtNacionalidad').val().trim().length){
+			 mensaje="Ingrese una nacionalidad valida";
+		 }
+		 
+		 this.setCustomValidity(mensaje);
+		 
+	 }
+	 var nombre=document.querySelector("#txtNacionalidad");
+	    nombre.addEventListener("invalid", comprobarNacionalidad);
+		nombre.addEventListener("input", comprobarNacionalidad);
+</script>
+
+<script>
+	function comprobarDireccion(valor,campo){
+		 var mensaje="";
+		 if(!$('#txtDireccion').val().trim().length){
+			 mensaje="Ingrese una direccion valida";
+		 }
+		 
+		 this.setCustomValidity(mensaje);
+		 
+	 }
+	 var nombre=document.querySelector("#txtDireccion");
+	    nombre.addEventListener("invalid", comprobarDireccion);
+		nombre.addEventListener("input", comprobarDireccion);
+</script>
 	
 </body>
 

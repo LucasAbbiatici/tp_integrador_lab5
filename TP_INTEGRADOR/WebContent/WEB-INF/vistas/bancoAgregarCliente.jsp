@@ -22,7 +22,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/transferencia.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="assets/css/tailwind.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
 </head>
 <body class="flex  h-screen  bg-gray-300">	
 	
@@ -32,7 +32,7 @@
 	<!--  FORMULARIO  -->
 	<div class="container-contact100 overflow-auto">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" action="/TP_INTEGRADOR/agregarCliente" method="POST">
+			<form class="contact100-form validate-form" action="/TP_INTEGRADOR/agregarCliente" method="POST" >
 				<span class="contact100-form-title">
 					Agregar Cliente
 				</span>
@@ -40,17 +40,17 @@
 					
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">DNI</span>
-							<input class="input100" type="text" name="txtDni" placeholder="Ingresar DNI" maxlength="8" pattern="\d{8}" title="Se requieren 8 digitos." onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" required>
+							<input class="input100" type="text" name="txtDni" placeholder="Ingresar DNI" maxlength="8" pattern="\d{8}" title="Se requieren 8 digitos." onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" required >
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Nombres</span>
-							<input class="input100" type="text" id="txtNombre" name="txtNombre" placeholder="Ingresar Nombres" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )   "  pattern="\s\S+." required>
+							<input class="input100" type="text" id="txtNombre" name="txtNombre" placeholder="Ingresar Nombres" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )   "  required>
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Apellido</span>
-							<input class="input100" type="text" name="txtApellido" placeholder="Ingresar Apellido" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )" pattern="\s\S+." required>
+							<input class="input100" type="text" name="txtApellido" id="txtApellido" placeholder="Ingresar Apellido" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )"  required>
 							<span class="focus-input100"></span>
 						</div>
 					
@@ -80,13 +80,13 @@
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Nacionalidad</span>
-					<input class="input100" type="text" name="txtNacionalidad" placeholder="Ingresar Nacionalidad" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )" pattern="\s\S+." required>
+					<input class="input100" type="text" name="txtNacionalidad" id="txtNacionalidad" placeholder="Ingresar Nacionalidad" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )" required>
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Direccion</span>
-					<input class="input100" type="text" name="txtDireccion" placeholder="Ingresar Direccion" pattern="\s\S+." required>
+					<input class="input100" type="text" name="txtDireccion" id="txtDireccion" placeholder="Ingresar Direccion"  required>
 					<span class="focus-input100"></span>
 				</div>
 				
@@ -214,10 +214,65 @@
 	}
 	
 	</script>
+	<script>
+	function comprobarNombre(valor,campo){
+		 var mensaje="";
+		 if(!$('#txtNombre').val().trim().length){
+			 mensaje="Ingrese un nombre valido";
+		 }
+		 
+		 this.setCustomValidity(mensaje);
+		 
+	 }
+	 var nombre=document.querySelector("#txtNombre");
+	    nombre.addEventListener("invalid", comprobarNombre);
+		nombre.addEventListener("input", comprobarNombre);
+</script>
 	
+<script>
+	function comprobarApellido(valor,campo){
+		 var mensaje="";
+		 if(!$('#txtApellido').val().trim().length){
+			 mensaje="Ingrese un apellido valido";
+		 }
+		 
+		 this.setCustomValidity(mensaje);
+		 
+	 }
+	 var nombre=document.querySelector("#txtApellido");
+	    nombre.addEventListener("invalid", comprobarApellido);
+		nombre.addEventListener("input", comprobarApellido);
+</script>
 	
+	<script>
+	function comprobarNacionalidad(valor,campo){
+		 var mensaje="";
+		 if(!$('#txtNacionalidad').val().trim().length){
+			 mensaje="Ingrese una nacionalidad valida";
+		 }
+		 
+		 this.setCustomValidity(mensaje);
+		 
+	 }
+	 var nombre=document.querySelector("#txtNacionalidad");
+	    nombre.addEventListener("invalid", comprobarNacionalidad);
+		nombre.addEventListener("input", comprobarNacionalidad);
+</script>
 
-	
+<script>
+	function comprobarDireccion(valor,campo){
+		 var mensaje="";
+		 if(!$('#txtDireccion').val().trim().length){
+			 mensaje="Ingrese una direccion valida";
+		 }
+		 
+		 this.setCustomValidity(mensaje);
+		 
+	 }
+	 var nombre=document.querySelector("#txtDireccion");
+	    nombre.addEventListener("invalid", comprobarDireccion);
+		nombre.addEventListener("input", comprobarDireccion);
+</script>
 </body>
 
 </html>
