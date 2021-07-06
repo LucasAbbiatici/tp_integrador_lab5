@@ -40,17 +40,17 @@
 						<input type="hidden" value="${cliente.user.id}" name="txtId">
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">DNI</span>
-							<input class="input100" type="text" name="txtDni" value="${cliente.dni}">
+							<input class="input100" type="text" name="txtDni" value="${cliente.dni}"  maxlength="8" pattern="\d{8}" title="Se requieren 8 digitos." onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" required>
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Nombres</span>
-							<input class="input100" type="text" name="txtNombre" value="${cliente.nombre}">
+							<input class="input100" type="text" name="txtNombre" value="${cliente.nombre}" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )   "  pattern="\s\S+." required>
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Apellido</span>
-							<input class="input100" type="text" name="txtApellido" value="${cliente.apellido}">
+							<input class="input100" type="text" name="txtApellido" value="${cliente.apellido}" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )   "  pattern="\s\S+." required>
 							<span class="focus-input100"></span>
 						</div>
 					
@@ -59,7 +59,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Sexo</span>
 					<div>
-						<select class="selection-2" name="selectSexo">
+						<select class="selection-2" name="selectSexo" required>
 							<option value="Masculino"  
 							<c:if test="${ cliente.sexo == 'Masculino' }">
 								selected
@@ -92,13 +92,13 @@
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Nacionalidad</span>
-					<input class="input100" type="text" name="txtNacionalidad" value="${cliente.nacionalidad}">
+					<input class="input100" type="text" name="txtNacionalidad" value="${cliente.nacionalidad}" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )" pattern="\s\S+." required>
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Direccion</span>
-					<input class="input100" type="text" name="txtDireccion" value="${cliente.direccion}">
+					<input class="input100" type="text" name="txtDireccion" value="${cliente.direccion}" pattern="\s\S+.">
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 input100-select">
