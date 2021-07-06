@@ -39,14 +39,14 @@
 
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Nombre</span>
-							<input class="input100" type="text" name="txtNombre" placeholder="Ingresar Nombre">
+							<input class="input100" type="text" name="txtNombre" id="txtNombre" placeholder="Ingresar Nombre" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 ) || (event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 46)" required>
 							<span class="focus-input100"></span>
 						</div>
 					
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Tipo de cuenta</span>
 					<div>
-						<select class="selection-2" name="selectTipoCuenta">
+						<select class="selection-2" name="selectTipoCuenta" required>
 							<c:forEach items="${listaTipoCue}" var="item">
 								<option value="${item.id}">${item.descripcion}</option>
 							</c:forEach>
@@ -58,7 +58,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Asignar Cliente</span>
 					<div>
-						<select class="selection-2" name="selectClientes">
+						<select class="selection-2" name="selectClientes" required>
 							<c:forEach items="${listaClientes}" var="item">
 								<option value="${item.id}">${item.dni} - ${item.nombre} ${item.apellido}</option>
 							</c:forEach>
@@ -113,5 +113,20 @@
 	<script src="assets/js/transferencia.js"></script>
 
 </body>
+
+	<script>
+	function comprobarNombre(valor,campo){
+		 var mensaje="";
+		 if(!$('#txtNombre').val().trim().length){
+			 mensaje="Ingrese un nombre valido";
+		 }
+		 
+		 this.setCustomValidity(mensaje);
+		 
+	 }
+	 var nombre=document.querySelector("#txtNombre");
+	    nombre.addEventListener("invalid", comprobarNombre);
+		nombre.addEventListener("input", comprobarNombre);
+</script>
 
 </html>
