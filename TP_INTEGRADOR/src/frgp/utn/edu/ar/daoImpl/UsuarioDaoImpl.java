@@ -21,7 +21,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		Usuario usu = new Usuario();
 		
 		try {
-		Query query = session.createQuery("SELECT u FROM Usuario u WHERE u.user = :username AND u.pass = :password");
+		Query query = session.createQuery("SELECT u FROM Usuario u WHERE u.user = :username AND u.pass = :password AND u.estado = 1");
 		query.setParameter("username", usuario.getUser());
 		query.setParameter("password", usuario.getPass());
 

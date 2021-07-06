@@ -22,6 +22,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/transferencia.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="assets/css/tailwind.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body class="flex  h-screen  bg-gray-300">	
 	
@@ -39,27 +40,26 @@
 					
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">DNI</span>
-							<input class="input100" type="text" name="txtDni" placeholder="Ingresar DNI">
+							<input class="input100" type="text" name="txtDni" placeholder="Ingresar DNI" maxlength="8" pattern="\d{8}" title="Se requieren 8 digitos." onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" required>
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Nombres</span>
-							<input class="input100" type="text" name="txtNombre" placeholder="Ingresar Nombres">
+							<input class="input100" type="text" id="txtNombre" name="txtNombre" placeholder="Ingresar Nombres" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )   "  pattern="\s\S+." required>
 							<span class="focus-input100"></span>
 						</div>
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">Apellido</span>
-							<input class="input100" type="text" name="txtApellido" placeholder="Ingresar Apellido">
+							<input class="input100" type="text" name="txtApellido" placeholder="Ingresar Apellido" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )" pattern="\s\S+." required>
 							<span class="focus-input100"></span>
 						</div>
 					
 				
-				
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Sexo</span>
 					<div>
-						<select class="selection-2" name="selectSexo">
-							<option>Seleccionar sexo</option>
+						<select class="selection-2" name="selectSexo" required>
+							<option value="">Seleccionar sexo</option>
 							<option value="Masculino">Masculino</option>
 							<option value="Femenino">Femenino</option>
 						</select>
@@ -80,20 +80,20 @@
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Nacionalidad</span>
-					<input class="input100" type="text" name="txtNacionalidad" placeholder="Ingresar Nacionalidad">
+					<input class="input100" type="text" name="txtNacionalidad" placeholder="Ingresar Nacionalidad" onkeypress="return (event.charCode > 64 && event.charCode < 91 ) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32 )" pattern="\s\S+." required>
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Direccion</span>
-					<input class="input100" type="text" name="txtDireccion" placeholder="Ingresar Direccion">
+					<input class="input100" type="text" name="txtDireccion" placeholder="Ingresar Direccion" pattern="\s\S+." required>
 					<span class="focus-input100"></span>
 				</div>
 				
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Provincia</span>
 					<div>
-						<select id="provincias" name="provincias" >
+						<select id="provincias" name="provincias" required>
 						</select>
 					</div>
 					<span class="focus-input100"></span>
@@ -101,7 +101,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Localidades</span>
 					<div>
-						<select name="localidades" id="localidades">
+						<select name="localidades" id="localidades" required>
 						</select>
 					</div>
 					<span class="focus-input100"></span>
@@ -111,7 +111,7 @@
 				<div class="container-contact100-form-btn">
 					<div class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn bg-blue-900"></div>
-						<button class="contact100-form-btn">
+						<button class="contact100-form-btn" >
 							<span>
 								Agregar Cliente
 								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -119,6 +119,12 @@
 						</button>
 					</div>
 				</div>
+				
+				
+				
+				
+				
+				
 				
 			</form>
 			<div style="${color}">
@@ -208,6 +214,9 @@
 	}
 	
 	</script>
+	
+	
+
 	
 </body>
 
