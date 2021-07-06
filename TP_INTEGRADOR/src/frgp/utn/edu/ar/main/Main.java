@@ -68,8 +68,8 @@ public class Main {
 		cliente.setNacionalidad("Argentina");
 		cliente.setFechaNacimiento(date);
 		cliente.setDireccion("Ayacucho 2011");
-		cliente.setProvincia("Buenos aires");
-		cliente.setLocalidad("Don Torcuato");
+		cliente.setProvincia("Buenos Aires");
+		cliente.setLocalidad("DON TORCUATO ESTE");
 		
 		//Usuario 1
 		Usuario usuario = new Usuario(cliente);		
@@ -93,8 +93,8 @@ public class Main {
 		cliente2.setNacionalidad("Argentina");
 		cliente2.setFechaNacimiento(date2);
 		cliente2.setDireccion("Los Platanos 300");
-		cliente2.setProvincia("Buenos aires");
-		cliente2.setLocalidad("Escobar");
+		cliente2.setProvincia("Buenos Aires");
+		cliente2.setLocalidad("BELEN DE ESCOBAR");
 		
 		//Usuario 2
 		Usuario usuario2 = new Usuario(cliente2);		
@@ -118,8 +118,8 @@ public class Main {
 		cliente3.setNacionalidad("Argentina");
 		cliente3.setFechaNacimiento(date3);
 		cliente3.setDireccion("Guayaquil 201");
-		cliente3.setProvincia("Buenos aires");
-		cliente3.setLocalidad("Grand Bourg");
+		cliente3.setProvincia("Buenos Aires");
+		cliente3.setLocalidad("GRAND BOURG");
 						
 		//Usuario 3
 		Usuario usuario3 = new Usuario(cliente3);		
@@ -143,8 +143,8 @@ public class Main {
 		cliente4.setNacionalidad("Argentina");
 		cliente4.setFechaNacimiento(date4);
 		cliente4.setDireccion("San Martin 443");
-		cliente4.setProvincia("Buenos aires");
-		cliente4.setLocalidad("Moreno");
+		cliente4.setProvincia("Buenos Aires");
+		cliente4.setLocalidad("MORENO");
 		
 		//Usuario 4
 		Usuario usuario4 = new Usuario(cliente4);		
@@ -168,8 +168,8 @@ public class Main {
 		cliente5.setNacionalidad("Argentina");
 		cliente5.setFechaNacimiento(date5);
 		cliente5.setDireccion("Belgrano 6243");
-		cliente5.setProvincia("Buenos aires");
-		cliente5.setLocalidad("Avellaneda");
+		cliente5.setProvincia("Buenos Aires");
+		cliente5.setLocalidad("AVELLANEDA");
 		
 		//Usuario 5
 		Usuario usuario5 = new Usuario(cliente5);		
@@ -193,8 +193,8 @@ public class Main {
 		cliente6.setNacionalidad("Argentina");
 		cliente6.setFechaNacimiento(date6);
 		cliente6.setDireccion("Humberto 2431");
-		cliente6.setProvincia("Buenos aires");
-		cliente6.setLocalidad("Lujan");
+		cliente6.setProvincia("Buenos Aires");
+		cliente6.setLocalidad("LUJAN");
 		
 		//Usuario 6
 		Usuario usuario6 = new Usuario(cliente6);		
@@ -219,7 +219,7 @@ public class Main {
 		cliente7.setFechaNacimiento(date7);
 		cliente7.setDireccion("San Martin 2243");
 		cliente7.setProvincia("Cordoba");
-		cliente7.setLocalidad("Carlos Paz");
+		cliente7.setLocalidad("VILLA CARLOS PAZ");
 		
 		//Usuario 7
 		Usuario usuario7 = new Usuario(cliente7);		
@@ -244,7 +244,7 @@ public class Main {
 		cliente8.setFechaNacimiento(date8);
 		cliente8.setDireccion("Av Cordoba 3011");
 		cliente8.setProvincia("San Luis");
-		cliente8.setLocalidad("Villa Mercedes");
+		cliente8.setLocalidad("VILLA MERCEDES");
 		
 		//Usuario 8
 		Usuario usuario8 = new Usuario(cliente8);		
@@ -269,7 +269,7 @@ public class Main {
 		cliente9.setFechaNacimiento(date9);
 		cliente9.setDireccion("Cerviño 4449");
 		cliente9.setProvincia("Cordoba");
-		cliente9.setLocalidad("Villa Totoral");
+		cliente9.setLocalidad("VILLA DEL TOTORAL");
 		
 		//Usuario 9
 		Usuario usuario9 = new Usuario(cliente9);		
@@ -293,8 +293,8 @@ public class Main {
 		cliente10.setNacionalidad("Argentina");
 		cliente10.setFechaNacimiento(date10);
 		cliente10.setDireccion("Catamarca 1541");
-		cliente10.setProvincia("Buenos aires");
-		cliente10.setLocalidad("Pilar");
+		cliente10.setProvincia("Buenos Aires");
+		cliente10.setLocalidad("PILAR");
 		
 		//Usuario 10
 		Usuario usuario10 = new Usuario(cliente10);		
