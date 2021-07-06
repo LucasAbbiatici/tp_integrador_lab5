@@ -141,4 +141,25 @@ public class CuentaDaoImpl implements CuentaDao {
 		}
 	}
 
+	@Override
+	public boolean borrarCuentasCliente(int _idCliente) {
+		Session session = conexion.abrirConexion();
+		Transaction transaction = session.beginTransaction();
+		try {
+			Query query = session.createQuery("UPDATE Cuenta c SET c.estado = 0 WHERE c.cliente.id =:idCliente and c.estado = 1");
+			query.setParameter("idCliente", _idCliente);
+			
+			if( query.executeUpdate() > 0) {
+				transaction.commit();
+				return true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		
+		return false;
+	}
+
 }

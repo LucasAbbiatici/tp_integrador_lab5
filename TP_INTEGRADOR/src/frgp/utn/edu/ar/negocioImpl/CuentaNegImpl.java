@@ -51,4 +51,9 @@ public class CuentaNegImpl implements CuentaNeg {
 		return dao.obtenerCuentasCliente(_idCliente);
 	}
 
+	@Override
+	public boolean borrarCuentasCliente(int _idCliente) {
+		return dao.borrarCuentasCliente(_idCliente);
+	}
+
 }
