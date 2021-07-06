@@ -26,6 +26,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	private Conexion conexion;
 	
 	@Autowired
+	@Qualifier("beanCliente")
 	private Cliente cliente;
 	
 	@Override

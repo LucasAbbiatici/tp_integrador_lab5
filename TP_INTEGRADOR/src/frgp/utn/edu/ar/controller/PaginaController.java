@@ -50,12 +50,16 @@ public class PaginaController {
 	@Autowired
 	private TipoCuenta tc;
 	@Autowired
+	@Qualifier("beanCliente")
 	private Cliente cliente;
 	@Autowired
 	@Qualifier("beanCuenta2")
 	private Cuenta cue;
 	@Autowired
 	private MovimientoNegImpl movimientoNeg;
+	@Autowired 
+	@Qualifier("beanCliente2")
+	private Cliente cli;
 	
 	@RequestMapping("/index.html")
 	public ModelAndView eventoRedireccionarIndex() {
@@ -309,7 +313,7 @@ public class PaginaController {
 		List<TipoCuenta> tipoCue = tipoCuentaNeg.readAll();
 		List<Cliente> listaClientes = clienteNeg.readAll();
 		
-		cue = cuentaNegImpl.obtenerCuenta(txtId);
+		cue = cuentaNegImpl.obtenerCuenta(txtId);//cuenta vieja
 		
 		tc = tipoCuentaNeg.obtenerTipoCuenta(selectTipoCuenta);
 		cliente = clienteNeg.obtenerCliente(selectClientes);
@@ -371,6 +375,8 @@ public class PaginaController {
 	public ModelAndView modificarCliente(int txtId, String txtDni, String txtNombre, String txtApellido, String selectSexo, Date date_fechaNacimiento, String txtNacionalidad, String txtDireccion, String provincias, String localidades) {
 		ModelAndView MV = new ModelAndView();
 		
+		cli = clienteNeg.obtenerCliente(txtId);
+		
 		cliente.setDni(txtDni);
 		cliente.setNombre(txtNombre);
 		cliente.setApellido(txtApellido);
@@ -392,18 +398,20 @@ public class PaginaController {
 				
 				MV.addObject("mensaje", "El cliente fue modificado correctamente");
 				MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
+				MV.addObject("cliente",cliente);
 				
 			} else {
 				
 				MV.addObject("mensaje", "No se pudo modificar el cliente");
 				MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
-				
+				MV.addObject("cliente",cli);
 			}
 			
 		} else {
 			
 			MV.addObject("mensaje", "No se pudo modificar el usuario del cliente");
 			MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+			MV.addObject("cliente",cli);
 			
 		}
 		

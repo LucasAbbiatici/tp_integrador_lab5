@@ -127,5 +127,12 @@ public class Config {
 		return new MovimientoDaoImpl();
 	}
 	
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public Cliente beanCliente2() {
+		return new Cliente();
+	}
+	
+	
 }
 	
