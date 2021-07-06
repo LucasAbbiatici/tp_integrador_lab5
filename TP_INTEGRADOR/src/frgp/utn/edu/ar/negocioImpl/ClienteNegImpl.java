@@ -40,4 +40,9 @@ public class ClienteNegImpl implements ClienteNeg {
 		return dao.obtenerClientePorUsuario(_id);
 	}
 
+	@Override
+	public boolean verificarExistenciaDni(String _dni) {
+		return dao.verificarExistenciaDni(_dni);
+	}
+
 }

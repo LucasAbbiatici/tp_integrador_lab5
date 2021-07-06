@@ -134,4 +134,24 @@ public class ClienteDaoImpl implements ClienteDao {
 			return idCliente;
 		
 	}
+
+	@Override
+	public boolean verificarExistenciaDni(String _dni) {
+		Session session = conexion.abrirConexion();
+		
+		try {
+			
+			Query query = session.createQuery("FROM Cliente c WHERE c.dni =:dniCliente");
+			query.setParameter("dniCliente", _dni);
+			
+			cliente = (Cliente)query.list().get(0);
+			
+			return true;
+			
+		} catch (Exception e) {
+				e.printStackTrace();
+		}
+			
+			return false;
+	}
 }

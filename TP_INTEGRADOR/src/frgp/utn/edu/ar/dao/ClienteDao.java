@@ -12,6 +12,6 @@ public interface ClienteDao {
 	public List<Cliente> readAll();
 	public Cliente obtenerCliente(int _id);
 	public int obtenerClientePorUsuario(int _id);
-	
+	public boolean verificarExistenciaDni(String _dni);
 	
 }

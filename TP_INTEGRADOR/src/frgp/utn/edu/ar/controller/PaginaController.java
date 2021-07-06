@@ -165,9 +165,7 @@ public class PaginaController {
 			MV.setViewName("mainBanco"); 
 		}
 		
-		
-		
-		
+
 		return MV;
     }
 	
@@ -262,28 +260,38 @@ public class PaginaController {
 	public ModelAndView agregarCliente(String txtDni, String txtNombre, String txtApellido, String selectSexo, Date date_fechaNacimiento, String txtNacionalidad, String txtDireccion, String provincias, String localidades) {
 		ModelAndView MV = new ModelAndView();
 		
-		cliente.setDni(txtDni);
-		cliente.setNombre(txtNombre);
-		cliente.setApellido(txtApellido);
-		cliente.setSexo(selectSexo);
-		cliente.setFechaNacimiento(date_fechaNacimiento);
-		cliente.setNacionalidad(txtNacionalidad);
-		cliente.setDireccion(txtDireccion);
-		cliente.setProvincia(provincias);
-		cliente.setLocalidad(localidades);
 		
-		usuario2.setUser(cliente.getDni());
-		usuario2.setPass(usuario.crearContrasenia(10));
-		usuario2.setAdmin(false);
-		
-		cliente.setUser(usuario2);
-		
-		if(usuarioNeg.insert(usuario2)) {
+		if(!clienteNeg.verificarExistenciaDni(txtDni))
+		{
+			cliente.setDni(txtDni);
+			cliente.setNombre(txtNombre);
+			cliente.setApellido(txtApellido);
+			cliente.setSexo(selectSexo);
+			cliente.setFechaNacimiento(date_fechaNacimiento);
+			cliente.setNacionalidad(txtNacionalidad);
+			cliente.setDireccion(txtDireccion);
+			cliente.setProvincia(provincias);
+			cliente.setLocalidad(localidades);
 			
-			if(clienteNeg.insert(cliente)) {
+			usuario2.setUser(cliente.getDni());
+			usuario2.setPass(usuario.crearContrasenia(10));
+			usuario2.setAdmin(false);
+			
+			cliente.setUser(usuario2);
+			
+			if(usuarioNeg.insert(usuario2)) {
 				
-				MV.addObject("mensaje", "El cliente fue ingresado correctamente");
-				MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
+				if(clienteNeg.insert(cliente)) {
+					
+					MV.addObject("mensaje", "El cliente fue ingresado correctamente");
+					MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
+					
+				} else {
+					
+					MV.addObject("mensaje", "No se pudo agregar el cliente");
+					MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+					
+				}
 				
 			} else {
 				
@@ -292,13 +300,13 @@ public class PaginaController {
 				
 			}
 			
-		} else {
-			
-			MV.addObject("mensaje", "No se pudo agregar el cliente");
-			MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
-			
 		}
-		
+		else
+		{
+			MV.addObject("mensaje", "Dni ya utilizado");
+			MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+		}
+
 		MV.setViewName("bancoAgregarCliente");
 		return MV;	
 	}
