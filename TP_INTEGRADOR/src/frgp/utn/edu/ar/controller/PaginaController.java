@@ -400,45 +400,94 @@ public class PaginaController {
 		
 		cli = clienteNeg.obtenerCliente(txtId);
 		
-		cliente.setDni(txtDni);
-		cliente.setNombre(txtNombre);
-		cliente.setApellido(txtApellido);
-		cliente.setSexo(selectSexo);
-		cliente.setFechaNacimiento(date_fechaNacimiento);
-		cliente.setNacionalidad(txtNacionalidad);
-		cliente.setDireccion(txtDireccion);
-		cliente.setProvincia(provincias);
-		cliente.setLocalidad(localidades);
+		if(!clienteNeg.verificarExistenciaDni(txtDni)) {
+			
+			cliente.setDni(txtDni);
+			cliente.setNombre(txtNombre);
+			cliente.setApellido(txtApellido);
+			cliente.setSexo(selectSexo);
+			cliente.setFechaNacimiento(date_fechaNacimiento);
+			cliente.setNacionalidad(txtNacionalidad);
+			cliente.setDireccion(txtDireccion);
+			cliente.setProvincia(provincias);
+			cliente.setLocalidad(localidades);
+			
+			usuario2 = usuarioNeg.obtenerUsuarioXid(txtId);
+			usuario2.setUser(txtDni);
+				
+			if(usuarioNeg.insert(usuario2)) {
+				
+				cliente.setUser(usuario2);
+				
+				if(clienteNeg.insert(cliente)) {
+					
+					MV.addObject("mensaje", "El cliente fue modificado correctamente");
+					MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
+					MV.addObject("cliente",cliente);
+					
+					} else {
+						
+						MV.addObject("mensaje", "No se pudo modificar el cliente");
+						MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+						MV.addObject("cliente",cli);
+					}
+				
+				} else {
+					
+					MV.addObject("mensaje", "No se pudo modificar el usuario del cliente");
+					MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+					MV.addObject("cliente",cli);
+					
+					}
+		}
 		
-		usuario2 = usuarioNeg.obtenerUsuarioXid(txtId);
-		usuario2.setUser(txtDni);
-			
-		if(usuarioNeg.insert(usuario2)) {
-			
-			cliente.setUser(usuario2);
-			
-			if(clienteNeg.insert(cliente)) {
+		else  {
+			if(txtDni.equals(cli.getDni())) {
+				cliente.setDni(txtDni);
+				cliente.setNombre(txtNombre);
+				cliente.setApellido(txtApellido);
+				cliente.setSexo(selectSexo);
+				cliente.setFechaNacimiento(date_fechaNacimiento);
+				cliente.setNacionalidad(txtNacionalidad);
+				cliente.setDireccion(txtDireccion);
+				cliente.setProvincia(provincias);
+				cliente.setLocalidad(localidades);
 				
-				MV.addObject("mensaje", "El cliente fue modificado correctamente");
-				MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
-				MV.addObject("cliente",cliente);
-				
-			} else {
-				
-				MV.addObject("mensaje", "No se pudo modificar el cliente");
+				usuario2 = usuarioNeg.obtenerUsuarioXid(txtId);
+				usuario2.setUser(txtDni);
+					
+				if(usuarioNeg.insert(usuario2)) {
+					
+					cliente.setUser(usuario2);
+					
+					if(clienteNeg.insert(cliente)) {
+						
+						MV.addObject("mensaje", "El cliente fue modificado correctamente");
+						MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
+						MV.addObject("cliente",cliente);
+						
+						} else {
+							
+							MV.addObject("mensaje", "No se pudo modificar el cliente");
+							MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+							MV.addObject("cliente",cli);
+						}
+					
+					} else {
+						
+						MV.addObject("mensaje", "No se pudo modificar el usuario del cliente");
+						MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+						MV.addObject("cliente",cli);
+						
+						}
+			}
+			else {
+				MV.addObject("mensaje", "Dni ya utilizado");
 				MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
 				MV.addObject("cliente",cli);
 			}
-			
-		} else {
-			
-			MV.addObject("mensaje", "No se pudo modificar el usuario del cliente");
-			MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
-			MV.addObject("cliente",cli);
-			
 		}
 		
-			
 		MV.setViewName("bancoModificarCliente");
 		return MV;	
 	}
