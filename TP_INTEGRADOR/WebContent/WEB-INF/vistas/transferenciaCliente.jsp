@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
 	<title>Transferencia</title>
@@ -40,9 +41,11 @@
 					<span class="label-input100">Cuenta origen</span>
 					<div>
 						<select class="selection-2" name="cuentas-origen">
-							<option>Seleccionar cuenta</option>
-							<option>2850590940090418135201 - $saldo</option>
-							<option>2859530979095418432211 - $saldo</option>
+							<option >Seleccionar cuenta</option>
+							<c:forEach items="${listaCuentasCliente}" var="item">
+								<option value="${item.id}">${item.CBU} - ${item.nombre} - ${item.saldo}</option>
+							</c:forEach>
+							
 						</select>
 					</div>
 					<span class="focus-input100"></span>
