@@ -57,7 +57,7 @@
 					<label class="label-input100">Cuenta destino</label>
 					<div class="p-t-15">
 						<label class="label-input100">Cuentas propias
-							<input type="radio" checked="checked" id="Si" name="seguro" value="si">
+							<input type="radio" checked="checked" id="rdbCuenta" name="rdbCuenta" value="si" onclick="document.getElementById('cuenta-destino').disabled = false; document.getElementById('cbu').disabled = true;">
 							<span class="checkmark"></span>
 						</label>
 						<div class="wrap-input100 input100-select">
@@ -68,13 +68,13 @@
 						</div>
 						<br>
 						<label class="label-input100">Cuentas externas
-							<input type="radio" id="No" name="seguro" value="no">
+							<input type="radio" id="rdbCuenta" name="rdbCuenta" value="no" onclick="document.getElementById('cuenta-destino').disabled = true; document.getElementById('cbu').disabled = false;">
 							<span class="checkmark"></span>
 						</label>
 
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">CBU</span>
-							<input class="input100" type="text" name="cbu" placeholder="Ingresar CBU">
+							<input class="input100" type="text" name="cbu" placeholder="Ingresar CBU" id="cbu" disabled>
 							<span class="focus-input100"></span>
 						</div>
 					</div>
@@ -109,7 +109,7 @@
 	<!--  END FORMULARIO  -->
 
 
-	<div id="dropDownSelect1"></div>
+
 
 	<!--===============================================================================================-->
 	
@@ -120,12 +120,7 @@
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="assets/vendor/select2/select2.min.js"></script>
-	<script>
-		$(".selection-2").select2({
-			minimumResultsForSearch: 20,
-			dropdownParent: $('#dropDownSelect1')
-		});
-	</script>
+
 	<!--===============================================================================================-->
 	<script src="assets/vendor/daterangepicker/moment.min.js"></script>
 	<script src="assets/vendor/daterangepicker/daterangepicker.js"></script>
@@ -162,6 +157,9 @@
         });
         
     </script>
+    
+    
+ 
 
 </body>
 
