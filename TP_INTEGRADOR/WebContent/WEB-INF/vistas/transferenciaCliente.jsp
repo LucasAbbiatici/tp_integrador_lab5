@@ -6,6 +6,7 @@
 	<title>Transferencia</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
@@ -40,7 +41,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Cuenta origen</span>
 					<div>
-						<select class="selection-2" name="cuentas-origen">
+						<select class="selection-2" name="cuentas-origen" id="cuenta-origen" >
 							<option >Seleccionar cuenta</option>
 							<c:forEach items="${listaCuentasCliente}" var="item">
 								<option value="${item.id}">${item.CBU} - ${item.nombre} - ${item.saldo}</option>
@@ -60,10 +61,9 @@
 							<span class="checkmark"></span>
 						</label>
 						<div class="wrap-input100 input100-select">
-							<select class="selection-2" name="cuentas-destino">
+							<select class="selection-2" name="cuentas-destino" id="cuenta-destino">
 								<option>Seleccionar cuenta</option>
-								<option>2850590940090418135201</option>
-								<option>2859530979095418432211</option>
+								
 							</select>
 						</div>
 						<br>
@@ -112,7 +112,7 @@
 	<div id="dropDownSelect1"></div>
 
 	<!--===============================================================================================-->
-	<script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+	
 	<!--===============================================================================================-->
 	<script src="assets/vendor/animsition/js/animsition.min.js"></script>
 	<!--===============================================================================================-->
@@ -133,6 +133,35 @@
 	<script src="assets/vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
 	<script src="assets/js/transferencia.js"></script>
+	
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            let ddlCuentaOrigen = document.querySelector('#cuenta-origen');
+
+            //clono los options de cuenta-origen despues del 1er elemento("seleccionar origen") y lo copio en cuenta-destino
+            $('#cuenta-origen option').clone().slice(1).appendTo('#cuenta-destino');
+            
+            
+            ddlCuentaOrigen.addEventListener("change",() =>{
+            	 console.log("pase");
+                document.querySelectorAll('#cuenta-destino option')[0].selected = true;
+
+                let options = document.querySelectorAll('#cuenta-destino option');
+                options.forEach(option => {
+                    if (option.value == ddlCuentaOrigen.value) {
+                        option.style.visibility ='hidden';
+                        option.style.display  ='none';
+                    }else{
+                        option.style.visibility ='visible';
+                        option.style.display  ='block';
+                    }
+                });
+            });
+        });
+        
+    </script>
 
 </body>
 

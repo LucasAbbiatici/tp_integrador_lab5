@@ -116,17 +116,13 @@ public class PaginaController {
 	@RequestMapping("/transferencias")
 	public ModelAndView eventoRedireccionarTransferencias() {
 		ModelAndView MV = new ModelAndView();
-		System.out.println("pase");
+		
 		
 		List<Cuenta> cuentas = cuentaNegImpl.obtenerCuentasCliente(clienteNeg.obtenerClientePorUsuario(usuario.getId()));
-		for (Cuenta c : cuentas) {
-			
-			System.out.println(c.toString());
-			System.out.println("pase2");
-		}
+		
 		MV.addObject("listaCuentasCliente",cuentas);
 		
-		System.out.println("pase3");
+	
 		MV.setViewName("transferenciaCliente");
 		return MV;
 	}

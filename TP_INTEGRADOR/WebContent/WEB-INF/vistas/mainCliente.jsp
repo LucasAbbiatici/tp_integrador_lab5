@@ -23,7 +23,6 @@
 	<table id="tabla" class="table table-striped table-bordered table-sm">
 		<thead>
 			<tr>
-				<th class="th-sm">Número de Cuenta</th>
 				<th class="th-sm">CBU</th>
 				<th class="th-sm">Tipo de Cuenta</th>
 				<th class="th-sm">Nombre Cuenta</th>
@@ -34,12 +33,11 @@
 		<tbody>
 			<c:forEach items="${listaCuentasCliente}" var="item">
 				<tr>
-					<td>${item.id}</td>
 					<td>${item.CBU}</td>
 					<td>${item.tipoDeCuenta.descripcion}</td>
 					<td>${item.nombre}</td>
 					<td>${item.saldo}</td>
-					<td><a href="<c:url value='/movimientos-cuenta-${item.id}' />"><input type="submit" value="Movimientos" name="btnMovimientos" class="btnMovimientos"></a></td>
+					<td><a href="<c:url value='/movimientos-cuenta-${item.id}' />"><input type="submit" value="Movimientos" name="btnMovimientos" class="btnModificar" style="width:110px;"></a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
