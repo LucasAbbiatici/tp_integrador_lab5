@@ -42,7 +42,7 @@
 					<span class="label-input100">Cuenta origen</span>
 					<div>
 						<select class="selection-2" name="selectCuentaOrigen" id="cuenta-origen" >
-							<option >Seleccionar cuenta</option>
+							<option value = "0">Seleccionar cuenta</option>
 							<c:forEach items="${listaCuentasCliente}" var="item">
 								<option value="${item.id}">${item.CBU} - ${item.nombre} - ${item.saldo}</option>
 							</c:forEach>
@@ -57,18 +57,18 @@
 					<label class="label-input100">Cuenta destino</label>
 					<div class="p-t-15">
 						<label class="label-input100">Cuentas propias
-							<input type="radio" checked="checked" id="rdbCuenta" name="rdbCuenta" value="si" onclick="document.getElementById('cuenta-destino').disabled = false; document.getElementById('cbu').disabled = true;">
+							<input type="radio" checked="checked" id="rdb1" name="rdbCuenta" value="si" onclick="document.getElementById('cbu').value = ''; document.getElementById('cuenta-destino').disabled = false; document.getElementById('cbu').disabled = true;">
 							<span class="checkmark"></span>
 						</label>
 						<div class="wrap-input100 input100-select">
 							<select class="selection-2" name="selectCuentaDestino" id="cuenta-destino">
-								<option>Seleccionar cuenta</option>
+								<option value = "0">Seleccionar cuenta</option>
 								
 							</select>
 						</div>
 						<br>
 						<label class="label-input100">Cuentas externas
-							<input type="radio" id="rdbCuenta" name="rdbCuenta" value="no" onclick="document.getElementById('cuenta-destino').disabled = true; document.getElementById('cbu').disabled = false;">
+							<input type="radio" id="rdb2" name="rdbCuenta" value="no" onclick="document.getElementById('cuenta-destino').selectedIndex = 0; document.getElementById('cuenta-destino').disabled = true; document.getElementById('cbu').disabled = false;">
 							<span class="checkmark"></span>
 						</label>
 

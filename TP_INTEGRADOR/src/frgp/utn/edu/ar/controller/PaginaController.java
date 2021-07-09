@@ -540,21 +540,32 @@ public class PaginaController {
 	}
 	
 	@RequestMapping(value="/transferencia",method=RequestMethod.POST)
-	public ModelAndView redireccionTransferencia(int selectCuentaOrigen, int selectCuentaDestino, String txtDetalle, float txtImporte) {
+	public ModelAndView redireccionTransferencia(String txtCbu, int selectCuentaOrigen, String selectCuentaDestino, String txtDetalle, float txtImporte) {
 		ModelAndView MV = new ModelAndView();
-		
-	
-		
 		long millis = System.currentTimeMillis();  
-        Date date = new Date(millis);  
+		Date date = new Date(millis);  
 		
 		//La cuenta que envia 
-		cuenta = cuentaNegImpl.obtenerCuenta(selectCuentaOrigen);
+			cuenta = cuentaNegImpl.obtenerCuenta(selectCuentaOrigen);
+			
 		//La cuenta que recibe
-		cue = cuentaNegImpl.obtenerCuenta(selectCuentaDestino);
+			
+			//si recibe cuenta propia
+				if(selectCuentaDestino != null)
+				{
+					int cuentaDestino = Integer.parseInt(selectCuentaDestino);
+					if(cuentaDestino != 0)
+						cue = cuentaNegImpl.obtenerCuenta(cuentaDestino);
+				}
+			
+			//si recibe cbu externo
+				if(txtCbu != null)
+					cue = cuentaNegImpl.obtenerCuentaXCBU(txtCbu);
 		
-		if(cuenta.getSaldo() > txtImporte) {
-
+		//Una vez cargadas las 2 cuentas
+		if(cuenta.getSaldo() > txtImporte) 
+		{
+			
 			tipoMov.setId(1);
 			tipoMov.setDescripcion("Negativo");
 			
@@ -579,23 +590,17 @@ public class PaginaController {
 					
 					MV.addObject("mensaje", "Transferencia realizada con éxito");
 					MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
-				}
-				
-				else {	
+				}else {	
 					MV.addObject("mensaje", "No se pudo realizar la transferencia");
 					MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
 				}
 			
-			}
-			
-			else {
+			}else {
 				MV.addObject("mensaje", "No se permiten transferencias entre cuentas de distinta divisa");
 				MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
 			}
-
-		}
-		
-		else {
+			
+		}else {
 			
 			MV.addObject("mensaje", "La cuenta no posee el saldo suficiente para la transferencia");
 			MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");

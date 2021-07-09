@@ -204,7 +204,7 @@ public class CuentaDaoImpl implements CuentaDao {
 		Cuenta cue = new Cuenta();
 		
 		try {
-			Query query = session.createQuery("SELECT c FROM Cuenta c WHERE c.CBU=:CBUCue");
+			Query query = session.createQuery("select c FROM Cuenta c WHERE c.CBU=:CBUCue");
 			query.setParameter("CBUCue", CBU);
 			
 				cue = (Cuenta)query.list().get(0);
