@@ -5,15 +5,22 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import frgp.utn.edu.ar.dao.MovimientoDao;
+import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Movimiento;
+import frgp.utn.edu.ar.entidad.TipoMovimiento;
 
 public class MovimientoDaoImpl implements MovimientoDao{
 
 	@Autowired
 	private Conexion conexion;
+	@Autowired
+	@Qualifier("beanTipoMov")
+	private TipoMovimiento mov;
 	
 	@Override
 	public List<Movimiento> movimientosXcuenta(int _idCuenta) {
@@ -34,6 +41,25 @@ public class MovimientoDaoImpl implements MovimientoDao{
 		}
 			
 			return  movimientos;
+	}
+
+	@Override
+	public boolean insert(Movimiento m) {
+		
+		Session session = conexion.abrirConexion();
+		Transaction transaction = session.beginTransaction();
+		
+			
+		try {
+			session.save(m);
+			transaction.commit();
+			return true;
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+		
 	}
 	
 }

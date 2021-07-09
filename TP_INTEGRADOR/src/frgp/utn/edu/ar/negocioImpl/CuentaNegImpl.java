@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import frgp.utn.edu.ar.daoImpl.CuentaDaoImpl;
 import frgp.utn.edu.ar.entidad.Cuenta;
+import frgp.utn.edu.ar.entidad.Movimiento;
 import frgp.utn.edu.ar.negocio.CuentaNeg;
 
 public class CuentaNegImpl implements CuentaNeg {
@@ -54,6 +55,12 @@ public class CuentaNegImpl implements CuentaNeg {
 	@Override
 	public boolean borrarCuentasCliente(int _idCliente) {
 		return dao.borrarCuentasCliente(_idCliente);
+	}
+
+	@Override
+	public boolean actualizarSaldo(Movimiento mov) {
+		return dao.actualizarSaldo(mov);
+		
 	}
 
 }

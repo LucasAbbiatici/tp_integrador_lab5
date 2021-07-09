@@ -19,6 +19,7 @@ import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Cuenta;
 import frgp.utn.edu.ar.entidad.Movimiento;
 import frgp.utn.edu.ar.entidad.TipoCuenta;
+import frgp.utn.edu.ar.entidad.TipoMovimiento;
 import frgp.utn.edu.ar.entidad.Usuario;
 import frgp.utn.edu.ar.negocioImpl.ClienteNegImpl;
 import frgp.utn.edu.ar.negocioImpl.CuentaNegImpl;
@@ -60,6 +61,18 @@ public class PaginaController {
 	@Autowired 
 	@Qualifier("beanCliente2")
 	private Cliente cli;
+	@Autowired
+	@Qualifier("beanMovimiento1")
+	private Movimiento mov1;
+	@Autowired
+	@Qualifier("beanMovimiento2")
+	private Movimiento mov2;
+	@Autowired
+	@Qualifier("beanTipoMov")
+	private TipoMovimiento tipoMov;
+	@Autowired
+	@Qualifier("beanTipoMov2")
+	private TipoMovimiento tipoMov2;
 	
 	@RequestMapping("/index.html")
 	public ModelAndView eventoRedireccionarIndex() {
@@ -113,7 +126,7 @@ public class PaginaController {
 	}
 	
 
-	@RequestMapping("/transferencias")
+	@RequestMapping("/redirec-transferencias")
 	public ModelAndView eventoRedireccionarTransferencias() {
 		ModelAndView MV = new ModelAndView();
 		
@@ -526,6 +539,74 @@ public class PaginaController {
 		return MV;
 	}
 	
+	@RequestMapping(value="/transferencia",method=RequestMethod.POST)
+	public ModelAndView redireccionTransferencia(int selectCuentaOrigen, int selectCuentaDestino, String txtDetalle, float txtImporte) {
+		ModelAndView MV = new ModelAndView();
+		
+	
+		
+		long millis = System.currentTimeMillis();  
+        Date date = new Date(millis);  
+		
+		//La cuenta que envia 
+		cuenta = cuentaNegImpl.obtenerCuenta(selectCuentaOrigen);
+		//La cuenta que recibe
+		cue = cuentaNegImpl.obtenerCuenta(selectCuentaDestino);
+		
+		if(cuenta.getSaldo() > txtImporte) {
+
+			tipoMov.setId(1);
+			tipoMov.setDescripcion("Negativo");
+			
+			mov1.setCuenta(cuenta);
+			mov1.setDetalle(txtDetalle);
+			mov1.setImporte(txtImporte);
+			mov1.setTipoDeMovimiento(tipoMov);
+			mov1.setFecha(date);
+			
+			tipoMov2.setId(2);
+			tipoMov2.setDescripcion("Positivo");
+			
+			mov2.setCuenta(cue);
+			mov2.setDetalle(txtDetalle);
+			mov2.setImporte(txtImporte);
+			mov2.setTipoDeMovimiento(tipoMov2);
+			mov2.setFecha(date);
+			
+			if(cuenta.getTipoDeCuenta().getId() == cue.getTipoDeCuenta().getId()) {
+					
+				if(movimientoNeg.insert(mov1) && movimientoNeg.insert(mov2) && cuentaNegImpl.actualizarSaldo(mov1) && cuentaNegImpl.actualizarSaldo(mov2)) {
+					
+					MV.addObject("mensaje", "Transferencia realizada con éxito");
+					MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
+				}
+				
+				else {	
+					MV.addObject("mensaje", "No se pudo realizar la transferencia");
+					MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+				}
+			
+			}
+			
+			else {
+				MV.addObject("mensaje", "No se permiten transferencias entre cuentas de distinta divisa");
+				MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+			}
+
+		}
+		
+		else {
+			
+			MV.addObject("mensaje", "La cuenta no posee el saldo suficiente para la transferencia");
+			MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+		}
+		
+		List<Cuenta> cuentas = cuentaNegImpl.obtenerCuentasCliente(clienteNeg.obtenerClientePorUsuario(usuario.getId()));
+		
+		MV.addObject("listaCuentasCliente",cuentas);
+		MV.setViewName("transferenciaCliente");
+		return MV;
+	}
 }
 
 

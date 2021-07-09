@@ -18,4 +18,10 @@ public class MovimientoNegImpl implements MovimientoNeg{
 		return dao.movimientosXcuenta(_idCuenta);
 	}
 
+
+	@Override
+	public boolean insert(Movimiento m) {
+		return dao.insert(m);
+	}
+
 }

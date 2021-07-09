@@ -33,7 +33,7 @@
 	<!--  FORMULARIO  -->
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form class="contact100-form validate-form" action="/TP_INTEGRADOR/transferencia" method="POST">
 				<span class="contact100-form-title">
 					Transferencia
 				</span>
@@ -41,7 +41,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Cuenta origen</span>
 					<div>
-						<select class="selection-2" name="cuentas-origen" id="cuenta-origen" >
+						<select class="selection-2" name="selectCuentaOrigen" id="cuenta-origen" >
 							<option >Seleccionar cuenta</option>
 							<c:forEach items="${listaCuentasCliente}" var="item">
 								<option value="${item.id}">${item.CBU} - ${item.nombre} - ${item.saldo}</option>
@@ -61,7 +61,7 @@
 							<span class="checkmark"></span>
 						</label>
 						<div class="wrap-input100 input100-select">
-							<select class="selection-2" name="cuentas-destino" id="cuenta-destino">
+							<select class="selection-2" name="selectCuentaDestino" id="cuenta-destino">
 								<option>Seleccionar cuenta</option>
 								
 							</select>
@@ -74,21 +74,21 @@
 
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">CBU</span>
-							<input class="input100" type="text" name="cbu" placeholder="Ingresar CBU" id="cbu" disabled>
+							<input class="input100" type="text" name="txtCbu" placeholder="Ingresar CBU" id="cbu" disabled>
 							<span class="focus-input100"></span>
 						</div>
 					</div>
 				</div>
 
 				<div class="wrap-input100 validate-input">
-					<span class="label-input100">Monto</span>
-					<input class="input100" type="text" name="monto" placeholder="$">
+					<span class="label-input100">Importe</span>
+					<input class="input100" type="text" name="txtImporte" placeholder="$">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Concepto</span>
-					<input class="input100" type="text" name="concepto" placeholder="Detalle o concepto">
+					<input class="input100" type="text" name="txtDetalle" placeholder="Detalle o concepto">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -104,6 +104,9 @@
 					</div>
 				</div>
 			</form>
+			<div style="${color}">
+				${mensaje}
+			</div>
 		</div>
 	</div>
 	<!--  END FORMULARIO  -->

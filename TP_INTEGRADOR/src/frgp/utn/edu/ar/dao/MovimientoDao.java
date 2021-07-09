@@ -7,5 +7,7 @@ import frgp.utn.edu.ar.entidad.Movimiento;
 public interface MovimientoDao {
 
 	public List<Movimiento> movimientosXcuenta(int _idCuenta);
+
+	public boolean insert(Movimiento m);
 	
 }

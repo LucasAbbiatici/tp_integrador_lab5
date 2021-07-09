@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import frgp.utn.edu.ar.dao.CuentaDao;
 import frgp.utn.edu.ar.entidad.Cuenta;
+import frgp.utn.edu.ar.entidad.Movimiento;
 
 public class CuentaDaoImpl implements CuentaDao {
 
@@ -148,6 +149,41 @@ public class CuentaDaoImpl implements CuentaDao {
 		try {
 			Query query = session.createQuery("UPDATE Cuenta c SET c.estado = 0 WHERE c.cliente.id =:idCliente and c.estado = 1");
 			query.setParameter("idCliente", _idCliente);
+			
+			if( query.executeUpdate() > 0) {
+				transaction.commit();
+				return true;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		
+		return false;
+	}
+
+	@Override
+	public boolean actualizarSaldo(Movimiento mov) {
+		
+		Session session = conexion.abrirConexion();
+		Transaction transaction = session.beginTransaction();
+		Query query;
+		float saldoCuenta = mov.getCuenta().getSaldo();
+		
+		try {
+			
+			
+			if(mov.getTipoDeMovimiento().getId()==1) {
+				saldoCuenta -= mov.getImporte();
+				query = session.createQuery("UPDATE Cuenta c SET c.saldo =:importe WHERE c.id =:idCuenta and c.estado = 1");
+			}
+			else {
+				saldoCuenta += mov.getImporte();
+				query = session.createQuery("UPDATE Cuenta c SET c.saldo =:importe WHERE c.id =:idCuenta and c.estado = 1");
+			}
+			query.setParameter("importe", saldoCuenta);
+			query.setParameter("idCuenta", mov.getCuenta().getId());
 			
 			if( query.executeUpdate() > 0) {
 				transaction.commit();

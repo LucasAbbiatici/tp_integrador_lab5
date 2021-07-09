@@ -24,7 +24,7 @@ public class Movimiento implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int NroMovimiento;
+	private int id;
 	@Column(name="fecha")
 	private Date fecha;
 	@Column(name="detalle")
@@ -54,12 +54,12 @@ public class Movimiento implements Serializable {
 
 
 
-	public int getNroMovimiento() {
-		return NroMovimiento;
+	public int getId() {
+		return id;
 	}
 
-	public void setNroMovimiento(int nroMovimiento) {
-		NroMovimiento = nroMovimiento;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Date getFecha() {
@@ -96,7 +96,7 @@ public class Movimiento implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Movimiento [NroMovimiento=" + NroMovimiento + ", fecha=" + fecha + ", detalle=" + detalle + ", importe="
+		return "Movimiento [NroMovimiento=" + id + ", fecha=" + fecha + ", detalle=" + detalle + ", importe="
 				+ importe + ", tipoDeMovimiento=" + tipoDeMovimiento + "]";
 	}
 

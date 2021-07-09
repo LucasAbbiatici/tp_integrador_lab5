@@ -63,7 +63,7 @@
 					</svg>
 					<span class="ml-2 text-sm font-medium">Mis Cuentas</span>
 				</a>
-				<a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" href="/TP_INTEGRADOR/transferencias">
+				<a class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300" href="/TP_INTEGRADOR/redirec-transferencias">
 					<svg class="w-6 h-6 stroke-current" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" stroke="currentColor">
 						<g id="_13-transfer" data-name="13-transfer"><g id="linear_color" data-name="linear color">
 						<path d="M32,454a10,10,0,0,0,0,20H224a10,10,0,0,0,0-20h-6V361h6a10,10,0,0,0,10-10V336a10,10,0,0,0-4.453-8.32l-96-64a10,10,0,0,0-11.094,0l-96,64A10,10,0,0,0,22,336v15a10,10,0,0,0,10,10h6v93Zm58-92h76v92H90Zm96,92V362h12v92ZM128,284.019,213.472,341H42.528ZM58,362H70v92H58Z"/>
