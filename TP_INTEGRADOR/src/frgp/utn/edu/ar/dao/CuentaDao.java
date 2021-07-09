@@ -14,4 +14,5 @@ public interface CuentaDao {
 	public List<Cuenta> obtenerCuentasCliente(int _idCliente);
 	public boolean borrarCuentasCliente(int _idCliente);
 	public boolean actualizarSaldo(Movimiento mov);
+	public Cuenta obtenerCuentaXCBU(String CBU);
 }

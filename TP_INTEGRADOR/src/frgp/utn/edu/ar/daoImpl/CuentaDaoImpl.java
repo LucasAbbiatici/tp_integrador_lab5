@@ -198,4 +198,25 @@ public class CuentaDaoImpl implements CuentaDao {
 		return false;
 	}
 
+	@Override
+	public Cuenta obtenerCuentaXCBU(String CBU) {
+		Session session = conexion.abrirConexion();
+		Cuenta cue = new Cuenta();
+		
+		try {
+			Query query = session.createQuery("SELECT c FROM Cuenta c WHERE c.CBU=:CBUCue");
+			query.setParameter("CBUCue", CBU);
+			
+				cue = (Cuenta)query.list().get(0);
+
+		} 
+		
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return cue;
+	}
+	
+
 }

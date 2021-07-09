@@ -63,4 +63,9 @@ public class CuentaNegImpl implements CuentaNeg {
 		
 	}
 
+	@Override
+	public Cuenta obtenerCuentaXCBU(String CBU) {
+		return dao.obtenerCuentaXCBU(CBU);
+	}
+
 }
