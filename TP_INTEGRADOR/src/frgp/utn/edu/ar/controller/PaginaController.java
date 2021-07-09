@@ -547,6 +547,22 @@ public class PaginaController {
 		
 		//La cuenta que envia 
 			cuenta = cuentaNegImpl.obtenerCuenta(selectCuentaOrigen);
+		
+			if(selectCuentaOrigen == 0) {
+				
+				List<Cuenta> cuentas = cuentaNegImpl.obtenerCuentasCliente(clienteNeg.obtenerClientePorUsuario(usuario.getId()));
+				
+				MV.addObject("listaCuentasCliente",cuentas);
+				
+				MV.addObject("mensaje", "Falta seleccionar la cuenta de Origen");
+				MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+				MV.setViewName("transferenciaCliente");
+				return MV;
+				
+				
+			}
+			
+			
 			
 		//La cuenta que recibe
 			
@@ -554,9 +570,23 @@ public class PaginaController {
 				if(selectCuentaDestino != null)
 				{
 					int cuentaDestino = Integer.parseInt(selectCuentaDestino);
-					if(cuentaDestino != 0)
+					if(cuentaDestino != 0) {
 						cue = cuentaNegImpl.obtenerCuenta(cuentaDestino);
+					}else {
+						
+						List<Cuenta> cuentas = cuentaNegImpl.obtenerCuentasCliente(clienteNeg.obtenerClientePorUsuario(usuario.getId()));
+						
+						MV.addObject("listaCuentasCliente",cuentas);
+						
+						MV.addObject("mensaje", "Falta seleccionar la cuenta de destino");
+						MV.addObject("color", "color: red; margin-top: 20px; text-align: center;");
+						MV.setViewName("transferenciaCliente");
+						return MV;
+						
+					}
 				}
+				
+			
 			
 			//si recibe cbu externo
 				if(txtCbu != null)

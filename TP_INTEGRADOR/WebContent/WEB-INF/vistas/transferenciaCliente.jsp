@@ -41,7 +41,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Cuenta origen</span>
 					<div>
-						<select class="selection-2" name="selectCuentaOrigen" id="cuenta-origen" >
+						<select class="selection-2" name="selectCuentaOrigen" id="cuenta-origen" required>
 							<option value = "0">Seleccionar cuenta</option>
 							<c:forEach items="${listaCuentasCliente}" var="item">
 								<option value="${item.id}">${item.CBU} - ${item.nombre} - ${item.saldo}</option>
@@ -57,24 +57,24 @@
 					<label class="label-input100">Cuenta destino</label>
 					<div class="p-t-15">
 						<label class="label-input100">Cuentas propias
-							<input type="radio" checked="checked" id="rdb1" name="rdbCuenta" value="si" onclick="document.getElementById('cbu').value = ''; document.getElementById('cuenta-destino').disabled = false; document.getElementById('cbu').disabled = true;">
+							<input type="radio" checked="checked" id="rdb1" name="rdbCuenta" value="si" onclick="document.getElementById('cbu').value = ''; document.getElementById('cuenta-destino').disabled = false; document.getElementById('cbu').disabled = true;" required>
 							<span class="checkmark"></span>
 						</label>
 						<div class="wrap-input100 input100-select">
-							<select class="selection-2" name="selectCuentaDestino" id="cuenta-destino">
+							<select class="selection-2" name="selectCuentaDestino" id="cuenta-destino" required>
 								<option value = "0">Seleccionar cuenta</option>
 								
 							</select>
 						</div>
 						<br>
 						<label class="label-input100">Cuentas externas
-							<input type="radio" id="rdb2" name="rdbCuenta" value="no" onclick="document.getElementById('cuenta-destino').selectedIndex = 0; document.getElementById('cuenta-destino').disabled = true; document.getElementById('cbu').disabled = false;">
+							<input type="radio" id="rdb2" name="rdbCuenta" value="no" onclick="document.getElementById('cuenta-destino').selectedIndex = 0; document.getElementById('cuenta-destino').disabled = true; document.getElementById('cbu').disabled = false;"required>
 							<span class="checkmark"></span>
 						</label>
 
 						<div class="wrap-input100 validate-input">
 							<span class="label-input100">CBU</span>
-							<input class="input100" type="text" name="txtCbu" placeholder="Ingresar CBU" id="cbu" disabled>
+							<input class="input100" type="text" name="txtCbu" placeholder="Ingresar CBU" maxlength="24" pattern="\d{24}" title="Se requieren 24 digitos." onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" id="cbu" disabled required>
 							<span class="focus-input100"></span>
 						</div>
 					</div>
@@ -82,13 +82,13 @@
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Importe</span>
-					<input class="input100" type="text" name="txtImporte" placeholder="$">
+					<input class="input100" type="text" name="txtImporte" placeholder="$"  onkeypress="return ((event.charCode >= 48 && event.charCode <= 57))" required>
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input">
 					<span class="label-input100">Concepto</span>
-					<input class="input100" type="text" name="txtDetalle" placeholder="Detalle o concepto">
+					<input class="input100" type="text" name="txtDetalle" placeholder="Detalle o concepto" required>
 					<span class="focus-input100"></span>
 				</div>
 
@@ -143,10 +143,11 @@
             
             
             ddlCuentaOrigen.addEventListener("change",() =>{
-            	 console.log("pase");
+            	 
                 document.querySelectorAll('#cuenta-destino option')[0].selected = true;
 
                 let options = document.querySelectorAll('#cuenta-destino option');
+                
                 options.forEach(option => {
                     if (option.value == ddlCuentaOrigen.value) {
                         option.style.visibility ='hidden';
@@ -155,6 +156,7 @@
                         option.style.visibility ='visible';
                         option.style.display  ='block';
                     }
+                    $('#cuenta-destino').attr('required', true);
                 });
             });
         });
