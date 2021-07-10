@@ -239,6 +239,19 @@ public class PaginaController {
 		cuenta.setTipoDeCuenta(tc);
 		cuenta.setFechaCreacion(date);
 		
+		tipoMov.setId(2);
+		tipoMov.setDescripcion("Positivo");
+		
+		mov1.setCuenta(cuenta);
+		mov1.setDetalle("Alta Cuenta");
+		mov1.setFecha(date);
+		mov1.setTipoDeMovimiento(tipoMov);
+		
+		if(cuenta.getTipoDeCuenta().getId()==1)
+			mov1.setImporte(10000);
+		else
+			mov1.setImporte(62);
+
 		List<TipoCuenta> tipoCue = tipoCuentaNeg.readAll();
 		List<Cliente> listaClientes = clienteNeg.readAll();
 		
@@ -252,7 +265,8 @@ public class PaginaController {
 			
 		} else {
 			
-			if(cuentaNegImpl.insert(cuenta)) {
+			if(cuentaNegImpl.insert(cuenta) && movimientoNeg.insert(mov1)) {
+				
 				MV.addObject("mensaje", "La cuenta fue ingresada correctamente");
 				MV.addObject("color", "color: green; margin-top: 20px; text-align: center;");
 				MV.addObject("listaTipoCue",tipoCue);

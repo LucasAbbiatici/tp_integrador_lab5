@@ -49,7 +49,6 @@ public class MovimientoDaoImpl implements MovimientoDao{
 		Session session = conexion.abrirConexion();
 		Transaction transaction = session.beginTransaction();
 		
-			
 		try {
 			session.save(m);
 			transaction.commit();
