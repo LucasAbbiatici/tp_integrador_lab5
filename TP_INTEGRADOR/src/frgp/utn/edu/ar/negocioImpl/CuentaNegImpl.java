@@ -3,26 +3,30 @@ package frgp.utn.edu.ar.negocioImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
-import frgp.utn.edu.ar.daoImpl.CuentaDaoImpl;
+import frgp.utn.edu.ar.dao.CuentaDao;
 import frgp.utn.edu.ar.entidad.Cuenta;
 import frgp.utn.edu.ar.entidad.Movimiento;
 import frgp.utn.edu.ar.negocio.CuentaNeg;
 
+@Service("negCuenta")
 public class CuentaNegImpl implements CuentaNeg {
 
 	@Autowired
-	private CuentaDaoImpl dao;
-	
+	@Qualifier("daoCuenta")
+	private CuentaDao dao;
+
 	@Override
 	public boolean insert(Cuenta cue) {
-		
-		if(cue.getTipoDeCuenta().getId() == 1) {
+
+		if (cue.getTipoDeCuenta().getId() == 1) {
 			cue.setSaldo(10000);
 		} else {
 			cue.setSaldo(62);
 		}
-		
+
 		return dao.insert(cue);
 	}
 
@@ -33,7 +37,7 @@ public class CuentaNegImpl implements CuentaNeg {
 
 	@Override
 	public List<Cuenta> readAll() {
-		
+
 		return dao.readAll();
 	}
 
@@ -60,7 +64,7 @@ public class CuentaNegImpl implements CuentaNeg {
 	@Override
 	public boolean actualizarSaldo(Movimiento mov) {
 		return dao.actualizarSaldo(mov);
-		
+
 	}
 
 	@Override

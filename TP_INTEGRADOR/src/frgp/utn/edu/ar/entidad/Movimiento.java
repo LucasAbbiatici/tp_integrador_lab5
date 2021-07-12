@@ -14,36 +14,42 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
-@Table(name="movimientos")
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Table(name = "movimientos")
 public class Movimiento implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name="fecha")
+	@Column(name = "fecha")
 	private Date fecha;
-	@Column(name="detalle")
+	@Column(name = "detalle")
 	private String detalle;
-	@Column(name="importe")
+	@Column(name = "importe")
 	private float importe;
-	@ManyToOne(cascade={CascadeType.ALL})
-	@JoinColumn(name="tipo")
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tipo")
 	private TipoMovimiento tipoDeMovimiento;
-	@ManyToOne(cascade={CascadeType.ALL})
-	@JoinColumn(name="cuenta_mov")
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "cuenta_mov")
 	private Cuenta cuenta;
-	@Column(name="estado")
+	@Column(name = "estado")
 	private Boolean estado;
-	
+
 	public Movimiento() {
 		this.estado = true;
 	}
-	
+
 	public Boolean getEstado() {
 		return estado;
 	}
@@ -51,8 +57,6 @@ public class Movimiento implements Serializable {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -96,8 +100,8 @@ public class Movimiento implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Movimiento [NroMovimiento=" + id + ", fecha=" + fecha + ", detalle=" + detalle + ", importe="
-				+ importe + ", tipoDeMovimiento=" + tipoDeMovimiento + "]";
+		return "Movimiento [NroMovimiento=" + id + ", fecha=" + fecha + ", detalle=" + detalle + ", importe=" + importe
+				+ ", tipoDeMovimiento=" + tipoDeMovimiento + "]";
 	}
 
 	public Cuenta getCuenta() {
@@ -107,5 +111,5 @@ public class Movimiento implements Serializable {
 	public void setCuenta(Cuenta cuenta) {
 		this.cuenta = cuenta;
 	}
-	
+
 }

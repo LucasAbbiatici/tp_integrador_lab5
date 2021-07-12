@@ -27,151 +27,32 @@ import frgp.utn.edu.ar.negocioImpl.UsuarioNegImpl;
 
 @Configuration
 public class Config {
-	
-	
+
 	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Usuario beanUsuario() {
-		return new Usuario();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Usuario beanUsuarioLogeado() {
-		return new Usuario();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Cuenta beanCuenta() {
-		return new Cuenta();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public TipoCuenta beanTipoCuenta() {
-		return new TipoCuenta();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Cliente beanCliente() {
-		return new Cliente();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public ClienteNegImpl beanClienteNeg() {
-		return new ClienteNegImpl();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public UsuarioNegImpl beanUsuarioNeg() {
-		return new UsuarioNegImpl();
-	}
-	
-	@Bean
-    @Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
-	public Conexion beanConexion() {
-		return new Conexion();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public ClienteDaoImpl beanClienteDao() {
-		return new ClienteDaoImpl();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public UsuarioDaoImpl beanUsuarioDao() {
-		return new UsuarioDaoImpl();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public CuentaNegImpl beanCuentaNeg() {
-		return new CuentaNegImpl();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public CuentaDaoImpl beanCuentaDao() {
-		return new CuentaDaoImpl();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public TipoCuentaDaoImpl beanTipoCuentaDao() {
-		return new TipoCuentaDaoImpl();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public TipoCuentaNegImpl beanTipoCuentaNeg() {
-		return new TipoCuentaNegImpl();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Cuenta beanCuenta2() {
-		return new Cuenta();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public MovimientoNegImpl beanMovimientoNeg() {
-		return new MovimientoNegImpl();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public MovimientoDaoImpl beanMovimientoDao() {
-		return new MovimientoDaoImpl();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Cliente beanCliente2() {
-		return new Cliente();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Movimiento beanMovimiento1() {
-		return new Movimiento();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Movimiento beanMovimiento2() {
-		return new Movimiento();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public TipoMovimiento beanTipoMov() {
-		return new TipoMovimiento();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public TipoMovimiento beanTipoMov2() {
-		return new TipoMovimiento();
-	}
-	
-	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 	public Provincia beanProvincia() {
 		return new Provincia();
 	}
-	
+
 	@Bean
-	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 	public Localidad beanLocalidad() {
 		return new Localidad();
 	}
 	
-}
+	@Bean
+	public TipoMovimiento beanMovPositivo() {
+		TipoMovimiento tipoMov = new TipoMovimiento();
+		tipoMov.setId(1);
+		tipoMov.setDescripcion("Positivo");
+		return tipoMov;
+	}
 	
+	@Bean
+	public TipoMovimiento beanMovNegativo() {
+		TipoMovimiento tipoMov = new TipoMovimiento();
+		tipoMov.setId(2);
+		tipoMov.setDescripcion("Negativo");
+		return tipoMov;
+	}
+}

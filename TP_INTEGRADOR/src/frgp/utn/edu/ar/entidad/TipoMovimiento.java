@@ -9,21 +9,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
-@Table(name="tipo_movimiento")
-public class TipoMovimiento implements Serializable{
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Table(name = "tipo_movimiento")
+public class TipoMovimiento implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
 	private String descripcion;
-	
-	public TipoMovimiento() {}
+
+	public TipoMovimiento() {
+	}
 
 	public int getId() {
 		return id;
@@ -45,5 +52,5 @@ public class TipoMovimiento implements Serializable{
 	public String toString() {
 		return "TipoMovimiento [id=" + id + ", descripcion=" + descripcion + "]";
 	}
-	
+
 }

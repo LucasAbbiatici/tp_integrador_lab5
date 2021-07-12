@@ -47,8 +47,8 @@
 							<td>${item.nacionalidad}</td>
 							<td>${item.fechaNacimiento}</td>
 							<td>${item.direccion}</td>
-							<td>${item.localidad}</td>
-							<td>${item.provincia}</td>
+							<td>${item.localidad.nombre}</td>
+							<td>${item.provincia.nombre}</td>
 							<td><a href="<c:url value='/redirec-updateCliente-${item.id}' />"><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></a></td>  
 						    <td><a href="<c:url value='/delete-user-${item.id}' />"><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></a></td>
 						</tr>

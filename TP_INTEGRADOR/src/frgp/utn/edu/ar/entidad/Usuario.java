@@ -10,32 +10,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
-@Table(name="usuarios")
-public class Usuario implements Serializable{
-	
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Table(name = "usuarios")
+public class Usuario implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name="username")
+	@Column(name = "username")
 	private String user;
-	@Column(name="password")
+	@Column(name = "password")
 	private String pass;
-	@Column(name="admin")
+	@Column(name = "admin")
 	private Boolean admin;
-	@Column(name="estado")
+	@Column(name = "estado")
 	private Boolean estado;
-	
+
 	public Usuario() {
 		this.estado = true;
 	}
-	
-	public Usuario(Cliente cli) 
-	{
+
+	public Usuario(Cliente cli) {
 		this.user = cli.getDni();
 		this.pass = crearContrasenia(10);
 		this.admin = false;
@@ -81,22 +86,21 @@ public class Usuario implements Serializable{
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", user=" + user + ", pass=" + pass + ", admin=" + admin + "]";
 	}
 
 	public String crearContrasenia(int len) {
-	    String AB = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	    Random rnd = new Random();
+		String AB = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		Random rnd = new Random();
 
-	    StringBuilder sb = new StringBuilder(len);
-	    for (int i = 0; i < len; i++) {
-	        sb.append(AB.charAt(rnd.nextInt(AB.length())));
-	    }
-	    return sb.toString();
+		StringBuilder sb = new StringBuilder(len);
+		for (int i = 0; i < len; i++) {
+			sb.append(AB.charAt(rnd.nextInt(AB.length())));
+		}
+		return sb.toString();
 	}
-	
-	
+
 }

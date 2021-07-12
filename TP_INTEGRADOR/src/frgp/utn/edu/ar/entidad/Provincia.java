@@ -2,17 +2,22 @@ package frgp.utn.edu.ar.entidad;
 
 import javax.persistence.Embeddable;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 @Embeddable
 public class Provincia {
-	
+
 	private String nombre;
-	
-	public Provincia() {}
+
+	public Provincia() {
+	}
 
 	public Provincia(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -25,7 +30,5 @@ public class Provincia {
 	public String toString() {
 		return "Provincias [nombre=" + nombre + "]";
 	}
-	
-	
-	
+
 }

@@ -34,47 +34,44 @@ import frgp.utn.edu.ar.negocioImpl.UsuarioNegImpl;
 public class PaginaController {
 	
 	@Autowired
+	@Qualifier("negCliente")
 	private ClienteNegImpl clienteNeg;
 	@Autowired
+	@Qualifier("negUsuario")
 	private UsuarioNegImpl usuarioNeg;
 	@Autowired
-	@Qualifier("beanUsuario")
 	private Usuario usuario2;
 	@Autowired
-	@Qualifier("beanUsuarioLogeado")
 	private Usuario usuario;
 	@Autowired
+	@Qualifier("negCuenta")
 	private CuentaNegImpl cuentaNegImpl;
 	@Autowired
+	@Qualifier("negTipoCuenta")
 	private TipoCuentaNegImpl tipoCuentaNeg;
 	@Autowired
-	@Qualifier("beanCuenta")
 	private Cuenta cuenta; 
 	@Autowired
 	private TipoCuenta tc;
 	@Autowired
-	@Qualifier("beanCliente")
 	private Cliente cliente;
 	@Autowired
-	@Qualifier("beanCuenta2")
 	private Cuenta cue;
 	@Autowired
+	@Qualifier("negMovimiento")
 	private MovimientoNegImpl movimientoNeg;
 	@Autowired 
-	@Qualifier("beanCliente2")
 	private Cliente cli;
 	@Autowired
-	@Qualifier("beanMovimiento1")
 	private Movimiento mov1;
 	@Autowired
-	@Qualifier("beanMovimiento2")
 	private Movimiento mov2;
 	@Autowired
-	@Qualifier("beanTipoMov")
-	private TipoMovimiento tipoMov;
+	@Qualifier("beanMovPositivo")
+	private TipoMovimiento tipoMovPositivo;
 	@Autowired
-	@Qualifier("beanTipoMov2")
-	private TipoMovimiento tipoMov2;
+	@Qualifier("beanMovNegativo")
+	private TipoMovimiento tipoMovNegativo;
 	@Autowired
 	private Provincia prov;
 	@Autowired
@@ -245,13 +242,10 @@ public class PaginaController {
 		cuenta.setTipoDeCuenta(tc);
 		cuenta.setFechaCreacion(date);
 		
-		tipoMov.setId(2);
-		tipoMov.setDescripcion("Positivo");
-		
 		mov1.setCuenta(cuenta);
 		mov1.setDetalle("Alta Cuenta");
 		mov1.setFecha(date);
-		mov1.setTipoDeMovimiento(tipoMov);
+		mov1.setTipoDeMovimiento(tipoMovPositivo);
 		
 		if(cuenta.getTipoDeCuenta().getId()==1)
 			mov1.setImporte(10000);
@@ -629,22 +623,16 @@ public class PaginaController {
 		if(cuenta.getSaldo() > txtImporte) 
 		{
 			
-			tipoMov.setId(1);
-			tipoMov.setDescripcion("Negativo");
-			
 			mov1.setCuenta(cuenta);
 			mov1.setDetalle(txtDetalle);
 			mov1.setImporte(txtImporte);
-			mov1.setTipoDeMovimiento(tipoMov);
+			mov1.setTipoDeMovimiento(tipoMovNegativo);
 			mov1.setFecha(date);
-			
-			tipoMov2.setId(2);
-			tipoMov2.setDescripcion("Positivo");
 			
 			mov2.setCuenta(cue);
 			mov2.setDetalle(txtDetalle);
 			mov2.setImporte(txtImporte);
-			mov2.setTipoDeMovimiento(tipoMov2);
+			mov2.setTipoDeMovimiento(tipoMovPositivo);
 			mov2.setFecha(date);
 			
 			if(cuenta.getTipoDeCuenta().getId() == cue.getTipoDeCuenta().getId()) {

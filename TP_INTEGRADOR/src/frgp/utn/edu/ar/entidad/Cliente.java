@@ -15,55 +15,57 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
-@Table(name="clientes")
-public class Cliente implements Serializable{
-	
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Table(name = "clientes")
+public class Cliente implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	@Column(name="DNI",unique=true)
+	@Column(name = "DNI", unique = true)
 	private String dni;
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	private String nombre;
-	@Column(name="apellido")
+	@Column(name = "apellido")
 	private String apellido;
-	@Column(name="sexo")
+	@Column(name = "sexo")
 	private String sexo;
-	@Column(name="nacionaliad")
+	@Column(name = "nacionaliad")
 	private String nacionalidad;
-	@Column(name="fechanacimineto")
+	@Column(name = "fechanacimineto")
 	private Date fechaNacimiento;
-	@Column(name="direccion")
+	@Column(name = "direccion")
 	private String direccion;
-	
+
 	@Embedded
-	@AttributeOverride(
-			name="nombre",
-			column=@Column(name="Localidad"))
+	@AttributeOverride(name = "nombre", column = @Column(name = "Localidad"))
 	private Localidad localidad;
-	
+
 	@Embedded
-	@AttributeOverride(
-			name="nombre",
-			column=@Column(name="Provincia"))
+	@AttributeOverride(name = "nombre", column = @Column(name = "Provincia"))
 	private Provincia provincia;
-	
-	@OneToOne(cascade={CascadeType.ALL})
-	@JoinColumn(name="usuario")
+
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "usuario")
 	private Usuario user;
-	@Column(name="estado")
+	@Column(name = "estado")
 	private Boolean estado;
-	
+
 	public Cliente() {
 		this.estado = true;
 	}
-	
+
 	public Boolean getEstado() {
 		return estado;
 	}
@@ -143,7 +145,7 @@ public class Cliente implements Serializable{
 	public void setUser(Usuario user) {
 		this.user = user;
 	}
-	
+
 	public Localidad getLocalidad() {
 		return localidad;
 	}
@@ -166,5 +168,5 @@ public class Cliente implements Serializable{
 				+ ", nacionalidad=" + nacionalidad + ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion
 				+ ", provincia=" + provincia + ", user=" + user + "]";
 	}
-	
+
 }

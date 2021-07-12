@@ -15,37 +15,43 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
-@Table(name="cuentas")
-public class Cuenta implements Serializable{
-	
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Table(name = "cuentas")
+public class Cuenta implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name="cbu",unique=true)
+	@Column(name = "cbu", unique = true)
 	private String CBU;
-	@ManyToOne(cascade={CascadeType.ALL})
-	@JoinColumn(name="cliente")
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "cliente")
 	private Cliente cliente;
-	@Column(name="fechacreacion")
+	@Column(name = "fechacreacion")
 	private Date fechaCreacion;
-	@ManyToOne(cascade={CascadeType.ALL})
-	@JoinColumn(name="tipo")
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tipo")
 	private TipoCuenta tipoDeCuenta;
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	private String nombre;
-	@Column(name="saldo")
+	@Column(name = "saldo")
 	private float saldo;
-	@Column(name="estado")
+	@Column(name = "estado")
 	private Boolean estado;
-	
+
 	public Cuenta() {
-		
-		//verificar que cbu no exista
+
+		// verificar que cbu no exista
 		this.CBU = NumericString();
 		this.estado = true;
 	}
@@ -113,27 +119,24 @@ public class Cuenta implements Serializable{
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
-	
 
 	@Override
 	public String toString() {
-		return "Cuenta [NroCuenta=" + id + ", CBU=" + CBU + ", cliente=" + cliente + ", fechaCreacion="
-				+ fechaCreacion + ", tipoDeCuenta=" + tipoDeCuenta + ", nombre=" + nombre + ", saldo=" + saldo + "]";
+		return "Cuenta [NroCuenta=" + id + ", CBU=" + CBU + ", cliente=" + cliente + ", fechaCreacion=" + fechaCreacion
+				+ ", tipoDeCuenta=" + tipoDeCuenta + ", nombre=" + nombre + ", saldo=" + saldo + "]";
 	}
-	
-	
-	
+
 	public static String NumericString() {
-	    String AB = "0123456789";
-	    Random rnd = new Random();
-	    String banco = "34782533";
-        final int len = 14;
-	    StringBuilder sb = new StringBuilder(len);
-	    sb.append(banco);
-	    for (int i = 0; i < len; i++) {
-	        sb.append(AB.charAt(rnd.nextInt(AB.length())));
-	    }
-	    return sb.toString();
+		String AB = "0123456789";
+		Random rnd = new Random();
+		String banco = "34782533";
+		final int len = 14;
+		StringBuilder sb = new StringBuilder(len);
+		sb.append(banco);
+		for (int i = 0; i < len; i++) {
+			sb.append(AB.charAt(rnd.nextInt(AB.length())));
+		}
+		return sb.toString();
 	}
-	
+
 }

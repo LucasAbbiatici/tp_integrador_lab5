@@ -1,19 +1,22 @@
 package frgp.utn.edu.ar.negocioImpl;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
-import frgp.utn.edu.ar.daoImpl.ClienteDaoImpl;
+import frgp.utn.edu.ar.dao.ClienteDao;
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.negocio.ClienteNeg;
 
+@Service("negCliente")
 public class ClienteNegImpl implements ClienteNeg {
 
 	@Autowired
-	private ClienteDaoImpl dao;
-	
+	@Qualifier("daoCliente")
+	private ClienteDao dao;
+
 	@Override
 	public boolean insert(Cliente cli) {
 		return dao.insert(cli);
