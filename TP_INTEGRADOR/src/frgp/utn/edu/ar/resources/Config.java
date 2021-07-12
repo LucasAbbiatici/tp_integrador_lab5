@@ -13,7 +13,9 @@ import frgp.utn.edu.ar.daoImpl.TipoCuentaDaoImpl;
 import frgp.utn.edu.ar.daoImpl.UsuarioDaoImpl;
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Cuenta;
+import frgp.utn.edu.ar.entidad.Localidad;
 import frgp.utn.edu.ar.entidad.Movimiento;
+import frgp.utn.edu.ar.entidad.Provincia;
 import frgp.utn.edu.ar.entidad.TipoCuenta;
 import frgp.utn.edu.ar.entidad.TipoMovimiento;
 import frgp.utn.edu.ar.entidad.Usuario;
@@ -158,5 +160,18 @@ public class Config {
 	public TipoMovimiento beanTipoMov2() {
 		return new TipoMovimiento();
 	}
+	
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public Provincia beanProvincia() {
+		return new Provincia();
+	}
+	
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public Localidad beanLocalidad() {
+		return new Localidad();
+	}
+	
 }
 	

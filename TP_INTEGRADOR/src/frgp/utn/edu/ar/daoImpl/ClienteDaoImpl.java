@@ -36,7 +36,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		
 			
 		try {
-			session.saveOrUpdate(cli);;
+			session.saveOrUpdate(cli);
 			transaction.commit();
 			return true;
 			

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import frgp.utn.edu.ar.dao.MovimientoDao;
-import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Movimiento;
 import frgp.utn.edu.ar.entidad.TipoMovimiento;
 

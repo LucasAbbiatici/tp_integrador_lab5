@@ -3,8 +3,10 @@ package frgp.utn.edu.ar.entidad;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,10 +41,19 @@ public class Cliente implements Serializable{
 	private Date fechaNacimiento;
 	@Column(name="direccion")
 	private String direccion;
-	@Column(name="localidad")
-	private String localidad;
-	@Column(name="provincia")
-	private String provincia;
+	
+	@Embedded
+	@AttributeOverride(
+			name="nombre",
+			column=@Column(name="Localidad"))
+	private Localidad localidad;
+	
+	@Embedded
+	@AttributeOverride(
+			name="nombre",
+			column=@Column(name="Provincia"))
+	private Provincia provincia;
+	
 	@OneToOne(cascade={CascadeType.ALL})
 	@JoinColumn(name="usuario")
 	private Usuario user;
@@ -125,14 +136,6 @@ public class Cliente implements Serializable{
 		this.direccion = direccion;
 	}
 
-	public String getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
-
 	public Usuario getUser() {
 		return user;
 	}
@@ -140,16 +143,23 @@ public class Cliente implements Serializable{
 	public void setUser(Usuario user) {
 		this.user = user;
 	}
-
 	
-	public String getLocalidad() {
+	public Localidad getLocalidad() {
 		return localidad;
 	}
 
-	public void setLocalidad(String localidad) {
+	public void setLocalidad(Localidad localidad) {
 		this.localidad = localidad;
 	}
-	
+
+	public Provincia getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
+	}
+
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", sexo=" + sexo

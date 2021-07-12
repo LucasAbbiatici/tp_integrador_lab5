@@ -18,6 +18,7 @@
         <mapping class="frgp.utn.edu.ar.entidad.TipoCuenta"/>
         <mapping class="frgp.utn.edu.ar.entidad.TipoMovimiento"/>
         <mapping class="frgp.utn.edu.ar.entidad.Usuario"/>
-        
+		<mapping class="frgp.utn.edu.ar.entidad.Provincia"/>
+		<mapping class="frgp.utn.edu.ar.entidad.Localidad"/>
     </session-factory>
 </hibernate-configuration>

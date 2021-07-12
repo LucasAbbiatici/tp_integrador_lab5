@@ -1,5 +1,6 @@
 package frgp.utn.edu.ar.main;
 
+
 import java.sql.Date;
 
 import org.hibernate.Session;
@@ -7,19 +8,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
 
-import frgp.utn.edu.ar.daoImpl.Conexion;
+
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Cuenta;
+import frgp.utn.edu.ar.entidad.Localidad;
 import frgp.utn.edu.ar.entidad.Movimiento;
+import frgp.utn.edu.ar.entidad.Provincia;
 import frgp.utn.edu.ar.entidad.TipoCuenta;
 import frgp.utn.edu.ar.entidad.TipoMovimiento;
 import frgp.utn.edu.ar.entidad.Usuario;
-import frgp.utn.edu.ar.resources.Config;
 
 public class Main {
 
@@ -45,6 +43,7 @@ public class Main {
 		*/
 		//---------------------------------------------------------------
 
+
 		//ADMIN
 		Usuario admin = new Usuario();
 		admin.setUser("admin");
@@ -61,6 +60,8 @@ public class Main {
 		
 		//Cliente 1
 		Cliente cliente = new Cliente();
+		Provincia prov = new Provincia("Buenos Aires");
+		Localidad loc = new Localidad("DON TORCUATO ESTE");
 		cliente.setDni("44999555");
 		cliente.setNombre("Federico");
 		cliente.setApellido("Aragon");
@@ -68,8 +69,8 @@ public class Main {
 		cliente.setNacionalidad("Argentina");
 		cliente.setFechaNacimiento(date);
 		cliente.setDireccion("Ayacucho 2011");
-		cliente.setProvincia("Buenos Aires");
-		cliente.setLocalidad("DON TORCUATO ESTE");
+		cliente.setProvincia(prov);
+		cliente.setLocalidad(loc);
 		
 		//Usuario 1
 		Usuario usuario = new Usuario(cliente);		
@@ -84,6 +85,9 @@ public class Main {
 		String str2 = "1995-01-11";
 		Date date2 = Date.valueOf(str2);
 		
+		Provincia prov2 = new Provincia("Buenos Aires");
+		Localidad loc2 = new Localidad("BELEN DE ESCOBAR");
+		
 		//Cliente 2
 		Cliente cliente2 = new Cliente();
 		cliente2.setDni("38674701");
@@ -93,8 +97,8 @@ public class Main {
 		cliente2.setNacionalidad("Argentina");
 		cliente2.setFechaNacimiento(date2);
 		cliente2.setDireccion("Los Platanos 300");
-		cliente2.setProvincia("Buenos Aires");
-		cliente2.setLocalidad("BELEN DE ESCOBAR");
+		cliente2.setProvincia(prov2);
+		cliente2.setLocalidad(loc2);
 		
 		//Usuario 2
 		Usuario usuario2 = new Usuario(cliente2);		
@@ -109,6 +113,8 @@ public class Main {
 		String str3 = "1999-02-24";
 		Date date3 = Date.valueOf(str3);
 				
+		Provincia prov3 = new Provincia("Buenos Aires");
+		Localidad loc3 = new Localidad("GRAND BOURG");
 		//Cliente 3
 		Cliente cliente3 = new Cliente();
 		cliente3.setDni("41715987");
@@ -118,8 +124,8 @@ public class Main {
 		cliente3.setNacionalidad("Argentina");
 		cliente3.setFechaNacimiento(date3);
 		cliente3.setDireccion("Guayaquil 201");
-		cliente3.setProvincia("Buenos Aires");
-		cliente3.setLocalidad("GRAND BOURG");
+		cliente3.setProvincia(prov3);
+		cliente3.setLocalidad(loc3);
 						
 		//Usuario 3
 		Usuario usuario3 = new Usuario(cliente3);		
@@ -134,6 +140,8 @@ public class Main {
 		String str4 = "1992-05-19";
 		Date date4 = Date.valueOf(str4);
 		
+		Provincia prov4 = new Provincia("Buenos Aires");
+		Localidad loc4 = new Localidad("MORENO");
 		//Cliente 4
 		Cliente cliente4 = new Cliente();
 		cliente4.setDni("36031562");
@@ -143,8 +151,8 @@ public class Main {
 		cliente4.setNacionalidad("Argentina");
 		cliente4.setFechaNacimiento(date4);
 		cliente4.setDireccion("San Martin 443");
-		cliente4.setProvincia("Buenos Aires");
-		cliente4.setLocalidad("MORENO");
+		cliente4.setProvincia(prov4);
+		cliente4.setLocalidad(loc4);
 		
 		//Usuario 4
 		Usuario usuario4 = new Usuario(cliente4);		
@@ -159,6 +167,8 @@ public class Main {
 		String str5= "1988-11-30";
 		Date date5 = Date.valueOf(str5);
 		
+		Provincia prov5 = new Provincia("Buenos Aires");
+		Localidad loc5 = new Localidad("AVELLANEDA");
 		//Cliente 5
 		Cliente cliente5 = new Cliente();
 		cliente5.setDni("23054133");
@@ -168,8 +178,8 @@ public class Main {
 		cliente5.setNacionalidad("Argentina");
 		cliente5.setFechaNacimiento(date5);
 		cliente5.setDireccion("Belgrano 6243");
-		cliente5.setProvincia("Buenos Aires");
-		cliente5.setLocalidad("AVELLANEDA");
+		cliente5.setProvincia(prov5);
+		cliente5.setLocalidad(loc5);
 		
 		//Usuario 5
 		Usuario usuario5 = new Usuario(cliente5);		
@@ -184,6 +194,8 @@ public class Main {
 		String str6 = "1983-12-09";
 		Date date6 = Date.valueOf(str6);
 		
+		Provincia prov6 = new Provincia("Buenos Aires");
+		Localidad loc6 = new Localidad("LUJAN");
 		//Cliente 6
 		Cliente cliente6 = new Cliente();
 		cliente6.setDni("20432411");
@@ -193,8 +205,8 @@ public class Main {
 		cliente6.setNacionalidad("Argentina");
 		cliente6.setFechaNacimiento(date6);
 		cliente6.setDireccion("Humberto 2431");
-		cliente6.setProvincia("Buenos Aires");
-		cliente6.setLocalidad("LUJAN");
+		cliente6.setProvincia(prov6);
+		cliente6.setLocalidad(loc6);
 		
 		//Usuario 6
 		Usuario usuario6 = new Usuario(cliente6);		
@@ -209,6 +221,8 @@ public class Main {
 		String str7 = "1996-08-30";
 		Date date7 = Date.valueOf(str7);
 		
+		Provincia prov7 = new Provincia("Cordoba");
+		Localidad loc7 = new Localidad("VILLA CARLOS PAZ");
 		//Cliente 7
 		Cliente cliente7 = new Cliente();
 		cliente7.setDni("38033179");
@@ -218,8 +232,8 @@ public class Main {
 		cliente7.setNacionalidad("Argentina");
 		cliente7.setFechaNacimiento(date7);
 		cliente7.setDireccion("San Martin 2243");
-		cliente7.setProvincia("Cordoba");
-		cliente7.setLocalidad("VILLA CARLOS PAZ");
+		cliente7.setProvincia(prov7);
+		cliente7.setLocalidad(loc7);
 		
 		//Usuario 7
 		Usuario usuario7 = new Usuario(cliente7);		
@@ -234,6 +248,8 @@ public class Main {
 		String str8 = "2001-06-23";
 		Date date8 = Date.valueOf(str8);
 		
+		Provincia prov8 = new Provincia("San Luis");
+		Localidad loc8 = new Localidad("VILLA MERCEDES");
 		//Cliente 8
 		Cliente cliente8 = new Cliente();
 		cliente8.setDni("43687811");
@@ -243,8 +259,8 @@ public class Main {
 		cliente8.setNacionalidad("Argentina");
 		cliente8.setFechaNacimiento(date8);
 		cliente8.setDireccion("Av Cordoba 3011");
-		cliente8.setProvincia("San Luis");
-		cliente8.setLocalidad("VILLA MERCEDES");
+		cliente8.setProvincia(prov8);
+		cliente8.setLocalidad(loc8);
 		
 		//Usuario 8
 		Usuario usuario8 = new Usuario(cliente8);		
@@ -259,6 +275,8 @@ public class Main {
 		String str9 = "1999-10-09";
 		Date date9 = Date.valueOf(str9);
 		
+		Provincia prov9 = new Provincia("Cordoba");
+		Localidad loc9 = new Localidad("VILLA DEL TOTORAL");
 		//Cliente 9
 		Cliente cliente9 = new Cliente();
 		cliente9.setDni("41886423");
@@ -268,8 +286,8 @@ public class Main {
 		cliente9.setNacionalidad("Argentina");
 		cliente9.setFechaNacimiento(date9);
 		cliente9.setDireccion("Cerviño 4449");
-		cliente9.setProvincia("Cordoba");
-		cliente9.setLocalidad("VILLA DEL TOTORAL");
+		cliente9.setProvincia(prov9);
+		cliente9.setLocalidad(loc9);
 		
 		//Usuario 9
 		Usuario usuario9 = new Usuario(cliente9);		
@@ -284,6 +302,8 @@ public class Main {
 		String str10 = "1969-07-31";
 		Date date10 = Date.valueOf(str10);
 		
+		Provincia prov10 = new Provincia("Buenos Aires");
+		Localidad loc10 = new Localidad("PILAR");
 		//Cliente 10
 		Cliente cliente10 = new Cliente();
 		cliente10.setDni("20064133");
@@ -293,8 +313,8 @@ public class Main {
 		cliente10.setNacionalidad("Argentina");
 		cliente10.setFechaNacimiento(date10);
 		cliente10.setDireccion("Catamarca 1541");
-		cliente10.setProvincia("Buenos Aires");
-		cliente10.setLocalidad("PILAR");
+		cliente10.setProvincia(prov10);
+		cliente10.setLocalidad(loc10);
 		
 		//Usuario 10
 		Usuario usuario10 = new Usuario(cliente10);		

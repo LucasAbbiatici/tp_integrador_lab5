@@ -17,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import frgp.utn.edu.ar.entidad.Cliente;
 import frgp.utn.edu.ar.entidad.Cuenta;
+import frgp.utn.edu.ar.entidad.Localidad;
 import frgp.utn.edu.ar.entidad.Movimiento;
+import frgp.utn.edu.ar.entidad.Provincia;
 import frgp.utn.edu.ar.entidad.TipoCuenta;
 import frgp.utn.edu.ar.entidad.TipoMovimiento;
 import frgp.utn.edu.ar.entidad.Usuario;
@@ -73,6 +75,10 @@ public class PaginaController {
 	@Autowired
 	@Qualifier("beanTipoMov2")
 	private TipoMovimiento tipoMov2;
+	@Autowired
+	private Provincia prov;
+	@Autowired
+	private Localidad loc;
 	
 	@RequestMapping("/index.html")
 	public ModelAndView eventoRedireccionarIndex() {
@@ -299,6 +305,10 @@ public class PaginaController {
 		
 		if(!clienteNeg.verificarExistenciaDni(txtDni))
 		{
+			
+			loc.setNombre(localidades);
+			prov.setNombre(provincias);
+			
 			cliente.setDni(txtDni);
 			cliente.setNombre(txtNombre);
 			cliente.setApellido(txtApellido);
@@ -306,8 +316,8 @@ public class PaginaController {
 			cliente.setFechaNacimiento(date_fechaNacimiento);
 			cliente.setNacionalidad(txtNacionalidad);
 			cliente.setDireccion(txtDireccion);
-			cliente.setProvincia(provincias);
-			cliente.setLocalidad(localidades);
+			cliente.setProvincia(prov);
+			cliente.setLocalidad(loc);
 			
 			usuario2.setUser(cliente.getDni());
 			usuario2.setPass(usuario.crearContrasenia(10));
@@ -436,7 +446,11 @@ public class PaginaController {
 		
 		cli = clienteNeg.obtenerCliente(txtId);
 		
-		if(!clienteNeg.verificarExistenciaDni(txtDni)) {
+		if(!clienteNeg.verificarExistenciaDni(txtDni)) 
+		{
+			
+			loc.setNombre(localidades);
+			prov.setNombre(provincias);
 			
 			cliente.setDni(txtDni);
 			cliente.setNombre(txtNombre);
@@ -445,8 +459,8 @@ public class PaginaController {
 			cliente.setFechaNacimiento(date_fechaNacimiento);
 			cliente.setNacionalidad(txtNacionalidad);
 			cliente.setDireccion(txtDireccion);
-			cliente.setProvincia(provincias);
-			cliente.setLocalidad(localidades);
+			cliente.setProvincia(prov);
+			cliente.setLocalidad(loc);
 			
 			usuario2 = usuarioNeg.obtenerUsuarioXid(txtId);
 			usuario2.setUser(txtDni);
@@ -478,7 +492,12 @@ public class PaginaController {
 		}
 		
 		else  {
-			if(txtDni.equals(cli.getDni())) {
+			if(txtDni.equals(cli.getDni())) 
+			{
+				
+				loc.setNombre(localidades);
+				prov.setNombre(provincias);
+				
 				cliente.setDni(txtDni);
 				cliente.setNombre(txtNombre);
 				cliente.setApellido(txtApellido);
@@ -486,8 +505,8 @@ public class PaginaController {
 				cliente.setFechaNacimiento(date_fechaNacimiento);
 				cliente.setNacionalidad(txtNacionalidad);
 				cliente.setDireccion(txtDireccion);
-				cliente.setProvincia(provincias);
-				cliente.setLocalidad(localidades);
+				cliente.setProvincia(prov);
+				cliente.setLocalidad(loc);
 				
 				usuario2 = usuarioNeg.obtenerUsuarioXid(txtId);
 				usuario2.setUser(txtDni);
