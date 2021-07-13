@@ -43,7 +43,7 @@ public class Config {
 	@Bean
 	public TipoMovimiento beanMovPositivo() {
 		TipoMovimiento tipoMov = new TipoMovimiento();
-		tipoMov.setId(1);
+		tipoMov.setId(2);
 		tipoMov.setDescripcion("Positivo");
 		return tipoMov;
 	}
@@ -51,7 +51,7 @@ public class Config {
 	@Bean
 	public TipoMovimiento beanMovNegativo() {
 		TipoMovimiento tipoMov = new TipoMovimiento();
-		tipoMov.setId(2);
+		tipoMov.setId(1);
 		tipoMov.setDescripcion("Negativo");
 		return tipoMov;
 	}

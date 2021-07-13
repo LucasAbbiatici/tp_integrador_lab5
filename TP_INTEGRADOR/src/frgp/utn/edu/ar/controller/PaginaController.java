@@ -178,7 +178,7 @@ public class PaginaController {
 		ModelAndView MV = new ModelAndView();
 		
 		
-		if(clienteNeg.delete(ssoId) && usuarioNeg.delete(clienteNeg.obtenerCliente(ssoId).getUser().getId()) && cuentaNegImpl.borrarCuentasCliente(ssoId)) {
+		if(clienteNeg.delete(ssoId) || usuarioNeg.delete(clienteNeg.obtenerCliente(ssoId).getUser().getId()) || cuentaNegImpl.borrarCuentasCliente(ssoId)) {
 			MV.addObject("mensaje","El cliente se pudo eliminar correctamente");
 			MV.addObject("color", "color: green; margin-top: 20px;");
 			MV.addObject("listaClientes",this.clienteNeg.readAll());

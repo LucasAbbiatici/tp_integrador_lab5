@@ -168,8 +168,8 @@
 	<script src="assets/js/transferencia.js"></script>
 	
 	<script>
-	let prov = "${cliente.provincia}";
-	let loc = "${cliente.localidad}";
+	let prov = "${cliente.provincia.nombre}";
+	let loc = "${cliente.localidad.nombre}";
 	
 	let ddlprovincias = document.querySelector("#provincias");
 
