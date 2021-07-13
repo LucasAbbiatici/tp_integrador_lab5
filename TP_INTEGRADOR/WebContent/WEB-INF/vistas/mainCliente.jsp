@@ -36,7 +36,13 @@
 					<td>${item.CBU}</td>
 					<td>${item.tipoDeCuenta.descripcion}</td>
 					<td>${item.nombre}</td>
-					<td>${item.saldo}</td>
+					<td>
+						<c:choose>
+							<c:when test="${item.tipoDeCuenta.id == 1}">ARS </c:when>
+							<c:when test="${item.tipoDeCuenta.id == 2}">USD </c:when>
+						</c:choose>
+						${item.saldo}
+					</td>
 					<td><a href="<c:url value='/movimientos-cuenta-${item.id}' />"><input type="submit" value="Movimientos" name="btnMovimientos" class="btnModificar" style="width:110px;"></a></td>
 				</tr>
 			</c:forEach>

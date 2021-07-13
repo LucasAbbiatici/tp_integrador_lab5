@@ -44,7 +44,13 @@
 							<td>${item.fechaCreacion}</td>
 							<td>${item.tipoDeCuenta.descripcion}</td>
 							<td>${item.nombre}</td>
-							<td>${item.saldo}</td>
+							<td>
+								<c:choose>
+									<c:when test="${item.tipoDeCuenta.id == 1}">ARS </c:when>
+									<c:when test="${item.tipoDeCuenta.id == 2}">USD </c:when>
+								</c:choose>
+								${item.saldo}
+							</td>
 							<td><a href="<c:url value='/redirec-updCuenta-${item.id}' />"><input type="submit" value="Modificar" name="btnModificar" class="btnModificar"></a></td>  
 						    <td><a href="<c:url value='/delete-cuenta-${item.id}' />"><input type="submit" value="Borrar" name="btnBorrar" class="btnBorrar"></a></td>
 						</tr>
